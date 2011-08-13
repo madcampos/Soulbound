@@ -312,7 +312,7 @@ function createSelect (options, optionGroups, selected, optionsId, optionsClass,
 				if(opt.textContent == selected){
 					opt.selected = "selected";
 				}
-				if(descriptions[i][j]){
+				if(descriptions){
 					opt.title = descriptions[i][j];
 				}
 
@@ -334,7 +334,7 @@ function createSelect (options, optionGroups, selected, optionsId, optionsClass,
 			if(opt.textContent == selected){
 				opt.selected = "selected";
 			}
-			if(descriptions[i]){
+			if(descriptions){
 				opt.title = descriptions[i];
 			}
 
