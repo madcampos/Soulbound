@@ -1,0 +1,303 @@
+﻿/*----- body and general styling -----*/
+
+body{
+	margin:2.5em 3em 1em 3em;
+	font-family:"Univers LT Std 55", sans-serif;
+}
+
+h2{
+	margin:0px 0px 0px 5px;
+	text-align:left;
+}
+
+div{
+	display:inline-block;
+}
+
+input, select{
+	font-family:"Univers LT Std 55", sans-serif;
+}
+
+input[type=number]{
+	width:5em;
+}
+
+.fullWidth{
+	width:99.65%;
+	text-align:center;
+}
+
+.halfWidth{
+	width:49.65%;
+}
+
+.quarterWidth{
+	width:24.65%;
+}
+
+.float{
+	float:left;
+	clear:right;
+}
+
+.addMargin{
+	margin-left:4px;
+}
+
+.labelSmall{
+	width:5.1em;
+}
+
+/*----- top navbar -----*/
+
+#top{
+	color:white;
+	position:fixed;
+	top:0px;
+	left:0px;
+	width:100%;
+	background:-webkit-gradient(linear, left top, left bottom, from(#396248), to(#7b9886) );
+	z-index:1;
+}
+
+form{
+	display:inline;
+	float:left;
+}
+
+form ~ div{
+	float:right;
+}
+
+/*----- points counter -----*/
+#pointsCounter{
+	color:white;
+	width:3em;
+	margin-right:5em;
+	background-color:#396248;
+	border:thin #396248 solid;
+}
+
+/*----- hiders -----*/
+
+#hiders label{
+	vertical-align:middle;
+	margin-right:2em;
+}
+
+#hideLink{
+	position:fixed;
+	top:2px;
+	z-index:1;
+	left:57em;
+}
+
+#hideLink:checked ~ #link{
+	display:none;
+}
+
+#hidePrograms{
+	position:fixed;
+	top:2px;
+	z-index:1;
+	left:69em;
+}
+
+#hidePrograms:checked ~ #programs{
+	display:none;
+}
+
+#hidePowers{
+	position:fixed;
+	top:2px;
+	z-index:1;
+	left:79.5em;
+}
+
+#hidePowers:checked ~ #adeptPowers{
+	display:none;
+}
+
+#hideSpells{
+	position:fixed;
+	top:2px;
+	z-index:1;
+	left:89em;
+}
+
+#hideSpells:checked ~ #spells{
+	display:none;
+}
+
+#hideSpirits{
+	position:fixed;
+	top:2px;
+	z-index:1;
+	left:99em;
+}
+
+#hideSpirits:checked ~ #spirits{
+	display:none;
+}
+
+/*----- sheet -----*/
+#sheet label{
+	display:block;
+	font-size:0.7em;
+}
+
+.containers{
+	border:2px #396248 solid;
+	margin:5px;
+	padding:5px;
+	display:block;
+	border-radius:5px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(123,152,134,0.7)), color-stop(30%,rgba(123,152,134,0)), color-stop(100%,rgba(123,152,134,0)));	
+}
+
+.containersQuarter{
+	width:23.1%;
+}
+
+.containersHalf{
+	width:48.1%;
+}
+
+/*----- personal -----*/
+
+#name{
+	width:29.5em;
+}
+
+#sex{
+	width:6em;
+}
+
+/*----- picture -----*/
+#picture{
+	height:30em;
+}
+
+#picture h2{
+	text-align:center;
+}
+
+#pic{
+	height:99%;
+	width:99%;
+}
+
+/*----- skills -----*/
+#skills{
+	height:30em;
+}
+
+#skills input[type=text]{
+	width:13em;
+}
+
+.skillGroup{
+	color:darkblue;
+}
+
+#activeSkillsContainer, #otherSkillsContainer{
+	overflow:auto;
+	height:37%;
+}
+
+#skillLabel{
+	width:17em;
+}
+
+#otherLabel{
+	width:16em;
+}
+
+/*----- qualities -----*/
+#qualities{
+	height:30em;
+}
+
+#qualitiesContainer{
+	overflow:auto;
+	height:83%;
+}
+
+/*----- monitor -----*/
+
+#monitor{
+	height:30em;
+}
+
+/*----- veicles -----*/
+
+#vehicles{
+	height:14.3em;
+}
+
+#vehiclesContainer{
+	overflow:auto;
+	height:75%;
+}
+
+#vehiclesContainer input[type=number]{
+	width:4em;
+}
+
+#vehicleLabel{
+	width:14em;
+}
+
+/*----- implants -----*/
+
+#implants{
+	height:14.3em;
+}
+
+/*----- armor -----*/
+
+#armor{
+	height:14.3em;
+}
+
+/*----- weapon -----*/
+
+#weapons{
+	height:14.3em;
+}
+
+/*----- link -----*/
+
+#link{
+	height:14.3em;
+}
+
+/*----- programs -----*/
+
+#programs{
+	height:14.3em;
+}
+
+/*----- adeptPowers -----*/
+
+#adeptPowers{
+	height:14.3em;
+}
+
+/*----- spells -----*/
+
+#spells{
+	height:14.3em;
+}
+
+#spellsContainer{
+	height:67%;
+	overflow:auto;
+	display:block;
+}
+
+/*----- spirits -----*/
+
+#spirits{
+	height:14.3em;
+}

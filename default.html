@@ -1,0 +1,280 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Shadowrun</title>
+<link rel="stylesheet" href="style/default.css">
+<link rel="stylesheet" href="style/fonts.css">
+<script src="readimage.js"></script>
+<script src="menageitens.js"></script>
+<script src="extra.js"></script>
+</head>
+<body>
+<div id="top">
+	<form>
+		<label for="charSheet">Select Char File:</label><input type="file" id="charSheet">
+		<input type="submit" value="Load" id="charSearch">
+	</form>
+	<form id="saveForm">
+		<input type="submit" value="Save">
+	</form>
+	<div id="hiders">
+		<label for="hideLink">Hide Link?</label>
+		<label for="hidePrograms">Hide Programs?</label>
+		<label for="hidePowers">Hide Powers?</label>
+		<label for="hideSpells">Hide Spells?</label>
+		<label for="hideSpirits">Hide Spirits?</label>
+	</div>
+	<div id="pointsContainer">
+		<label for="pointsCounter">Points:</label>
+		<input type="text" disabled="disabled" value="x" id="pointsCounter">
+	</div>
+</div>
+<div id="sheet">
+	<div id="personal" class="containers">
+		<h2>Personal Data:</h2>
+		<div>
+			<label for="name">Name:</label>
+			<input type="text" id="name">
+		</div>	
+		<div>
+			<label for="metatype">Metatype:</label>
+			<select id="metatype">
+				<option>Dwarf</option>
+				<option>Elf</option>
+				<option>Human</option>
+				<option>Ork</option>
+				<option>Troll</option>
+			</select>
+		</div>
+		<div>
+			<label for="age">Age:</label>
+			<input type="number" min="0" id="age">
+		</div>
+		<div>
+			<label for="sex">Sex:</label>
+			<input type="text" id="sex">
+		</div>
+		<div>
+			<label for="money">Money:</label>
+			<input type="number" min="0" id="money">
+		</div>
+		<div>
+			<label for="lifestyle">Lifestyle:</label>
+			<select id="lifestyle">
+				<option>Luxury</option>
+				<option>High</option>
+				<option>Middle</option>
+				<option>Low</option>
+				<option>Squatter</option>
+				<option>Streets</option>
+				<option>Hospitalized</option>
+			</select>
+		</div>
+		<div>
+			<label for="totalKarma">Karma:</label>
+			<input type="number" min="0" id="totalKarma">
+		</div>
+		<div>
+			<label for="currentKarma">Curren Karma:</label>
+			<input type="number" min="0" id="currentKarma">
+		</div>
+		<div>
+			<label for="streetCredit">Street Credit:</label>
+			<input type="number" min="0" id="streetCredit">
+		</div>
+		<div>
+			<label for="notoriety">Notoriety:</label>
+			<input type="number" min="0" id="notoriety">
+		</div>
+		<div>
+			<label for="publicAwarness">Public Awareness:</label>
+			<input type="number" min="0" id="notoriety">
+		</div>
+	</div>
+	<div id="attributes" class="containers">
+		<div class="quarterWidth">
+			<h2>Phisical</h2>
+			<div>
+				<label for="body">Body:</label>
+				<input type="number" min="1" value="1" id="body">
+			</div>
+			<div>
+				<label for="agility">Agility:</label>
+				<input type="number" min="1" value="1" id="agility">
+			</div>
+			<div>
+				<label for="reaction">Reaction:</label>
+				<input type="number" min="1" value="1" id="reaction">
+			</div>
+			<div>
+				<label for="strength">Strength:</label>
+				<input type="number" min="1" value="1" id="strength">
+			</div>
+		</div>
+		<div class="quarterWidth">
+			<h2>Mental</h2>
+			<div>
+				<label for="charisma">Charisma:</label>
+				<input type="number" min="1" value="1" id="charisma">
+			</div>
+			<div>
+				<label for="intuition">Intuition:</label>
+				<input type="number" min="1" value="1" id="intuition">
+			</div>
+			<div>
+				<label for="logic">Logic:</label>
+				<input type="number" min="1" value="1" id="logic">
+			</div>
+			<div>
+				<label for="willpower">Willpower:</label>
+				<input type="number" min="1" value="1" id="willpower">
+			</div>
+		</div>
+		<div class="halfWidth">
+			<h2>Special</h2>
+			<div>
+				<label for="edge">Edge:</label>
+				<input type="number" min="1" value="1" id="edge">
+			</div>
+			<div>
+				<label for="essence">Essence:</label>
+				<input type="number" min="1" max="6" value="6" id="essence">
+			</div>
+			<div>
+				<label for="initiative">Initiative:</label>
+				<input type="number" min="1" value="1" id="initiative">
+			</div>
+			<div>
+				<label for="magic">Magic/Ress.:</label>
+				<input type="number" min="1" value="1" id="magic">
+			</div>
+			<div>
+				<label for="astralInit">Astral Init.:</label>
+				<input type="number" min="1" value="1" id="astralInit">
+			</div>
+			<div>
+				<label for="matrixInit">Matrix Init.:</label>
+				<input type="number" min="1" value="1" id="matrixInit">
+			</div>
+			<div>
+				<label for="initPasses">Init. Passes:</label>
+				<input type="number" min="1" max="4" value="1" id="initPasses">
+			</div>
+		</div>
+	</div>
+	<div id="picture" class="containers float containersQuarter">
+		<h2 id="pic">Drop Picture Here!</h2>
+	</div>
+	<div id="skills" class="containers float containersQuarter">
+		<h2>Active Skills:</h2>
+		<div class="fullWidth">
+			<input type="button" onclick="addSkill()" value="Add Skill">
+			<input type="button" onclick="removeElements('activeSkillsContainer')" value="Remove Skill">
+		</div>
+		<div>
+			<label id="skillLabel">Skill:</label>
+		</div>
+		<div>
+			<label>Rating:</label>
+		</div>
+		<div id="activeSkillsContainer" class="addMargin"></div>
+		<h2>Other Skills:</h2>
+			<div class="fullWidth">
+				<input type="button" onclick="addOther()" value="Add Skill">
+				<input type="button" onclick="removeElements('otherSkillsContainer')" value="Remove Skill">
+			</div>
+			<div>
+				<label id="otherLabel">Skill:</label>
+			</div>
+			<div>
+				<label>Rating:</label>
+			</div>
+		<div id="otherSkillsContainer" class="addMargin"></div>
+	</div>
+	<div id="qualities" class="containers float containersQuarter">
+		<h2>Qualities:</h2>
+		<div class="fullWidth">
+				<input type="button" onclick="addQuality()" value="Add Quality">
+				<input type="button" onclick="removeElements('qualitiesContainer')" value="Remove Quality">
+		</div>
+		<div id="qualitiesContainer"></div>
+	</div>
+	<div class="containers float containersQuarter" id="monitor">
+		<h2>Status Monitor:</h2>
+	</div>
+	<div class="containers float containersHalf" id="vehicles">
+		<h2>Vehicles:</h2>
+		<div class="fullWidth">
+				<input type="button" onclick="addVehicle()" value="Add Vehicle">
+				<input type="button" onclick="removeElements('vehiclesContainer')" value="Remove Vehicle">
+		</div>
+		<div>
+			<label id="vehicleLabel">Vehicle:</label>
+		</div>
+		<div>
+			<label class="labelSmall">Hand.:</label>
+		</div>
+		<div>
+			<label class="labelSmall">Accel.:</label>
+		</div>
+		<div>
+			<label class="labelSmall">Speed.:</label>
+		</div>
+		<div>
+			<label class="labelSmall">Pilot:</label>
+		</div>
+		<div>
+			<label class="labelSmall">Body:</label>
+		</div>
+		<div>
+			<label class="labelSmall">Armor:</label>
+		</div>
+		<div>
+			<label class="labelSmall">Sensor:</label>
+		</div>
+		<div id="vehiclesContainer"></div>
+	</div>
+	<div class="containers float containersHalf" id="implants">
+		<h2>Cyberware/Bioware:</h2>
+	</div>
+	<div class="containers float containersHalf" id="armor">
+		<h2>Armor:</h2>
+	</div>
+	<div class="containers float containersHalf" id="weapons">
+		<h2>Weapons:</h2>
+	</div>
+	<input type="checkbox" id="hideLink">
+	<div class="containers float containersHalf" id="link">
+		<h2>Commlink:</h2>
+	</div>
+	<input type="checkbox" id="hidePrograms">
+	<div class="containers float containersQuarter" id="programs">
+		<h2>Programs:</h2>
+	</div>
+	<input type="checkbox" id="hidePowers">
+	<div class="containers float containersQuarter" id="adeptPowers">
+		<h2>Adept Powers:</h2>
+	</div>
+	<input type="checkbox" id="hideSpells">
+	<div class="containers float containersHalf" id="spells">
+		<h2>Spells:</h2>
+		<div class="fullWidth">
+			<input type="button" onclick="addSpell()" value="Add Spell">
+			<input type="button" onclick="removeElements('spellsContainer')" value="Remove Spell">
+		</div>
+		<div>
+			<label>Spell (Type/Range/Damage/Duration/Drain Value)</label>
+		</div>
+		<div id="spellsContainer"></div>
+		<div>
+			<label id="spellsDescription">Mouse Over this for detailed types.</label>
+		</div>
+	</div>
+	<input type="checkbox" id="hideSpirits">
+	<div class="containers float containersHalf" id="spirits">
+		<h2>Spirits/Sprites:</h2>
+	</div>
+</div>
+</body>
+</html>
