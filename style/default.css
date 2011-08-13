@@ -2,7 +2,7 @@
 
 body{
 	margin:2.5em 3em 1em 3em;
-	font-family:"Univers LT Std 55", sans-serif;
+	font-family:Comfortaa, sans-serif;
 }
 
 h2{
@@ -15,7 +15,7 @@ div{
 }
 
 input, select{
-	font-family:"Univers LT Std 55", sans-serif;
+	font-family:Comfortaa, sans-serif;
 }
 
 input[type=number]{
