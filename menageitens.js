@@ -236,7 +236,7 @@ function addVehicle(name, handling, accel, speed, pilot, body, armor, sensor){
 	var vehiclesContainer = document.getElementById("vehiclesContainer");
 	var vehicleDiv = document.createElement("div");
 
-	vehicleDiv.appendChild(createInput("text", name,"addMargin"));
+	vehicleDiv.appendChild(createInput("text", name));
 	vehicleDiv.appendChild(createInput("number", handling,"addMargin"));
 	vehicleDiv.appendChild(createInput("number", accel,"addMargin"));
 	vehicleDiv.appendChild(createInput("number", speed,"addMargin"));
@@ -252,9 +252,19 @@ function addMagic(){
 	
 }
 
-function selectChange(elementId){
-	var element = document.getElementById(elementId);
-	element.title = element.options[element.selectedIndex].title;
+function addContact (name, loyalty, conn) {
+  var contactsContainer = document.getElementById("");
+  var contact = document.createElement("div");
+  
+  contact.appendChild(createInput("text", name));
+  contact.appendChild(createInput("number", loyalty, "addMargin"));
+  contact.appendChild(createInput("number", conn, "addMargin"));
+  
+  contactsContainer.appendChild(contact);
+}
+
+function selectChange(){
+	event.target.title = event.target.options[event.target.selectedIndex].title;
 }
 
 function createInput (inputType, inputValue, inputClass, inputId, description) {
@@ -291,8 +301,8 @@ function createSelect (options, optionGroups, selected, optionsId, optionsClass,
 	if(optionsClass){
 		select.className = optionsClass;
 	}
-	if(descriptions && optionsId){
-		select.onchange = selectChange(optionsId);
+	if(descriptions){
+		select.onchange = selectChange();
 	}
 
 	if (optionGroups.length > 0) {
@@ -311,6 +321,9 @@ function createSelect (options, optionGroups, selected, optionsId, optionsClass,
 
 				if(opt.textContent == selected){
 					opt.selected = "selected";
+					if(descriptions){
+						select.title = descriptions[i][j];
+					}
 				}
 				if(descriptions){
 					opt.title = descriptions[i][j];
@@ -333,6 +346,9 @@ function createSelect (options, optionGroups, selected, optionsId, optionsClass,
 
 			if(opt.textContent == selected){
 				opt.selected = "selected";
+				if (descriptions) {
+					select.title = descriptions[i];
+				}
 			}
 			if(descriptions){
 				opt.title = descriptions[i];

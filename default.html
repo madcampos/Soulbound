@@ -38,78 +38,80 @@
 			<input type="text" id="name">
 		</div>	
 		<div>
-			<label for="metatype">Metatype:</label>
-			<select id="metatype">
-				<option>Dwarf</option>
-				<option>Elf</option>
-				<option>Human</option>
-				<option>Ork</option>
-				<option>Troll</option>
-			</select>
-		</div>
-		<div>
-			<label for="age">Age:</label>
-			<input type="number" min="0" id="age">
-		</div>
-		<div>
-			<label for="sex">Sex:</label>
-			<input type="text" id="sex">
-		</div>
-		<div>
-			<label for="money">Money:</label>
-			<input type="number" min="0" id="money">
-		</div>
-		<div>
-			<label for="lifestyle">Lifestyle:</label>
-			<select id="lifestyle">
-				<option>Luxury</option>
-				<option>High</option>
-				<option>Middle</option>
-				<option>Low</option>
-				<option>Squatter</option>
-				<option>Streets</option>
-				<option>Hospitalized</option>
-			</select>
-		</div>
-		<div>
-			<label for="totalKarma">Karma:</label>
-			<input type="number" min="0" id="totalKarma">
-		</div>
-		<div>
-			<label for="currentKarma">Curren Karma:</label>
-			<input type="number" min="0" id="currentKarma">
-		</div>
-		<div>
-			<label for="streetCredit">Street Credit:</label>
-			<input type="number" min="0" id="streetCredit">
-		</div>
-		<div>
-			<label for="notoriety">Notoriety:</label>
-			<input type="number" min="0" id="notoriety">
-		</div>
-		<div>
-			<label for="publicAwarness">Public Awareness:</label>
-			<input type="number" min="0" id="notoriety">
+			<span>
+				<label for="metatype">Metatype:</label>
+				<select id="metatype">
+					<option>Dwarf</option>
+					<option>Elf</option>
+					<option>Human</option>
+					<option>Ork</option>
+					<option>Troll</option>
+				</select>
+				<label for="age">Age:</label>
+				<input type="number" min="0" id="age">
+				<label for="sex">Sex:</label>
+				<input type="text" id="sex">
+			</span>
+			<span>
+				<label for="money">Money:</label>
+				<input type="number" min="0" id="money">
+			</span>
+			<span>
+				<label for="lifestyle">Lifestyle:</label>
+				<select id="lifestyle">
+					<option>Luxury</option>
+					<option>High</option>
+					<option>Middle</option>
+					<option>Low</option>
+					<option>Squatter</option>
+					<option>Streets</option>
+					<option>Hospitalized</option>
+				</select>
+			</span>
+			<span>
+				<label for="totalKarma">Karma:</label>
+				<input type="number" min="0" id="totalKarma">
+			</span>
+			<span>
+				<label for="currentKarma">Curren Karma:</label>
+				<input type="number" min="0" id="currentKarma">
+			</span>
+			<span>
+				<label for="streetCredit">Street Credit:</label>
+				<input type="number" min="0" id="streetCredit">
+			</span>
+			<span>
+				<label for="notoriety">Notoriety:</label>
+				<input type="number" min="0" id="notoriety">
+			</span>
+			<span>
+				<label for="publicAwarness">Public Awareness:</label>
+				<input type="number" min="0" id="notoriety">
+			</span>
 		</div>
 	</div>
 	<div id="attributes" class="containers">
 		<div class="quarterWidth">
 			<h2>Phisical</h2>
 			<div>
-				<label for="body">Body:</label>
-				<input type="number" min="1" value="1" id="body">
+				<span>
+					<label for="body">Body:</label>
+					<input type="number" min="1" value="1" id="body">
+				</span>
+				<span>
+					<label for="agility">Agility:</label>
+					<input type="number" min="1" value="1" id="agility">
+				</span>
 			</div>
 			<div>
-				<label for="agility">Agility:</label>
-				<input type="number" min="1" value="1" id="agility">
-			</div>
-			<div>
-				<label for="reaction">Reaction:</label>
-				<input type="number" min="1" value="1" id="reaction">
-			</div>
-			<div>
-				<label for="strength">Strength:</label>
-				<input type="number" min="1" value="1" id="strength">
+				<span>
+					<label for="reaction">Reaction:</label>
+					<input type="number" min="1" value="1" id="reaction">
+				</span>
+				<span>
+					<label for="strength">Strength:</label>
+					<input type="number" min="1" value="1" id="strength">
+				</span>
 			</div>
 		</div>
 		<div class="quarterWidth">
@@ -270,6 +272,19 @@
 		<div>
 			<label id="spellsDescription">Mouse Over this for detailed types.</label>
 		</div>
+	</div>
+	<div class="containers float containersHalf" id="spells">
+		<h2>Contacts:</h2>
+		<div class="fullWidth">
+			<input type="button" onclick="addContact()" value="Add Spell">
+			<input type="button" onclick="removeElements('contactsContainer')" value="Remove Spell">
+		</div>
+		<div>
+			<label>Contact</label>
+			<label>Loyalty Rtg.</label>
+			<label>Conn. Rtg.</label>
+		</div>
+		<div id="contactsContainer"></div>
 	</div>
 	<input type="checkbox" id="hideSpirits">
 	<div class="containers float containersHalf" id="spirits">
