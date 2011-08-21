@@ -19,3 +19,15 @@
     font-weight:normal;
     font-style:normal;
 }
+
+body{
+	font-family:Comfortaa, Trebuchet, serif;
+}
+
+input, select, textarea{
+	font-family:Comfortaa, Trebuchet, serif;
+}
+
+span{
+	display:inline-block;
+}

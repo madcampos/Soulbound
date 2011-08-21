@@ -1,21 +1,7 @@
 ﻿/*----- body and general styling -----*/
 
 body{
-	margin:2.5em 3em 1em 3em;
-	font-family:Comfortaa, sans-serif;
-}
-
-h2{
-	margin:0px 0px 0px 5px;
-	text-align:left;
-}
-
-div{
-	display:inline-block;
-}
-
-input, select{
-	font-family:Comfortaa, sans-serif;
+	margin:2.5em 2% 2% 2%;
 }
 
 input[type=number]{
@@ -56,6 +42,7 @@ input[type=number]{
 	top:0px;
 	left:0px;
 	width:100%;
+	background-color:#396248;
 	background:-webkit-gradient(linear, left top, left bottom, from(#396248), to(#7b9886) );
 	z-index:1;
 }
@@ -141,11 +128,6 @@ form ~ div{
 }
 
 /*----- sheet -----*/
-#sheet label{
-	display:block;
-	font-size:0.7em;
-}
-
 .containers{
 	border:2px #396248 solid;
 	margin:5px;
