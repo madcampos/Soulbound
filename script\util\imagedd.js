@@ -1,11 +1,10 @@
 ﻿var picture;
-function init(){
+function imageInit(){
 	window.addEventListener("dragenter", dragenter, true);
 	picture = document.getElementById("picture");
 	window.addEventListener("dragleave", dragleave, true);
 	picture.addEventListener("dragover", dragover, true);
 	picture.addEventListener("drop", drop, true);
-	addDescription();
 }
 
 function dragenter(e) {
@@ -53,5 +52,3 @@ function handleImage(image) {
 
 	return true;
 }
-
-window.addEventListener("load", init, true);

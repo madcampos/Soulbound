@@ -5,9 +5,10 @@
 <title>Shadowrun</title>
 <link rel="stylesheet" href="style/default.css">
 <link rel="stylesheet" href="style/fonts.css">
-<script src="readimage.js"></script>
-<script src="menageitens.js"></script>
-<script src="extra.js"></script>
+<script src="script/util/image.js"></script>
+<script src="script/util/htmlgen.js"></script>
+<script src="script/controller/objectsgen.js"></script>
+<script src="script/main.js"></script>
 </head>
 <body>
 <div id="top">
@@ -273,11 +274,11 @@
 			<label id="spellsDescription">Mouse Over this for detailed types.</label>
 		</div>
 	</div>
-	<div class="containers float containersHalf" id="spells">
+	<div class="containers float containersHalf" id="contacts">
 		<h2>Contacts:</h2>
 		<div class="fullWidth">
-			<input type="button" onclick="addContact()" value="Add Spell">
-			<input type="button" onclick="removeElements('contactsContainer')" value="Remove Spell">
+			<input type="button" onclick="addContact()" value="Add Contact">
+			<input type="button" onclick="removeElements('contactsContainer')" value="Remove Contact">
 		</div>
 		<div>
 			<label>Contact</label>
