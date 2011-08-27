@@ -154,7 +154,7 @@
 	];
 
 	newSkill.appendChild(createSelect(skillList, attList, selected));
-	newSkill.appendChild(createInput("number", skillValue));
+	newSkill.appendChild(createInput("number", skillValue, "addMargin"));
 	activeSkills.appendChild(newSkill);
 }
 
@@ -163,7 +163,7 @@ function addOther(name, skillValue){
 	var newSkill = document.createElement("div");
 
 	newSkill.appendChild(createInput("text", name));
-	newSkill.appendChild(createInput("number", skillValue));
+	newSkill.appendChild(createInput("number", skillValue, "addMargin"));
 	otherSkills.appendChild(newSkill);
 }
 
@@ -186,68 +186,43 @@ function addQuality(selected){
 			"Double Jointed (5)",
 			"Exceptional Attribute (20)",
 			"First Impression (5)",
-			"Focused Concentration (10)",
-			"Focused Concentration (20)",
+			"Focused Concentration (10/20)",
 			"Guts (5)",
-			"High Pain Tolerance (5)",
-			"High Pain Tolerance (10)",
-			"High Pain Tolerance (15)",
+			"High Pain Tolerance (5-15)",
 			"Home Ground (10)",
 			"Human Loooking (5)",
 			"Lucky (20)",
 			"Magician (15)",
-			"Magic Resistence (5)",
-			"Magic Resistence (10)",
-			"Magic Resistence (15)",
-			"Magic Resistence (20)",
+			"Magic Resistence (5-20)",
 			"Mentor Spirit",
 			"Murky Link (10)",
 			"Mystic Adept (10)",
 			"Natural Hardening (10)",
 			"Photographic Memory (10)",
 			"Quick Healer (10)",
-			"Resist. to Pathogens/Toxins (5)",
-			"Resist. to Pathogens/Toxins (10)",
+			"Resist. to Pathogens/Toxins (5-10)",
 			"Spirit Affinity (10)",
 			"Technomancer (5)",
 			"Toughtness (10)",
-			"Will to Live (5)",
-			"Will to Live (10)",
-			"Will to Live (15)"
+			"Will to Live (5-15)"
 		],[
-			"Addiction (+5)",
-			"Addiction (+10)",
-			"Addiction (+15)",
-			"Addiction (+20)",
-			"Addiction (+25)",
-			"Addiction (+30)",
-			"Allergy (+5)",
-			"Allergy (+10)",
-			"Allergy (+15)",
-			"Allergy (+20)",
+			"Addiction (+5-30)",
+			"Allergy (+5-20)",
 			"Astral Beacon (+5)",
 			"Bad Luck (+20)",
 			"Codeblock (+5)",
 			"Combat Paralysis (+20)",
 			"Elf Poser (+5)",
-			"Gremlins (+5)",
-			"Gremlins (+10)",
-			"Gremlins (+15)",
-			"Gremlins (+20)",
+			"Gremlins (+5-20)",
 			"Incompetent (+5)",
 			"Infirm (+20)",
 			"Low Pain Tolerance (+10)",
 			"Ork Poser (+5)",
-			"Scorched (+5)",
-			"Scorched (+10)",
-			"Sensitive Neural Structure (+5)",
-			"Sensitive Neural Structure (+10)",
-			"Sensitive Neural Structure (+15)",
-			"Sensitive System (+15)",
-			"Simsense Vertigo (+10)",
-			"Simsense Vertigo (+15)",
-			"SINner (+5)",
-			"SINner (+10)",
+			"Scorched (+5/10)",
+			"Sensitive Neural Structure (+5/15)",
+			"Sensitive system (+15)",
+			"Simsense Vertigo (+10/15)",
+			"SINner (+5/10)",
 			"Uncouth (+20)",
 			"Uneducated (+20)",
 			"Weak Immune System (+5)"
@@ -262,13 +237,13 @@ function addVehicle(name, handling, accel, speed, pilot, body, armor, sensor){
 	var vehicleDiv = document.createElement("div");
 
 	vehicleDiv.appendChild(createInput("text", name));
-	vehicleDiv.appendChild(createInput("number", handling));
-	vehicleDiv.appendChild(createInput("number", accel));
-	vehicleDiv.appendChild(createInput("number", speed));
-	vehicleDiv.appendChild(createInput("number", pilot));
-	vehicleDiv.appendChild(createInput("number", body));
-	vehicleDiv.appendChild(createInput("number", armor));
-	vehicleDiv.appendChild(createInput("number", sensor));
+	vehicleDiv.appendChild(createInput("number", handling,"addMargin"));
+	vehicleDiv.appendChild(createInput("number", accel,"addMargin"));
+	vehicleDiv.appendChild(createInput("number", speed,"addMargin"));
+	vehicleDiv.appendChild(createInput("number", pilot,"addMargin"));
+	vehicleDiv.appendChild(createInput("number", body,"addMargin"));
+	vehicleDiv.appendChild(createInput("number", armor,"addMargin"));
+	vehicleDiv.appendChild(createInput("number", sensor, "addMargin"));
 
 	vehiclesContainer.appendChild(vehicleDiv);
 }
@@ -282,8 +257,8 @@ function addContact (name, loyalty, conn) {
   var contact = document.createElement("div");
   
   contact.appendChild(createInput("text", name));
-  contact.appendChild(createInput("number", loyalty));
-  contact.appendChild(createInput("number", conn));
+  contact.appendChild(createInput("number", loyalty, "addMargin"));
+  contact.appendChild(createInput("number", conn, "addMargin"));
   
   contactsContainer.appendChild(contact);
 }
@@ -292,8 +267,8 @@ function selectChange(){
 	event.target.title = event.target.options[event.target.selectedIndex].title;
 }
 
-function spellsDescription() {
-	/*var description = document.getElementById("spellsDescription");
+function spellsDescription () {
+	var description = document.getElementById("spellsDescription");
 	description.title="Type:\n\tP = Physical\n\tM = Mental\n"
 	+ "Range:\n\t"
 		+ "LOS = Line of sight\n\t"
@@ -308,31 +283,5 @@ function spellsDescription() {
 		+ "S = Sustained\n\t"
 		+ "P = Permanent\n"
 	+ "Drain Value:\n\t"
-		+ "F = Force";*/
-}
-
-function phisicalBoxes(){
-	var body = document.getElementById("body").value;
-	var phisical = 8 + Math.ceil(body/2);
-	var boxes = document.getElementsByClassName("phisicalBoxes");
-	
-	for (var i=0; i < boxes.length; i++) {
-	  boxes[i].disabled = false;
-	};
-	for (var i=phisical; i < boxes.length; i++) {
-		boxes[i].disabled = true;
-	}
-}
-
-function stunBoxes(){
-	var will = document.getElementById("willpower").value;
-	var stun = 8 + Math.ceil(will/2);
-	var boxes = document.getElementsByClassName("stunBoxes");
-	
-	for (var i=0; i < boxes.length; i++) {
-	  boxes[i].disabled = false;
-	};
-	for (var i=stun; i < boxes.length; i++) {
-		boxes[i].disabled = true;
-	}
+		+ "F = Force";
 }
