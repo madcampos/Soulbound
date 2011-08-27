@@ -1,285 +1,228 @@
-﻿/*----- body and general styling -----*/
+﻿/**
+ * Default CSS to style the character sheet.
+ * Has the syling for most of the elements
+ * 
+ * @colordef #396248; drak green
+ * @colordef #7b9886; light green
+ */
 
+/**
+ * @section General styling
+ */
 body{
-	margin:2.5em 2% 2% 2%;
+	margin:2%;
+	background-image:url('../images/tech.png');
+	background-repeat:no-repeat;
+	background-position:top left;
+	background-attachment:fixed;
+	background-size:cover;
+	overflow:auto;
 }
 
-input[type=number]{
-	width:5em;
+::-webkit-scrollbar {
+	width:8px;
+}
+ 
+::-webkit-scrollbar-track {
+	background-color:#7B9886;
+	opacity:0.5;
+	border-radius: 8px;
+}
+ 
+::-webkit-scrollbar-thumb {
+	border-radius: 8px;
+	background-color:#396248;
 }
 
-.fullWidth{
-	width:99.65%;
-	text-align:center;
+div > label:first-child{margin-right:143px;}
+
+.centerContent{text-align:center;}
+
+#activeSkills, #picture, #otherSkills, #qualities, #vehicles, #implants, #armor, #weapons, #guns, #monitor, #comlink, #programs,
+#powers, #spells, #contacts, #spirits, #misc, #notes{height:400px;}
+
+#activeSkillsContainer, #otherSkillsContainer, #qualitiesContainer, #vehiclesContainer, #implantsContainer, #armorContainer,
+#weaponsContainer, #gunsContainer, #comlinkContainer, #programsContainer, #powersContainer, #contactsContainer, #spiritsContainer,
+#miscContainer{
+	height:303px;
+	overflow:auto;
+	margin-bottom:4px;
 }
 
-.halfWidth{
-	width:49.65%;
-}
-
-.quarterWidth{
-	width:24.65%;
-}
-
-.float{
-	float:left;
-	clear:right;
-}
-
-.addMargin{
-	margin-left:4px;
-}
-
-.labelSmall{
-	width:5.1em;
-}
-
-/*----- top navbar -----*/
-
+/**
+ * @section Top Navbar
+ */
 #top{
 	color:white;
 	position:fixed;
 	top:0px;
 	left:0px;
 	width:100%;
+	padding:3px 10px;
 	background-color:#396248;
 	background:-webkit-gradient(linear, left top, left bottom, from(#396248), to(#7b9886) );
 	z-index:1;
 }
 
-form{
-	display:inline;
-	float:left;
+#top form{display:inline-block;}
+
+/**
+ * 	@section Header
+ */
+header img{
+	margin-top:30px;
+	width:450px;
+	height:auto;
 }
 
-form ~ div{
-	float:right;
+/**
+ * @section Character sheet
+ */
+#sheet{
+	width:1100px;
+	margin-right:auto;
+	margin-left:auto;
 }
 
-/*----- points counter -----*/
-#pointsCounter{
-	color:white;
-	width:3em;
-	margin-right:5em;
-	background-color:#396248;
-	border:thin #396248 solid;
-}
-
-/*----- hiders -----*/
-
-#hiders label{
-	vertical-align:middle;
-	margin-right:2em;
-}
-
-#hideLink{
-	position:fixed;
-	top:2px;
-	z-index:1;
-	left:57em;
-}
-
-#hideLink:checked ~ #link{
-	display:none;
-}
-
-#hidePrograms{
-	position:fixed;
-	top:2px;
-	z-index:1;
-	left:69em;
-}
-
-#hidePrograms:checked ~ #programs{
-	display:none;
-}
-
-#hidePowers{
-	position:fixed;
-	top:2px;
-	z-index:1;
-	left:79.5em;
-}
-
-#hidePowers:checked ~ #adeptPowers{
-	display:none;
-}
-
-#hideSpells{
-	position:fixed;
-	top:2px;
-	z-index:1;
-	left:89em;
-}
-
-#hideSpells:checked ~ #spells{
-	display:none;
-}
-
-#hideSpirits{
-	position:fixed;
-	top:2px;
-	z-index:1;
-	left:99em;
-}
-
-#hideSpirits:checked ~ #spirits{
-	display:none;
-}
-
-/*----- sheet -----*/
 .containers{
 	border:2px #396248 solid;
-	margin:5px;
+	margin: 2px auto 3px auto;
 	padding:5px;
-	display:block;
-	border-radius:5px;
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(123,152,134,0.7)), color-stop(30%,rgba(123,152,134,0)), color-stop(100%,rgba(123,152,134,0)));	
+	border-radius:10px;
+	display:inline-block;
+	vertical-align:top;
+	background-color: rgba(123,152,134,0.9);
+	color:white;
 }
 
-.containersQuarter{
-	width:23.1%;
+.quarterWidth{width:258px;}
+
+.halfWidth{width:534px;}
+
+.tQuarterWidth{width:810px;}
+
+.fullWidth{width:1086px;}
+
+/**
+ * @subsction Personal Data
+ */
+#name{width:800px;}
+
+#sex{width:6em;}
+
+/**
+ * @subsction Picture
+ */
+#picture{height:400px;}
+
+#picture h2{text-align:center;}
+
+#pic{
+	width:100%;
+	height:auto;
 }
 
-.containersHalf{
-	width:48.1%;
+/**
+ * 	@subsection Attributes
+ */
+#attributes div{display:inline-block;}
+
+/**
+ * @subsection Active skills
+ */
+.skillGroup{color:#00a0df;}
+
+.traing{color:gray;}
+
+/**
+ * @subsction Other Skills
+ */
+#otherSkillsContainer input[type=text]{width:181px;}
+
+/**
+ * @subsection Status Monitor
+ */
+#monitor div{
+	display:inline-block;
+	width:49.6%;
 }
 
-/*----- personal -----*/
-
-#name{
-	width:29.5em;
+#phisicalDamage table{
+	background-image: url('../images/phisical.svg');
+	background-repeat:no-repeat;
+	background-position:left top;
+	background-size:contain;
 }
 
-#sex{
-	width:6em;
+#stunDamage table{
+	background-image: url('../images/stun.svg');
+	background-repeat:no-repeat;
+	background-position:left top;
+	background-size:contain;
 }
 
-/*----- picture -----*/
-#picture{
-	height:30em;
+#monitor input[type=checkbox]{
+	-webkit-appearance:none;
+	background-color:green;
+	opacity:0.2;
+	width:34px;
+	height:34px;
+	margin:0 0 -4px 0;
 }
 
-#picture h2{
+#monitor input[type=checkbox]:disabled{
+	-webkit-appearance:none;
+	background-color:gray;
+	opacity:0.2;	
+}
+
+#monitor input[type=checkbox]:checked{
+	-webkit-appearance:none;
+	background-color:red;
+	opacity:0.5;
+}
+
+#monitor td{
+	border:thin solid black;
+}
+
+#monitor tr td:last-child{
+	border:none;
+	padding-left:4px;
 	text-align:center;
 }
 
-#pic{
-	height:99%;
+/**
+ * 	@subsection Vehicles
+ */
+#vehicles div > input[type=text]:first-child{width:300px;}
+
+#vehicles div > label:first-child{margin-right:265px;}
+
+#vehicles div label:nth-child(n+2){margin-right:22px;}
+
+#vehicles div label:nth-child(5){
+	margin-left:-7px;
+	margin-right:30px;
+}
+
+#vehicles div label:nth-child(7){
+	margin-left:5px;
+	margin-right:30px;
+}
+
+#vehicles div label:nth-child(8){margin-left:-13px;}
+
+/**
+ * @subsection Notes
+ */
+#notes form{
 	width:99%;
+	height:80%;
 }
 
-/*----- skills -----*/
-#skills{
-	height:30em;
-}
-
-#skills input[type=text]{
-	width:13em;
-}
-
-.skillGroup{
-	color:darkblue;
-}
-
-#activeSkillsContainer, #otherSkillsContainer{
-	overflow:auto;
-	height:37%;
-}
-
-#skillLabel{
-	width:17em;
-}
-
-#otherLabel{
-	width:16em;
-}
-
-/*----- qualities -----*/
-#qualities{
-	height:30em;
-}
-
-#qualitiesContainer{
-	overflow:auto;
-	height:83%;
-}
-
-/*----- monitor -----*/
-
-#monitor{
-	height:30em;
-}
-
-/*----- veicles -----*/
-
-#vehicles{
-	height:14.3em;
-}
-
-#vehiclesContainer{
-	overflow:auto;
-	height:75%;
-}
-
-#vehiclesContainer input[type=number]{
-	width:4em;
-}
-
-#vehicleLabel{
-	width:14em;
-}
-
-/*----- implants -----*/
-
-#implants{
-	height:14.3em;
-}
-
-/*----- armor -----*/
-
-#armor{
-	height:14.3em;
-}
-
-/*----- weapon -----*/
-
-#weapons{
-	height:14.3em;
-}
-
-/*----- link -----*/
-
-#link{
-	height:14.3em;
-}
-
-/*----- programs -----*/
-
-#programs{
-	height:14.3em;
-}
-
-/*----- adeptPowers -----*/
-
-#adeptPowers{
-	height:14.3em;
-}
-
-/*----- spells -----*/
-
-#spells{
-	height:14.3em;
-}
-
-#spellsContainer{
-	height:67%;
-	overflow:auto;
-	display:block;
-}
-
-/*----- spirits -----*/
-
-#spirits{
-	height:14.3em;
+#notes textarea{
+	width:100%;
+	height:100%;
+	resize:none;
 }

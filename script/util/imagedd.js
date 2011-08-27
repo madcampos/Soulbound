@@ -1,4 +1,8 @@
-﻿var picture;
+﻿/**
+ * Open a dragged image and loads on the page
+ * @see HTML5 Rocks article {@link http://www.html5rocks.com/en/tutorials/file/dndfiles/}
+ */
+var picture;
 function imageInit(){
 	window.addEventListener("dragenter", dragenter, true);
 	picture = document.getElementById("picture");
@@ -34,11 +38,11 @@ function drop(e) {
 function handleImage(image) {
 	var imageType = /image.*/;
 
-	if (!image.type.match(imageType)){
+	if (!image.type.match(imageType)) {
 	    alert("Please drop an image.");
 	    return false;
 	}	
-	if(image.type.match(imageType)) {
+	if (image.type.match(imageType)) {
 		var h2 = document.getElementById("pic");
 		var img = document.createElement("img");
 		img.id = "pic";
