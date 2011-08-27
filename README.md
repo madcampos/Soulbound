@@ -19,6 +19,7 @@ The intents of this project are to create a shadowrun Chacacter Sheet unsing new
 ## Todo
 
 + Complete fields from sheet
-+ Make functions clear and more reusable
++ Make functions clear and more reusable (documentation using JSDoc)
 + Read/Write .json file with character
-+ Create new css
++ Refactor CSS
++ Make responsive data based on form rules and states changes
