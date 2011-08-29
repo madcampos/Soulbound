@@ -41,7 +41,13 @@ function handleImage(image) {
 	if (!image.type.match(imageType)) {
 	    alert("Please drop an image.");
 	    return false;
-	}	
+	}
+	
+	if(image.size > 46080){
+		alert("Image size must be less than 45kb");
+		return false;
+	}
+	
 	if (image.type.match(imageType)) {
 		var h2 = document.getElementById("pic");
 		var img = document.createElement("img");
