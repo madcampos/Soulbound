@@ -1,11 +1,27 @@
 /**
- * Creates a input element wrapped in a <span>
+ * Function to get the <option> title of a <select> and add it to the <select>
+ */
+function selectChange(){
+	event.target.title = event.target.options[event.target.selectedIndex].title;
+}
+
+/**
+ * Function to get value of a file input ant put it in other element
+ * @param {String} nodeId The ID of the target node
+ */
+function setInputValue(nodeId){
+	el = document.getElementById(nodeId);
+	el.value = event.target.value.substring(12);
+}
+
+/**
+ * Creates a <input> element
  * @param {String} inputType Expected input type, if none is provided default do "text"
  * @param {String} inputValue The input's value
  * @param {String} inputClass the input's class
  * @param {String} inputId The input's ID
  * @param {String} description The input's description (title)
- * @returns {HTMLSpanElement} An Input wrapped in a <span>
+ * @returns {HTMLSpanElement} An <input> element
  */
 function createInput(inputType, inputValue, inputClass, inputId, description) {
 	var input = document.createElement("input");
@@ -32,14 +48,14 @@ function createInput(inputType, inputValue, inputClass, inputId, description) {
 }
 
 /**
- * Creates a <select> element wrapped in a <span>
+ * Creates a <select> element
  * @param {Array} options An array of <option> values
  * @param {Array} optionGroups An Array of <optgroup> values
  * @param {String} selected The selected option
  * @param {String} selectTd The id of the <select> element
  * @param {String} selectClass	The class of the <select> element
  * @param {Array} descriptions An Array containing descriptions (title attribute) for the <option> elements
- * @returns {HTMLSpanElement} A Select element wrapped in a <span>
+ * @returns {HTMLSpanElement} A <select> element
  */
 function createSelect(options, optionGroups, selected, selectId, selectClass, descriptions) {
 	var select = document.createElement("select");
@@ -84,7 +100,7 @@ function createSelect(options, optionGroups, selected, selectId, selectClass, de
 			select.appendChild(optGroup);
 		}
 	}else{
-		for (var i in options[i]) {
+		for (var i in options) {
 			var opt = document.createElement("option");
 			if (typeof options[i] == 'object') {
 				opt.textContent = options[i][0];

@@ -25,6 +25,7 @@
 		<script src="script/util/imagedd.js"></script>
 		<script src="script/util/htmlgen.js"></script>
 		<script src="script/controller/objectsgen.js"></script>
+		<script src="script/model/persist.js"></script>
 		<script src="script/main.js"></script>
 	</head>
 	<body>
@@ -33,9 +34,11 @@
 		
 		<div id="top">
 			<form>
-				<label for="charSheet">Select Char File:</label><input type="file" id="charSheet">
-				<input type="submit" value="Load" id="charSearch">
-				<input type="submit" value="Save">
+				<label for="charSheet">Select Char File:</label>
+				<input type="text" id="fileOver" disabled="true">
+				<input type="file" id="charSheet" onchange="setInputValue('fileOver')">
+				<input type="button" value="Load" onclick="loadChar()">
+				<input type="button" value="Save" onclick="saveChar()">
 			</form>
 		</div>
 
@@ -114,7 +117,7 @@
 						</span>
 						<span>
 							<label for="publicAwarness">Pub. Awareness:</label>
-							<input type="number" min="0" id="notoriety">
+							<input type="number" min="0" id="publicAwarness">
 						</span>
 					</div>
 			</div>
@@ -348,35 +351,39 @@
 				</div>
 			</div>
 			
+			<!----- Misc. Equipament ----->
+			
+			<div class="containers halfWidth" id="misc">
+				<h2>Misc. Equipament</h2>
+				<div>
+					<label>Name</label>
+					<label>Note</label>
+				</div>
+				<div id="miscContainer">
+					<!-- generated content -->
+				</div>
+				<div class="centerContent">
+					<input type="button" onclick="addMisc()" value="Add Equipament">
+					<input type="button" onclick="removeElements('miscContainer')" value="Remove Equipament">
+				</div>
+			</div>
+			
 			<!----- Cyberware ----->
 			
 			<div class="containers halfWidth" id="implants">
 				<h2>Cyberware/Bioware</h2>
 				<div>
-					<label></label>
+					<label>Implant</label>
+					<label>Rating</label>
+					<label>Essence</label>
+					<label>Notes</label>
 				</div>
 				<div id="implantsContainer">
 					<!-- generated content -->
 				</div>
 				<div class="centerContent">
-					<input type="button" onclick="addImplants()" value="Add Inplant">
+					<input type="button" onclick="addImplant()" value="Add Inplant">
 					<input type="button" onclick="removeElements('implantsContainer')" value="Remove Inplant">
-				</div>
-			</div>
-			
-			<!----- Armor ----->
-			
-			<div class="containers halfWidth" id="armor">
-				<h2>Armor</h2>
-				<div>
-					<label></label>
-				</div>
-				<div id="armorContainer">
-					<!-- generated content -->
-				</div>
-				<div class="centerContent">
-					<input type="button" onclick="addArmor()" value="Add Armor">
-					<input type="button" onclick="removeElements('armorContainer')" value="Remove Armor">
 				</div>
 			</div>
 			
@@ -385,7 +392,10 @@
 			<div class="containers halfWidth" id="weapons">
 				<h2>Melee Weapons</h2>
 				<div>
-					<label></label>
+					<label>Weapon</label>
+					<label>Reach</label>
+					<label>Damage</label>
+					<label>AP</label>
 				</div>
 				<div id="weaponsContainer">
 					<!-- generated content -->
@@ -401,7 +411,12 @@
 			<div class="containers halfWidth" id="guns">
 				<h2>Ranged Weapons</h2>
 				<div>
-					<label></label>
+					<label>Gun</label>
+					<label>Damage</label>
+					<label title="Armor Penetration">AP</label>
+					<label title="SS = Single Shot&#10;SA = Semi-Automatic&#10;BF = Burst Fire&#10;FA = Full-Automatic">Mode</label>
+					<label title="Recoil Compensation">RC</label>
+					<label>Ammo</label>
 				</div>
 				<div id="gunsContainer">
 					<!-- generated content -->
@@ -412,70 +427,19 @@
 				</div>
 			</div>
 			
-			<!----- Comlink ----->
+			<!----- Armor ----->
 			
-			<div class="containers halfWidth" id="comlink">
-				<h2>Commlink:</h2>
+			<div class="containers quarterWidth" id="armor">
+				<h2>Armor</h2>
 				<div>
-					<label></label>
+					<label>Armor (Balistic/Impact)</label>
 				</div>
-				<div id="comlinkContainer">
+				<div id="armorContainer">
 					<!-- generated content -->
 				</div>
 				<div class="centerContent">
-					<input type="button" onclick="addComlink()" value="Add Comlink">
-					<input type="button" onclick="removeElements('comlinkContainer')" value="Remove Comlink">
-				</div>
-			</div>
-			
-			<!----- Programs ----->
-			
-			<div class="containers float quarterWidth" id="programs">
-				<h2>Programs:</h2>
-				<div>
-					<label></label>
-				</div>
-				<div id="programsContainer">
-					<!-- generated content -->
-				</div>
-				<div class="centerContent">
-					<input type="button" onclick="addPrograms()" value="Add Program">
-					<input type="button" onclick="removeElements('programsContainer')" value="Remove Program">
-				</div>
-			</div>
-			
-			<!----- Adept Powers ----->
-			
-			<div class="containers quarterWidth" id="powers">
-				<h2>Adept Powers:</h2>
-				<div>
-					<label></label>
-				</div>
-				<div id="powersContainer">
-					<!-- generated content -->
-				</div>
-				<div class="centerContent">
-					<input type="button" onclick="addPowers()" value="Add Powers">
-					<input type="button" onclick="removeElements('powersContainer')" value="Remove Powers">
-				</div>
-			</div>
-			
-			<!----- Spells ----->
-			
-			<div class="containers halfWidth" id="spells">
-				<h2>Spells:</h2>
-				<div>
-					<label>Spell (Type/Range/Damage/Duration/Drain Value)</label>
-				</div>
-				<div id="spellsContainer">
-					<!-- Generated content -->
-				</div>
-				<div>
-					<label id="spellsDescription">Mouse Over this for detailed types.</label>
-				</div>
-				<div>
-					<input type="button" onclick="addSpell()" value="Add Spell">
-					<input type="button" onclick="removeElements('spellsContainer')" value="Remove Spell">
+					<input type="button" onclick="addArmor()" value="Add Armor">
+					<input type="button" onclick="removeElements('armorContainer')" value="Remove Armor">
 				</div>
 			</div>
 			
@@ -485,8 +449,8 @@
 				<h2>Contacts:</h2>
 				<div>
 					<label>Contact</label>
-					<label>Loyalty Rtg.</label>
-					<label>Conn. Rtg.</label>
+					<label>Loyalty</label>
+					<label>Conn.</label>
 				</div>
 				<div id="contactsContainer">
 					<!-- Generated content -->
@@ -497,12 +461,90 @@
 				</div>
 			</div>
 			
+			<!----- Comlink ----->
+			
+			<div class="containers quarterWidth" id="comlink">
+				<h2>Commlink:</h2>
+				<div>
+					<input type="text" id="link">
+				</div>
+				<div>
+					<span>
+						<label>Response:</label>
+						<input type="number" id="response">
+					</span>
+					<span>
+						<label>System:</label>
+						<input type="number" id="system">
+					</span>
+					<span>
+						<label>Firewall:</label>
+						<input type="number" id="firewall">
+					</span>
+					<span>
+						<label>Signal:</label>
+						<input type="number" id="signal">
+					</span>
+				</div>
+				<h2>Programs</h2>
+				<div>
+					<label>Program</label>
+					<label>Rtg.</label>
+				</div>
+				<div id="programsContainer">
+					<!-- Generated content -->
+				</div>
+				<div class="centerContent">
+					<input type="button" onclick="addProgram()" value="Add Program">
+					<input type="button" onclick="removeElements('programsContainer')" value="Rem.Program">
+				</div>
+			</div>
+			
+			<!----- Adept Powers ----->
+			
+			<div class="containers quarterWidth" id="powers">
+				<h2>Adept Powers:</h2>
+				<div>
+					<label>Name</label>
+					<label>Rating</label>
+				</div>
+				<div id="powersContainer">
+					<!-- generated content -->
+				</div>
+				<div class="centerContent">
+					<input type="button" onclick="addPower()" value="Add Powers">
+					<input type="button" onclick="removeElements('powersContainer')" value="Remove Powers">
+				</div>
+			</div>
+			
+			<!----- Spells ----->
+			
+			<div class="containers quarterWidth" id="spells">
+				<h2>Spells:</h2>
+				<div>
+					<label>Spell (Type/Range/Damage/Duration/DV)</label>
+				</div>
+				<div id="spellsContainer">
+					<!-- Generated content -->
+				</div>
+				<div class="centerContent">
+					<label id="spellsDescription">Mouse Over this for detailed types.</label>
+				</div>
+				<div class="centerContent">
+					<input type="button" onclick="addSpell()" value="Add Spell">
+					<input type="button" onclick="removeElements('spellsContainer')" value="Remove Spell">
+				</div>
+			</div>
+			
 			<!----- Spirits ----->
 			
 			<div class="containers quarterWidth" id="spirits">
 				<h2>Spirits/Sprites:</h2>
 				<div>
-					<label></label>
+					<label>Spirit/Sprite</label>
+					<label>Force</label>
+					<label>Services</label>
+					<label>Bound</label>
 				</div>
 				<div id="spiritsContainer">
 					<!-- generated content -->
@@ -513,29 +555,13 @@
 				</div>
 			</div>
 			
-			<!----- Misc. Equipament ----->
-			
-			<div class="containers halfWidth" id="misc">
-				<h2>Misc. Equipament</h2>
-				<div>
-					<label></label>
-				</div>
-				<div id="miscContainer">
-					<!-- generated content -->
-				</div>
-				<div class="centerContent">
-					<input type="button" onclick="addMisc()" value="Add Equipament">
-					<input type="button" onclick="removeElements('miscContainer')" value="Remove Equipament">
-				</div>
-			</div>
-			
-			<!----- Spirits ----->
+			<!----- Notes ----->
 			
 			<div class="containers halfWidth" id="notes">
 				<h2>Notes</h2>
 				<form>
-					<textarea></textarea>
-					<div>
+					<textarea id="notesContainer"></textarea>
+					<div class="centerContent">
 						<input type="reset" value="Clean Notes">
 					</div>
 				</form>

@@ -34,15 +34,13 @@ body{
 	background-color:#396248;
 }
 
-div > label:first-child{margin-right:143px;}
-
 .centerContent{text-align:center;}
 
-#activeSkills, #picture, #otherSkills, #qualities, #vehicles, #implants, #armor, #weapons, #guns, #monitor, #comlink, #programs,
+#activeSkills, #picture, #otherSkills, #qualities, #vehicles, #implants, #armor, #weapons, #guns, #monitor, #comlink,
 #powers, #spells, #contacts, #spirits, #misc, #notes{height:400px;}
 
 #activeSkillsContainer, #otherSkillsContainer, #qualitiesContainer, #vehiclesContainer, #implantsContainer, #armorContainer,
-#weaponsContainer, #gunsContainer, #comlinkContainer, #programsContainer, #powersContainer, #contactsContainer, #spiritsContainer,
+#weaponsContainer, #gunsContainer, #comlinkContainer, #powersContainer, #contactsContainer, #spiritsContainer,
 #miscContainer{
 	height:303px;
 	overflow:auto;
@@ -65,6 +63,23 @@ div > label:first-child{margin-right:143px;}
 }
 
 #top form{display:inline-block;}
+
+#top input[type=file]{
+	opacity:0;
+	z-index:3;
+}
+
+#fileOver{
+	position:relative;
+	margin-right:-250px;
+	top:2px;
+	width:242px;
+}
+
+#charSheet:focus ~ #fileOver{
+	color:#ffffff;
+	border-color:#FFFFFF;
+}
 
 /**
  * 	@section Header
@@ -137,6 +152,8 @@ header img{
 /**
  * @subsction Other Skills
  */
+#activeSkills div > label:first-child, #otherSkills div > label:first-child{margin-right:143px;}
+
 #otherSkillsContainer input[type=text]{width:181px;}
 
 /**
@@ -212,6 +229,90 @@ header img{
 }
 
 #vehicles div label:nth-child(8){margin-left:-13px;}
+
+/**
+ * 	@subsection Implants
+ */
+#implants div > label:first-child{margin-right:195px;}
+
+#implants div > label:nth-child(2){margin-right:20px;}
+
+#implants div > label:nth-child(3){margin-right:10px;}
+
+/**
+ * 	@subsection Misc Equipament
+ */
+
+#misc div > label:first-child{margin-right:212px;}
+
+#misc div > input[type=text]:nth-child(2){width:20em;}
+
+/**
+ * @subsection Melee Weapons
+ */
+#weapons div > label:first-child{margin-right:140px;}
+
+#weapons div > label:nth-child(2){margin-right:23px;}
+
+#weapons div > label:nth-child(3){margin-right:48px;}
+
+/**
+ * 	@subsecion Ranged Weapons
+ */
+#guns div > label:first-child{margin-right:200px;}
+
+#guns div > label:nth-child(2){margin-right:10px;}
+
+#guns div > label:nth-child(3){margin-right:40px;}
+
+#guns div > label:nth-child(4){margin-right:15px;}
+
+#guns div > label:nth-child(5){margin-right:40px;}
+
+/**
+ * 	@subsection Contacts
+ */
+#contacts div > label:first-child{margin-right:90px;}
+
+#contacts div > label:nth-child(2){margin-right:20px;}
+
+#contacts div > input[type=text]:first-child{width:125px;}
+
+/**
+ * 	@subsection Programs
+ */
+
+#comlink div > label:first-child{margin-right:120px;}
+
+#programsContainer{
+	overflow:auto;
+	height:198px;
+}
+
+/**
+ * 	@subsection Powers
+ */
+#powers div > label:first-child{margin-right:135px;}
+
+/**
+ * 	@subsection Spells
+ */
+#spellsContainer{
+	height:288px;
+	overflow:auto;
+}
+#spellsContainer select{width:245px;}
+
+/**
+ * 	@subsection Spirits
+ */
+#spiritsContainer div > input[type=text]:first-child{width:85px;}
+
+#spirits div > label:first-child{margin-right:35px;}
+
+#spirits div > label:nth-child(2){margin-right:20px;}
+
+#spirits div > label:nth-child(3){margin-right:10px;}
 
 /**
  * @subsection Notes
