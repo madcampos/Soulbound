@@ -26,3 +26,10 @@ Actualy it's able to load data from a file (JSON formated) and display it, it al
 + Write .json file with character (posibly flash)
 + Refactor CSS
 + Make responsive data based on form rules and states changes
++ Better forms and form customization
+
+##Ahead Work
+
++ GM control page
++ internationalization
++ admin page with control of data (ability to add/remove data)
