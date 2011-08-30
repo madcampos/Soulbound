@@ -3,21 +3,24 @@
 The intents of this project are to create a shadowrun Chacacter Sheet unsing new web technologies (and for me to learn more).
 Actualy it's able to load data from a file (JSON formated) and display it, it also creates a string from the fields and display it.
 
-## Browser Suport
+## Browser (lack of) Suport
 
 + Chrome
-	+ All JS
-	+ Custom form CSS
+	+ nope, the main browser focus IS Chrome
 + Firefox
-	+ 4+ Javascript
+	+ Custom CSS is not working, the -moz-apearence propriety is not applying
 + Opera
-	+ FileAPI, general javascript
-+ IE
-	+ 9+ Drag and Drop
-	+ 10+ FileAPI, general javascript
+	+ Drag n Drop
+	+ File loading not fully working
+	+ Custom CSS not working
++ IE 9
+	+ Loading/parsing file
+	+ Custom CSS, apearence propriety not applying
++ IE 10
+	+ Parsing file
+	+ Custom CSS
 + Safari
-	+ Drag and Drop, general javascript
-	+ Custom form CSS
+	+ Loading/parsing file
 
 ## Todo
 
