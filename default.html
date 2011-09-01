@@ -29,27 +29,40 @@
 		<script src="script/main.js"></script>
 	</head>
 	<body>
-	
+
+		<!----- Header ----->
+		
+		<header>
+			<h1><img src="images/logo.png" alt="Shadowrun Char. Sheet"></h1>
+		</header>
+
 		<!----- Top navbar div ----->
 		
-		<div id="top">
-			<form>
+		<aside id="top">
+			<div>
 				<label for="charSheet">Select Char File:</label>
 				<input type="text" id="fileOver" disabled="true">
 				<input type="file" id="charSheet" onchange="setInputValue('fileOver')">
 				<input type="button" value="Load" onclick="loadChar()">
 				<input type="button" value="Save" onclick="saveChar()">
-			</form>
-		</div>
-
-		<!----- Header and navigation ----->
-		
-		<header>
-			<img src="images/logo.png" alt="Shadowrun Char. Sheet" />
-			<nav>
+			</div>
+			<nav id="pages">
+				<ul>
+					<li><a>Characters</a></li>
+					<li><a>Maps</a></li>
+					<li><a>NPCs</a></li>
+					<li><a>History</a></li>
+				</ul>
 			</nav>
-		</header>
-
+			<nav id="config">
+				<a></a>
+				<ul>
+					<li><a>App Config</a></li>
+					<li><a>Data Manager</a></li>
+				</ul>
+			</nav>
+		</aside>
+		
 		<!----- Sheet itself ----->
 		
 		<section id="sheet">
