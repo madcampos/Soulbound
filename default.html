@@ -16,24 +16,18 @@
 
 		<!----- CSS loadings ----->
 		
-		<link rel="stylesheet" href="style/default.css">
 		<link rel="stylesheet" href="style/fonts.css">
-		<link rel="stylesheet" href="style/form.css">
+		<link rel="stylesheet" href="style/default.css">
 	
 		<!----- Javascript loadings ----->
 		
-		<script src="script/util/imagedd.js"></script>
-		<script src="script/util/htmlgen.js"></script>
-		<script src="script/controller/objectsgen.js"></script>
-		<script src="script/model/persist.js"></script>
-		<script src="script/main.js"></script>
 	</head>
 	<body>
 
 		<!----- Header ----->
 		
 		<header>
-			<h1><img src="images/logo.png" alt="Shadowrun Char. Sheet"></h1>
+			<h1><img src=""></h1>
 		</header>
 
 		<!----- Top navbar div ----->
@@ -55,7 +49,7 @@
 				</ul>
 			</nav>
 			<nav id="config">
-				<a></a>
+				<a><img src=""></a>
 				<ul>
 					<li><a>App Config</a></li>
 					<li><a>Data Manager</a></li>
@@ -65,12 +59,14 @@
 		
 		<!----- Sheet itself ----->
 		
-		<section id="sheet">
+		<div id="sheet">
 			
 			<!----- Personal Data Container ----->
 			
-			<div id="personal" class="containers fullWidth">
-				<h2>Personal Data</h2>
+			<article>
+				<h2>Char. Data</h2>
+				<fieldset id="personal">
+					<legend>Personal Data</legend>
 					<div>
 						<span>
 							<label for="name">Name:</label>
@@ -115,9 +111,6 @@
 						<span>
 							<label for="totalKarma">Karma:</label>
 							<input type="number" min="0" id="totalKarma">
-						</span>
-						<span>
-							<label for="currentKarma">Curren Karma:</label>
 							<input type="number" min="0" id="currentKarma">
 						</span>
 						<span>
@@ -133,13 +126,16 @@
 							<input type="number" min="0" id="publicAwarness">
 						</span>
 					</div>
-			</div>
+				</fieldset>
+			
+			</article>
 			
 			<!----- Attributes Container ----->
 			
-			<div id="attributes" class="containers fullWidth">
-				<div class="quarterWidth">
-					<h2>Phisical</h2>
+			<article id="attributes">
+				<h2>Attributes</h2>
+				<fieldset>
+					<legend>Phisical</legend>
 					<span>
 						<label for="body">Body:</label>
 						<input type="number" min="1" max="9" value="1" id="body" onmouseup="phisicalBoxes()">
@@ -156,9 +152,9 @@
 						<label for="strength">Strength:</label>
 						<input type="number" min="1" max="9" value="1" id="strength">
 					</span>
-				</div>
-				<div class="quarterWidth">
-					<h2>Mental</h2>
+				</fieldset>
+				<fieldset>
+					<legend>Mental</legend>
 					<span>
 						<label for="charisma">Charisma:</label>
 						<input type="number" min="1" max="9" value="1" id="charisma">
@@ -175,410 +171,426 @@
 						<label for="willpower">Willpower:</label>
 						<input type="number" min="1" max="9" value="1" id="willpower" onmouseup="stunBoxes()">
 					</span>
-				</div>
-				<div class="halfWidth">
-					<h2>Special</h2>
+				</fieldset>
+				<fieldset class="halfWidth">
+					<legend>Special</legend>
 					<span>
 						<label for="edge">Edge:</label>
 						<input type="number" min="1" max="9" value="1" id="edge">
 					</span>
 					<span>
 						<label for="essence">Essence:</label>
-						<input type="number" min="1" max="6" value="6" id="essence">
-					</span>
-					<span>
-						<label for="initiative">Initiative:</label>
-						<input type="number" min="1" max="9" value="1" id="initiative">
+						<input type="number" min="1" max="6" value="6" step="0.1" id="essence">
 					</span>
 					<span>
 						<label for="magic">Magic/Ress.:</label>
 						<input type="number" min="1" max="9" value="1" id="magic">
 					</span>
 					<span>
-						<label for="astralInit">Astral Init.:</label>
-						<input type="number" min="1" max="18" value="1" id="astralInit">
-					</span>
-					<span>
-						<label for="matrixInit">Matrix Init.:</label>
+						<label for="initiative">Initiative (Base/Astral/Matrix/Passes):</label>
+						<input type="number" min="1" max="9" value="1" id="initiative">
 						<input type="number" min="1" max="18" value="1" id="matrixInit">
-					</span>
-					<span>
-						<label for="initPasses">Init. Passes:</label>
+						<input type="number" min="1" max="18" value="1" id="astralInit">
 						<input type="number" min="1" max="4" value="1" id="initPasses">
 					</span>
-				</div>
-			</div>
+				</fieldset>
+			</article>
 			
-			<!----- Picture Container ----->
+			<!----- Skills ----->
 			
-			<div id="picture" class="containers quarterWidth">
-				<h2 id="pic">Drop Picture Here!</h2>
-			</div>
-			
-			<!----- Active Skills Container ----->
-			
-			<div id="activeSkills" class="containers quarterWidth" open="true">
-				<h2>Active skills</h2>
-				<div>
-					<label>Name:</label>
-					<label>Rtg:</label>
-				</div>
-				<div id="activeSkillsContainer">
-					<!-- generated content -->
-				</div>
-				<div class="centerContent">
-					<input type="button" value="Add Skill" onclick="addSkill()">
-					<input type="button" value="Remove Skill" onclick="removeElements('activeSkillsContainer')">
-				</div>
-			</div>
-			
-			<!----- Other Skills Container ----->
-			
-			<div id="otherSkills" class="containers quarterWidth">
-				<h2>Other skills</h2>
-				<div>
-					<label>Name:</label>
-					<label>Rtg:</label>
-				</div>
-				<div id="otherSkillsContainer">
-					<!-- generated content -->
-				</div>
-				<div class="centerContent">
-					<input type="button" value="Add Skill" onclick="addOther()">
-					<input type="button" value="Remove Skill" onclick="removeElements('otherSkillsContainer')">
-				</div>
-			</div>
-			
-			<!----- Qualities Container ----->
-			
-			<div id="qualities" class="containers quarterWidth">
-				<h2>Qualities</h2>
-				<div>
-					<label>Name:</label>
-				</div>
-				<div id="qualitiesContainer">
-					<!-- generated content -->
-				</div>
-				<div class="centerContent">
-					<input type="button" value="Add Quality" onclick="addQuality()">
-					<input type="button" value="Remove Quality" onclick="removeElements('qualitiesContainer')">
-				</div>
-			</div>
-			
-			<!----- Status Monitor ----->
-			
-			<div class="containers quarterWidth" id="monitor">
-				<h2>Status Monitor</h2>
-				<div id="phisicalDamage">
-					<span>Phisical</span>
-					<table cellspacing="0" cellpadding="0">
-						<tr>
-							<td><input type="checkbox" class="phisicalBoxes"></td>
-							<td><input type="checkbox" class="phisicalBoxes"></td>
-							<td><input type="checkbox" class="phisicalBoxes"></td>
-							<td>-1</td>
-						</tr>
-						<tr>
-							<td><input type="checkbox" class="phisicalBoxes"></td>
-							<td><input type="checkbox" class="phisicalBoxes"></td>
-							<td><input type="checkbox" class="phisicalBoxes"></td>
-							<td>-2</td>
-						</tr>
-						<tr>
-							<td><input type="checkbox" class="phisicalBoxes"></td>
-							<td><input type="checkbox" class="phisicalBoxes"></td>
-							<td><input type="checkbox" class="phisicalBoxes"></td>
-							<td>-3</td>
-						</tr>
-						<tr>
-							<td><input type="checkbox" class="phisicalBoxes"></td>
-							<td><input type="checkbox" class="phisicalBoxes"></td>
-							<td><input type="checkbox" class="phisicalBoxes"></td>
-							<td>-4</td>
-						</tr>
-						<tr>
-							<td><input type="checkbox" class="phisicalBoxes"></td>
-							<td><input type="checkbox" class="phisicalBoxes"></td>
-							<td><input type="checkbox" class="phisicalBoxes"></td>
-							<td>-5</td>
-						</tr>
-						<tr>
-							<td><input type="checkbox" class="phisicalBoxes"></td>
-							<td><input type="checkbox" class="phisicalBoxes"></td>
-							<td><input type="checkbox" class="phisicalBoxes"></td>
-							<td>-6</td>
-						</tr>
-					</table>
-				</div>
-				<div id="stunDamage">
-					<span>Stun</span>
-					<table cellspacing="0" cellpadding="0">
-						<tr>
-							<td><input type="checkbox" class="stunBoxes"></td>
-							<td><input type="checkbox" class="stunBoxes"></td>
-							<td><input type="checkbox" class="stunBoxes"></td>
-							<td>-1</td>
-						</tr>
-						<tr>
-							<td><input type="checkbox" class="stunBoxes"></td>
-							<td><input type="checkbox" class="stunBoxes"></td>
-							<td><input type="checkbox" class="stunBoxes"></td>
-							<td>-2</td>
-						</tr>
-						<tr>
-							<td><input type="checkbox" class="stunBoxes"></td>
-							<td><input type="checkbox" class="stunBoxes"></td>
-							<td><input type="checkbox" class="stunBoxes"></td>
-							<td>-3</td>
-						</tr>
-						<tr>
-							<td><input type="checkbox" class="stunBoxes"></td>
-							<td><input type="checkbox" class="stunBoxes"></td>
-							<td><input type="checkbox" class="stunBoxes"></td>
-							<td>-4</td>
-						</tr>
-					</table>
-				</div>
-			</div>
-		
-			<!----- Veicles ----->
-			
-			<div class="containers tQuarterWidth" id="vehicles">
-				<h2>Vehicles</h2>
-				<div>
-					<label>Vehicle:</label>
-					<label>Hand.:</label>
-					<label>Accel.:</label>
-					<label>Speed.:</label>
-					<label>Pilot:</label>
-					<label>Body:</label>
-					<label>Armor:</label>
-					<label>Sensor:</label>
-				</div>
-				<div id="vehiclesContainer">
-					<!-- generated content -->
-				</div>
-				<div class="centerContent">
-					<input type="button" onclick="addVehicle()" value="Add Vehicle">
-					<input type="button" onclick="removeElements('vehiclesContainer')" value="Remove Vehicle">
-				</div>
-			</div>
-			
-			<!----- Misc. Equipament ----->
-			
-			<div class="containers halfWidth" id="misc">
-				<h2>Misc. Equipament</h2>
-				<div>
-					<label>Name</label>
-					<label>Note</label>
-				</div>
-				<div id="miscContainer">
-					<!-- generated content -->
-				</div>
-				<div class="centerContent">
-					<input type="button" onclick="addMisc()" value="Add Equipament">
-					<input type="button" onclick="removeElements('miscContainer')" value="Remove Equipament">
-				</div>
-			</div>
-			
-			<!----- Cyberware ----->
-			
-			<div class="containers halfWidth" id="implants">
-				<h2>Cyberware/Bioware</h2>
-				<div>
-					<label>Implant</label>
-					<label>Rating</label>
-					<label>Essence</label>
-					<label>Notes</label>
-				</div>
-				<div id="implantsContainer">
-					<!-- generated content -->
-				</div>
-				<div class="centerContent">
-					<input type="button" onclick="addImplant()" value="Add Inplant">
-					<input type="button" onclick="removeElements('implantsContainer')" value="Remove Inplant">
-				</div>
-			</div>
-			
-			<!----- Melee Weapons ----->
-			
-			<div class="containers halfWidth" id="weapons">
-				<h2>Melee Weapons</h2>
-				<div>
-					<label>Weapon</label>
-					<label>Reach</label>
-					<label>Damage</label>
-					<label>AP</label>
-				</div>
-				<div id="weaponsContainer">
-					<!-- generated content -->
-				</div>
-				<div class="centerContent">
-					<input type="button" onclick="addWeapon()" value="Add Weapon">
-					<input type="button" onclick="removeElements('weaponsContainer')" value="Remove Weapon">
-				</div>
-			</div>
-			
-			<!----- Ranged Weapons ----->
-			
-			<div class="containers halfWidth" id="guns">
-				<h2>Ranged Weapons</h2>
-				<div>
-					<label>Gun</label>
-					<label>Damage</label>
-					<label title="Armor Penetration">AP</label>
-					<label title="SS = Single Shot&#10;SA = Semi-Automatic&#10;BF = Burst Fire&#10;FA = Full-Automatic">Mode</label>
-					<label title="Recoil Compensation">RC</label>
-					<label>Ammo</label>
-				</div>
-				<div id="gunsContainer">
-					<!-- generated content -->
-				</div>
-				<div class="centerContent">
-					<input type="button" onclick="addGun()" value="Add Gun">
-					<input type="button" onclick="removeElements('gunsContainer')" value="Remove Gun">
-				</div>
-			</div>
-			
-			<!----- Armor ----->
-			
-			<div class="containers quarterWidth" id="armor">
-				<h2>Armor</h2>
-				<div>
-					<label>Armor (Balistic/Impact)</label>
-				</div>
-				<div id="armorContainer">
-					<!-- generated content -->
-				</div>
-				<div class="centerContent">
-					<input type="button" onclick="addArmor()" value="Add Armor">
-					<input type="button" onclick="removeElements('armorContainer')" value="Remove Armor">
-				</div>
-			</div>
-			
-			<!----- Contacts ----->
-			
-			<div class="containers quarterWidth" id="contacts">
-				<h2>Contacts:</h2>
-				<div>
-					<label>Contact</label>
-					<label>Loyalty</label>
-					<label>Conn.</label>
-				</div>
-				<div id="contactsContainer">
-					<!-- Generated content -->
-				</div>
-				<div class="centerContent">
-					<input type="button" onclick="addContact()" value="Add Contact">
-					<input type="button" onclick="removeElements('contactsContainer')" value="Remove Contact">
-				</div>
-			</div>
-			
-			<!----- Comlink ----->
-			
-			<div class="containers quarterWidth" id="comlink">
-				<h2>Commlink:</h2>
-				<div>
-					<input type="text" id="link">
-				</div>
-				<div>
-					<span>
-						<label>Response:</label>
-						<input type="number" id="response">
-					</span>
-					<span>
-						<label>System:</label>
-						<input type="number" id="system">
-					</span>
-					<span>
-						<label>Firewall:</label>
-						<input type="number" id="firewall">
-					</span>
-					<span>
-						<label>Signal:</label>
-						<input type="number" id="signal">
-					</span>
-				</div>
-				<h2>Programs</h2>
-				<div>
-					<label>Program</label>
-					<label>Rtg.</label>
-				</div>
-				<div id="programsContainer">
-					<!-- Generated content -->
-				</div>
-				<div class="centerContent">
-					<input type="button" onclick="addProgram()" value="Add Program">
-					<input type="button" onclick="removeElements('programsContainer')" value="Rem.Program">
-				</div>
-			</div>
-			
-			<!----- Adept Powers ----->
-			
-			<div class="containers quarterWidth" id="powers">
-				<h2>Adept Powers:</h2>
-				<div>
-					<label>Name</label>
-					<label>Rating</label>
-				</div>
-				<div id="powersContainer">
-					<!-- generated content -->
-				</div>
-				<div class="centerContent">
-					<input type="button" onclick="addPower()" value="Add Powers">
-					<input type="button" onclick="removeElements('powersContainer')" value="Remove Powers">
-				</div>
-			</div>
-			
-			<!----- Spells ----->
-			
-			<div class="containers quarterWidth" id="spells">
-				<h2>Spells:</h2>
-				<div>
-					<label>Spell (Type/Range/Damage/Duration/DV)</label>
-				</div>
-				<div id="spellsContainer">
-					<!-- Generated content -->
-				</div>
-				<div class="centerContent">
-					<label id="spellsDescription">Mouse Over this for detailed types.</label>
-				</div>
-				<div class="centerContent">
-					<input type="button" onclick="addSpell()" value="Add Spell">
-					<input type="button" onclick="removeElements('spellsContainer')" value="Remove Spell">
-				</div>
-			</div>
-			
-			<!----- Spirits ----->
-			
-			<div class="containers quarterWidth" id="spirits">
-				<h2>Spirits/Sprites:</h2>
-				<div>
-					<label>Spirit/Sprite</label>
-					<label>Force</label>
-					<label>Services</label>
-					<label>Bound</label>
-				</div>
-				<div id="spiritsContainer">
-					<!-- generated content -->
-				</div>
-				<div class="centerContent">
-					<input type="button" onclick="addSpirit()" value="Add Spirit">
-					<input type="button" onclick="removeElements('spiritsContainer')" value="Remove Spirit">
-				</div>
-			</div>
-			
-			<!----- Notes ----->
-			
-			<div class="containers halfWidth" id="notes">
-				<h2>Notes</h2>
-				<form>
-					<textarea id="notesContainer"></textarea>
-					<div class="centerContent">
-						<input type="reset" value="Clean Notes">
+			<article>
+				<h2>Skills &amp; Qualities</h2>
+				
+				<!----- Active Skills Container ----->
+				
+				<fieldset id="activeSkills"t>
+					<legend>Active skills</legend>
+					<div>
+						<label>Name:</label>
+						<label>Rtg:</label>
 					</div>
-				</form>
-			</div>
-		</section>
+					<div id="activeSkillsContainer" class="containers">
+						<!-- generated content -->
+					</div>
+					<div class="centerContent">
+						<input type="button" value="Add Skill" onclick="addSkill()">
+						<input type="button" value="Remove Skill" onclick="removeElements('activeSkillsContainer')">
+					</div>
+				</fieldset>
+					
+				<!----- Other Skills Container ----->
+				
+				<fieldset id="otherSkills">
+					<legend>Other skills</legend>
+					<div>
+						<label>Name:</label>
+						<label>Rtg:</label>
+					</div>
+					<div id="otherSkillsContainer" class="containers">
+						<!-- generated content -->
+					</div>
+					<div class="centerContent">
+						<input type="button" value="Add Skill" onclick="addOther()">
+						<input type="button" value="Remove Skill" onclick="removeElements('otherSkillsContainer')">
+					</div>
+				</fieldset>
+				
+				<!----- Qualities Container ----->
+				
+				<fieldset id="qualities">
+					<legend>Qualities</legend>
+					<div>
+						<label>Name:</label>
+					</div>
+					<div id="qualitiesContainer" class="containers">
+						<!-- generated content -->
+					</div>
+					<div class="centerContent">
+						<input type="button" value="Add Quality" onclick="addQuality()">
+						<input type="button" value="Remove Quality" onclick="removeElements('qualitiesContainer')">
+					</div>
+				</fieldset>
+			</article>
+			
+			<article>
+				<h2>Gear &amp; Equipament</h2>
+					
+				<!----- Veicles ----->
+				
+				<fieldset id="vehicles">
+					<legend>Vehicles</legend>
+					<div>
+						<label>Vehicle:</label>
+						<label>Hand.:</label>
+						<label>Accel.:</label>
+						<label>Speed.:</label>
+						<label>Pilot:</label>
+						<label>Body:</label>
+						<label>Armor:</label>
+						<label>Sensor:</label>
+					</div>
+					<div id="vehiclesContainer" class="containers">
+						<!-- generated content -->
+					</div>
+					<div class="centerContent">
+						<input type="button" onclick="addVehicle()" value="Add Vehicle">
+						<input type="button" onclick="removeElements('vehiclesContainer')" value="Remove Vehicle">
+					</div>
+				</fieldset>
+				
+				<!----- Misc. Equipament ----->
+				
+				<fieldset id="misc">
+					<legend>Misc. Equipament</legend>
+					<div>
+						<label>Name</label>
+						<label>Note</label>
+					</div>
+					<div id="miscContainer" class="containers">
+						<!-- generated content -->
+					</div>
+					<div class="centerContent">
+						<input type="button" onclick="addMisc()" value="Add Equipament">
+						<input type="button" onclick="removeElements('miscContainer')" value="Remove Equipament">
+					</div>
+				</fieldset>
+				
+				<!----- Cyberware ----->
+				
+				<fieldset id="implants">
+					<legend>Cyberware/Bioware</legend>
+					<div>
+						<label>Implant</label>
+						<label>Rating</label>
+						<label>Essence</label>
+						<label>Notes</label>
+					</div>
+					<div id="implantsContainer" class="containers">
+						<!-- generated content -->
+					</div>
+					<div class="centerContent">
+						<input type="button" onclick="addImplant()" value="Add Inplant">
+						<input type="button" onclick="removeElements('implantsContainer')" value="Remove Inplant">
+					</div>
+				</fieldset>
+				
+				<!----- Melee Weapons ----->
+				
+				<fieldset id="weapons">
+					<legend>Melee Weapons</legend>
+					<div>
+						<label>Weapon</label>
+						<label>Reach</label>
+						<label>Damage</label>
+						<label>AP</label>
+					</div>
+					<div id="weaponsContainer" class="containers">
+						<!-- generated content -->
+					</div>
+					<div class="centerContent">
+						<input type="button" onclick="addWeapon()" value="Add Weapon">
+						<input type="button" onclick="removeElements('weaponsContainer')" value="Remove Weapon">
+					</div>
+				</fieldset>
+				
+				<!----- Ranged Weapons ----->
+				
+				<fieldset id="guns">
+					<legend>Ranged Weapons</legend>
+					<div>
+						<label>Gun</label>
+						<label>Damage</label>
+						<label title="Armor Penetration">AP</label>
+						<label title="SS = Single Shot&#10;SA = Semi-Automatic&#10;BF = Burst Fire&#10;FA = Full-Automatic">Mode</label>
+						<label title="Recoil Compensation">RC</label>
+						<label>Ammo</label>
+					</div>
+					<div id="gunsContainer" class="containers">
+						<!-- generated content -->
+					</div>
+					<div class="centerContent">
+						<input type="button" onclick="addGun()" value="Add Gun">
+						<input type="button" onclick="removeElements('gunsContainer')" value="Remove Gun">
+					</div>
+				</fieldset>
+				
+				<!----- Armor ----->
+				
+				<fieldset id="armor">
+					<legend>Armor</legend>
+					<div>
+						<label>Armor (Balistic/Impact)</label>
+					</div>
+					<div id="armorContainer" class="containers">
+						<!-- generated content -->
+					</div>
+					<div class="centerContent">
+						<input type="button" onclick="addArmor()" value="Add Armor">
+						<input type="button" onclick="removeElements('armorContainer')" value="Remove Armor">
+					</div>
+				</fieldset>
+			</article>
+			
+			
+			<!----- Specifics ----->
+			
+			<article>
+				<h2>Specifics</h2>
+				
+				<!----- Comlink ----->
+				
+				<fieldset id="comlink">
+					<legend>Commlink</legend>
+					<div>
+						<label>Model/SO:</label>
+						<select id="model">
+							
+						</select>
+						<select id="so">
+							
+						</select>
+					</div>
+					<div>
+						<span>
+							<label>Response:</label>
+							<input type="number" id="response">
+						</span>
+						<span>
+							<label>System:</label>
+							<input type="number" id="system">
+						</span>
+						<span>
+							<label>Firewall:</label>
+							<input type="number" id="firewall">
+						</span>
+						<span>
+							<label>Signal:</label>
+							<input type="number" id="signal">
+						</span>
+					</div>
+					<h3>Programs</h3>
+					<div>
+						<label>Program</label>
+						<label>Rtg.</label>
+					</div>
+					<div id="programsContainer">
+						<!-- Generated content -->
+					</div>
+					<div class="centerContent">
+						<input type="button" onclick="addProgram()" value="Add Program">
+						<input type="button" onclick="removeElements('programsContainer')" value="Rem.Program">
+					</div>
+				</fieldset>
+				
+				<!----- Adept Powers ----->
+				
+				<fieldset id="powers">
+					<legend>Adept Powers/Complex Forms</legend>
+					<div>
+						<label>Name</label>
+						<label>Rating</label>
+					</div>
+					<div id="powersContainer" class="containers">
+						<!-- generated content -->
+					</div>
+					<div class="centerContent">
+						<input type="button" onclick="addPower()" value="Add Powers">
+						<input type="button" onclick="removeElements('powersContainer')" value="Remove Powers">
+					</div>
+				</fieldset>
+				
+				<!----- Spells ----->
+				
+				<fieldset id="spells">
+					<legend>Spells</legend>
+					<div>
+						<label>Spell (Type/Range/Damage/Duration/DV)</label>
+					</div>
+					<div id="spellsContainer" class="containers">
+						<!-- Generated content -->
+					</div>
+					<div class="centerContent">
+						<input type="button" onclick="addSpell()" value="Add Spell">
+						<input type="button" onclick="removeElements('spellsContainer')" value="Remove Spell">
+					</div>
+				</fieldset>
+				
+				<!----- Spirits ----->
+				
+				<fieldset id="spirits">
+					<legend>Spirits/Sprites</legend>
+					<div>
+						<label>Spirit/Sprite</label>
+						<label>Force</label>
+						<label>Services</label>
+						<label>Bound</label>
+					</div>
+					<div id="spiritsContainer" class="containers">
+						<!-- generated content -->
+					</div>
+					<div class="centerContent">
+						<input type="button" onclick="addSpirit()" value="Add Spirit">
+						<input type="button" onclick="removeElements('spiritsContainer')" value="Remove Spirit">
+					</div>
+				</fieldset>
+			</article>
+			
+			<!----- Misc. ----->
+			
+			<article>
+				<h2>Misc.</h2>
+				
+				<!----- Picture Container ----->
+				
+				<fieldset id="picture">
+					<legend>Picture</legend>
+						<span>Drop Picture here or...</span>
+						<input type="file">
+						<span>Open the file.</span>
+				</fieldset>
+				
+				<!----- Status Monitor ----->
+				
+				<fieldset id="monitor">
+					<legend>Status Monitor</legend>
+					<div id="phisicalDamage">
+						<span>Phisical</span>
+						<table cellspacing="0" cellpadding="0">
+							<tr>
+								<td><input type="checkbox" class="phisicalBoxes"></td>
+								<td><input type="checkbox" class="phisicalBoxes"></td>
+								<td><input type="checkbox" class="phisicalBoxes"></td>
+								<td>-1</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" class="phisicalBoxes"></td>
+								<td><input type="checkbox" class="phisicalBoxes"></td>
+								<td><input type="checkbox" class="phisicalBoxes"></td>
+								<td>-2</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" class="phisicalBoxes"></td>
+								<td><input type="checkbox" class="phisicalBoxes"></td>
+								<td><input type="checkbox" class="phisicalBoxes"></td>
+								<td>-3</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" class="phisicalBoxes"></td>
+								<td><input type="checkbox" class="phisicalBoxes"></td>
+								<td><input type="checkbox" class="phisicalBoxes"></td>
+								<td>-4</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" class="phisicalBoxes"></td>
+								<td><input type="checkbox" class="phisicalBoxes"></td>
+								<td><input type="checkbox" class="phisicalBoxes"></td>
+								<td>-5</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" class="phisicalBoxes"></td>
+								<td><input type="checkbox" class="phisicalBoxes"></td>
+								<td><input type="checkbox" class="phisicalBoxes"></td>
+								<td>-6</td>
+							</tr>
+						</table>
+					</div>
+					<div id="stunDamage">
+						<span>Stun</span>
+						<table cellspacing="0" cellpadding="0">
+							<tr>
+								<td><input type="checkbox" class="stunBoxes"></td>
+								<td><input type="checkbox" class="stunBoxes"></td>
+								<td><input type="checkbox" class="stunBoxes"></td>
+								<td>-1</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" class="stunBoxes"></td>
+								<td><input type="checkbox" class="stunBoxes"></td>
+								<td><input type="checkbox" class="stunBoxes"></td>
+								<td>-2</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" class="stunBoxes"></td>
+								<td><input type="checkbox" class="stunBoxes"></td>
+								<td><input type="checkbox" class="stunBoxes"></td>
+								<td>-3</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" class="stunBoxes"></td>
+								<td><input type="checkbox" class="stunBoxes"></td>
+								<td><input type="checkbox" class="stunBoxes"></td>
+								<td>-4</td>
+							</tr>
+						</table>
+					</div>
+				</fieldset>
+				
+				<!----- Contacts ----->
+				
+				<fieldset id="contacts">
+					<legend>Contacts</legend>
+					<div>
+						<label>Contact</label>
+						<label>Loyalty</label>
+						<label>Conn.</label>
+					</div>
+					<div id="contactsContainer">
+						<!-- Generated content -->
+					</div>
+					<div class="centerContent">
+						<input type="button" onclick="addContact()" value="Add Contact">
+						<input type="button" onclick="removeElements('contactsContainer')" value="Remove Contact">
+					</div>
+				</fieldset>
+				
+				<!----- Notes ----->
+				
+				<fieldset id="notes">
+					<legend>Notes</legend>
+					<textarea id="notesContainer"></textarea>
+				</fieldset>
+			</article>
+			
+		</div>
 	</body>
 </html>

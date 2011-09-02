@@ -1,17 +1,37 @@
-/**
- * Function to get the <option> title of a <select> and add it to the <select>
- */
-function selectChange(){
-	event.target.title = event.target.options[event.target.selectedIndex].title;
-}
-
-/**
- * Function to get value of a file input ant put it in other element
- * @param {String} nodeId The ID of the target node
- */
-function setInputValue(nodeId){
-	el = document.getElementById(nodeId);
-	el.value = event.target.value.substring(12);
+var htmlgen = {
+	selectChanges : function(event){
+		event.target.previousElementSibling.value = event.target.value;
+		if (event.target.title) {
+			event.target.previousElementSibling.title = event.target.title;
+		}
+	},
+	createInput : function (inputType, inputValue, inputClass, inputId, description) {
+		var input = document.createElement('input');
+		var wraper = document.createElement('span');
+		var backFace = document.createElement('input');
+		
+		if (inputValue) {
+			input.value = inputValue;
+		}
+		if (inputClass) {
+			backFace.className += (' ' + inputClass);
+		}
+		if (inputId) {
+			input.id = inputId;
+		}
+		if (description) {
+			input.title = description;
+		}
+		
+		input.setAttribute('type', inputType);
+		if (input.type != inputType) {
+			//code to create spinners
+		}
+		
+		backFace.disabled = true;
+		
+		wraper.appendChild(backFace);
+	}
 }
 
 /**
@@ -23,29 +43,7 @@ function setInputValue(nodeId){
  * @param {String} description The input's description (title)
  * @returns {HTMLSpanElement} An <input> element
  */
-function createInput(inputType, inputValue, inputClass, inputId, description) {
-	var input = document.createElement("input");
-	
-	if (inputType) {
-		input.type = inputType;
-	}else{
-		input.type = "text";
-	}
-	if (inputValue) {
-		input.value = inputValue;
-	}
-	if (inputClass) {
-		input.className = inputClass;
-	}
-	if (inputId) {
-		input.id = inputId;
-	}
-	if (description) {
-		input.title = description;
-	}
-	
-	return input;
-}
+
 
 /**
  * Creates a <select> element
