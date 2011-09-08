@@ -1,14 +1,33 @@
-var htmlgen = {
+var HTMLGen = {
 	selectChanges : function(event){
 		event.target.previousElementSibling.value = event.target.value;
 		if (event.target.title) {
 			event.target.previousElementSibling.title = event.target.title;
 		}
 	},
+	/*Calendar : {
+		daysLabels : ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+		monthLabels : ['January', 'February', 'March', 'April','May', 'June',
+			'July','August', 'September','October', 'November', 'December'],
+		daysPerMonth : [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+		currentDate : new Date(),
+		month : HTMLGen.Calendar.currentDate.getMonth(),
+		year : HTMLGen.Calendar.currentDate.getYear(),
+		firstDay : new Date(this.year, this.month, 1),
+		startingDay : new Date(new Date().getYear(), new Date().getMonth(), 1).getDay(),
+		monthLength : (this.month == 1 && ((this.year % 4 === 0 && this.year % 100 !== 0) || this.year % 400 === 0)) ? 29 :
+			this.daysPerMonth[this.month],
+		htmlContainer : '',
+		createCalendar : function(day, month, year){
+			
+		}
+	},*/
 	createInput : function (inputType, inputValue, inputClass, inputId, description) {
 		var wraper = document.createElement('span');
-		var input = document.createElement('input');
 		var backFace = document.createElement('input');
+		var input = document.createElement('input');
+		
+		backFace.className = 'backFace';
 		
 		if (inputValue) {
 			input.value = inputValue;
@@ -22,26 +41,51 @@ var htmlgen = {
 		if (description) {
 			input.title = description;
 		}
+
+		backFace.disabled = true;
+		wraper.appendChild(backFace);
 		
 		input.setAttribute('type', inputType);
 		if (input.type != inputType) {
 			switch (inputType){
 				case 'date':
-					
+					/**
+					 * TODO: Better way to feature detect suport to the fancy calendar of date inputs AND mobile!
+					 */
+					if(navigator.appName != 'Opera'){
+						var a = 0; //placeholder!
+					}
+					backFace.className += ' dateFace';
 				break;
 				case 'number':
 					var spinners = document.createElement('div');
 					var up = document.createElement('input');
 					var down = document.createElement('input');
+					
+					backFace.className += ' numberFace';
+					up.className = 'upSpinner';
+					down.className = 'downSpinner';
+					spinners.className = 'spinners';
+					
+					up.type = 'button';
+					down.type = 'button';
+					
+					up.onclick = function(){
+						event.target.parentElement.previousElementSibling.value++;
+					};
+					down.onclick = function(){
+						event.target.parentElement.previousElementSibling.value--;
+					};
+					
+					spinners.appendChild(up);
+					spinners.appendChild(down);
+					wraper.appendChild(input);
+					wraper.appendChild(spinners);
 				break;
 			}
-			
-			
+		} else{
+			wraper.appendChild(input);
 		}
-		
-		backFace.disabled = true;
-		
-		wraper.appendChild(backFace);
 	}
 };
 
