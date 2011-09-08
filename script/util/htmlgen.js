@@ -6,8 +6,8 @@ var htmlgen = {
 		}
 	},
 	createInput : function (inputType, inputValue, inputClass, inputId, description) {
-		var input = document.createElement('input');
 		var wraper = document.createElement('span');
+		var input = document.createElement('input');
 		var backFace = document.createElement('input');
 		
 		if (inputValue) {
@@ -25,14 +25,25 @@ var htmlgen = {
 		
 		input.setAttribute('type', inputType);
 		if (input.type != inputType) {
-			//code to create spinners
+			switch (inputType){
+				case 'date':
+					
+				break;
+				case 'number':
+					var spinners = document.createElement('div');
+					var up = document.createElement('input');
+					var down = document.createElement('input');
+				break;
+			}
+			
+			
 		}
 		
 		backFace.disabled = true;
 		
 		wraper.appendChild(backFace);
 	}
-}
+};
 
 /**
  * Creates a <input> element

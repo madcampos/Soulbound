@@ -4,20 +4,21 @@
 
 body{
 	font-family:Comfortaa;
+	background-color:#eeeeee;
+	background-image: url('../images/bg-left.png'), url('../images/bg-right.png');
+	background-position:top left, top right;
+	background-repeat:repeat-y;
 }
 
-#sheet{
-	margin-left:auto;
-	margin-right:auto;
-	width:80%;
-	min-width:640px;
-}
+/**
+ * 	Top and header
+ */
 
 #top{
 	position:fixed;
 	top:0;
 	left:0;
-	background-color:slateblue;
+	background-color:#0098d1;
 	width:100%;
 	z-index:1;
 }
@@ -26,73 +27,137 @@ body{
 	display:none;
 }
 
+/**
+ * 	Sheet general styling
+ */
+
+#sheet{
+	margin-left:5%;
+	width:90%;
+	min-width:960px;
+	float:left;
+}
+
 #sheet article{
-	background-color:aliceblue;
-	border-left: 1.2em slateblue solid;
-	text-align:center;
-	margin-bottom:10px;
+	background-color:#b0e0e8;
+	border-left: 1.2em #0098d1 solid;
+	border-top: 2em #0098d1 solid;
+	margin:20px;
 	padding:10px;
+	float:left;
+	/*width:26.5%;*/
+	min-width:260px;
+	min-height:160px;
 }
 
-article h2{
-	-webkit-transform-origin: 0 0;
-	-moz-transform-origin: 0 0;
-	-ms-transform-origin: 0 0;
-	-o-transform-origin: 0 0;
-	transform-origin: 0 0;
-	
-	-webkit-transform: rotate(90deg);
-	-moz-transform: rotate(90deg);
-	-ms-transform: rotate(90deg);
-	-o-transform: rotate(90deg);
-	transform: rotate(90deg);
-	
-	width:30%;
+h2{
 	position:absolute;
-	text-align:left;
-	font-size:1em;
-	margin-left:-10px;
+	margin-top:-2.3em;
+	margin-left:-2.2em;
+	color:white;
+	text-shadow:#b0e0e8 0 0 5px;
 }
 
-article fieldset{
+h2:before{
+	width:2.6em;
+	height:2.6em;
+	vertical-align:middle;
+	margin-right:-1.4em;
+	background:#0098d1;
+	-moz-border-radius:1.3em;
+	-webkit-border-radius:1.3em;
+	-o-border-radius:1.3em;
+	-ms-border-radius:1.3em;
+	border-radius:1.3em;
 	display:inline-block;
-	vertical-align:top;
-	min-width:180px;
-	width:30%;
-	min-height:100px;
-	height:auto;
-	margin-left:auto;
-	margin-right:auto;
-	padding:2px;
-	margin:2px;
-	border:2px slateblue solid;
-	text-align:left;
-	
-	-webkit-border-radius:5px;
-	-moz-border-radius:5px;
-	-ms-border-radius:5px;
-	-o-border-radius:5px;
-	border-radius:5px;
-}
-
-span{display:inline-block;}
-
-span label{
-	display:block;
-	font-size:0.7em;
-}
-
-input[type=number]{
-	width:4em;
+	content:"";
 }
 
 .centerContent{text-align:center;}
 
-.containers{
-	overflow:auto;
-	height:300px;
+.containers{overflow:auto;}
+
+/**
+ * 	Specific quirks
+ */
+
+#personalData{
+	width:66.55%;
+	float:left;
 }
 
-#personal{
-	width:93%;
+#name{width:99.5%;}
+
+#nameSpan{width:99.5%;}
+
+#ethnicity, #sex{width:6em;}
+
+#attributes div{text-align:center;}
+
+#lifestyles{width:90%;}
+
+#lifestylesContainer{height:120px;}
+
+#monitor{
+	text-align:center;
+	float:right;
+	width:26.5%;
 }
+
+#monitor div{
+	display:inline-block;
+	vertical-align:top;
+	text-align:left;
+}
+
+#monitor table{
+	background-position:top left;
+	background-repeat:no-repeat;
+	-moz-background-size:110px 100%;
+	-webkit-background-size:110px 100%;
+	-o-background-size:110px 100%;
+	-ms-background-size:110px 100%;
+	background-size:110px 100%;
+}
+
+#phisicalDamage table{background-image:url('../images/phisical.svg');}
+
+#stunDamage table{background-image:url('../images/stun.svg');}
+
+#monitor td{
+	border:thin black solid;
+	width:35px;
+	height:35px;
+	background-color:rgba(0,128,0,0.5);
+}
+
+#monitor td:last-child{
+	border:none;
+	background:none;
+	text-align:center;
+}
+
+#monitor input[type=checkbox]{
+	width:100%;
+	height:100%;
+	opacity:0;
+	margin:0;
+	padding:0;
+}
+
+#skills, #vehicles, #notes{width:59.5%;}
+
+#activeSkills, #otherSkills{
+	float:left;
+	width:48%;
+}
+
+#qualities, #weapons, #guns, #armor, #implants, #misc, #contacts, #comlink, #powers, #spells, #spirits, #picture{width:26.3%;}
+
+#activeSkillsContainer, #otherSkillsContainer, #qualitiesContainer, #weaponsContainer, #gunsContainer, #armorContainer,
+#implantsContainer, #miscContainer, #contactsContainer, #vehiclesContainer, #powersContainer, #spellsContainer,
+#spiritsContainer{height:300px;}
+
+#programsContainer{height:201px;}
+
+#activeSkills label:first-child, #otherSkills label:first-child, #misc label:first-child, #powers label:first-child{margin-right:60%;}
