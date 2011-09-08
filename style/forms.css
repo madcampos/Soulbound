@@ -15,3 +15,45 @@ span label{
 	display:block;
 	font-size:0.7em;
 }
+
+.backFace{
+	position:absolute;
+	z-index:-1;
+	vertical-align:middle;
+}
+.backFace ~ input{
+	vertical-align:middle;
+	opacity:0;
+}
+.spinners{
+	display:inline-block;
+	vertical-align:middle;
+}
+
+.spinners input{
+	display:block;
+	height:10px;
+	width:18px;
+	margin-left:-6px;
+	border:none;
+	background-color:transparent;
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-position:top center;
+}
+.upSpinner{background-image: url('images/forms/input/spin-up.svg');}
+
+.downSpinner{background-image:url('images/forms/input/spin-down.svg');}
+
+.upSpinner:active{background-image:url('images/forms/input/spin-up-active.svg');}
+
+.upSpinner:active{background-image:url('images/forms/input/spin-down-active.svg');}
+
+.numberFace{
+	background-size:contain;
+	background-repeat:no-repeat;
+	background-position:center right;
+	background-image:url('images/forms/input/spin.svg');
+}
+
+.noInputTypeNumber, .noInputTypeDate{background-image:none;}

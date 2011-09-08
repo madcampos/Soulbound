@@ -45,47 +45,49 @@ var HTMLGen = {
 		backFace.disabled = true;
 		wraper.appendChild(backFace);
 		
-		input.setAttribute('type', inputType);
-		if (input.type != inputType) {
-			switch (inputType){
-				case 'date':
-					/**
-					 * TODO: Better way to feature detect suport to the fancy calendar of date inputs AND mobile!
-					 */
-					if(navigator.appName != 'Opera'){
-						var a = 0; //placeholder!
-					}
-					backFace.className += ' dateFace';
-				break;
-				case 'number':
+		switch (inputType){
+			case 'date':
+				backFace.className += ' dateFace';
+				input.setAttribute('type', inputType);
+				if (input.type != inputType) {
+					backFace.className += 'noInputTypeDate';
+				}
+			break;
+			case 'number':
+				backFace.className += ' numberFace';
+				
+				input.setAttribute('type', inputType);
+				if (input.type != inputType) {
+					backFace.className += 'noInputTypeNumber';
+					input.pattern = '[0-9]';
+					
 					var spinners = document.createElement('div');
 					var up = document.createElement('input');
 					var down = document.createElement('input');
 					
-					backFace.className += ' numberFace';
 					up.className = 'upSpinner';
 					down.className = 'downSpinner';
 					spinners.className = 'spinners';
 					
 					up.type = 'button';
 					down.type = 'button';
-					
+
 					up.onclick = function(){
 						event.target.parentElement.previousElementSibling.value++;
 					};
 					down.onclick = function(){
 						event.target.parentElement.previousElementSibling.value--;
 					};
-					
 					spinners.appendChild(up);
 					spinners.appendChild(down);
 					wraper.appendChild(input);
 					wraper.appendChild(spinners);
-				break;
-			}
-		} else{
-			wraper.appendChild(input);
+				}
+			break;
+			default:
+				wraper.appendChild(input);
 		}
+		return wraper;
 	}
 };
 
