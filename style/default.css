@@ -23,8 +23,91 @@ body{
 	z-index:1;
 }
 
+nav{display:inline-block;}
+
+#top div{
+	display:inline-block;
+	margin-right:40px;
+}
+
 #top ul{
+	list-style:none;
+	padding:0;
+	margin:0;
+}
+
+#pages{
+	width:65.5%;
+}
+
+#pages li{
+	display:inline;
+	margin-right:20px;
+}
+
+#config{
+	width:25px;
+}
+
+#config img{
+	height:25px;
+	vertical-align:middle;
+}
+
+ul#configOptions{
+	position:absolute;
 	display:none;
+	background-color:#0098d1;
+	padding:5px;
+	font-size:0.8em;
+	margin-left:-75px;
+}
+
+.open{display:block !important;}
+
+/**
+ * 	Modal pannel
+ */
+
+#modalPanel {
+	border: thick rgba(0,0,0,0.5) solid;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	-ms-border-radius: 15px;
+	-o-border-radius: 15px;
+	border-radius: 15px;
+	padding:20px;
+	z-index:2;
+	position:fixed;
+	height:80%;
+	width:60%;
+	top:6%;
+	left:18%;
+	background-color:white;
+	display:none;
+	overflow:auto;
+}
+#closePanel{
+	position:absolute;
+	top:-3%;
+	left:98%;
+	width:40px;
+	height:40px;
+	border:medium black solid;
+	background-color:red;
+	border-radius:20px;
+	font-weight:bolder;
+	font-size:30px;
+	font-family:sans-serif;
+}
+#modalPanel pre{
+	background-color:#808080;
+	padding:10px;
+}
+#modalPanel code{
+	color:white;
+	font-family: Monaco, monospace;
+	font-size:10pt;
 }
 
 /**

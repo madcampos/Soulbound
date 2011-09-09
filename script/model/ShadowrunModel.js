@@ -284,11 +284,6 @@ function saveChar(){
 		//notes
 		notes : document.getElementById("notesContainer").value
 	};
-	
-	charWindow = window.open();
-	charDocument = charWindow.document;
-	charDocument.write(JSON.stringify(character));
-	charDocument.close();
 }
 
 function setPicture(picture){

@@ -22,8 +22,24 @@
 	
 		<!-- Javascript loadings -->
 		
+		<!--[if IE]><script type="text/javascript" src="script/util/classList.js"></script><![endif]-->
+		<script type="text/javascript" src="script/util/htmlgen.js"></script>
+		<script type="text/javascript" src="script/util/persist.js"></script>
+		<script type="text/javascript" src="script/controller/Shadowrun.js"></script>
+		<script type="text/javascript" src="Data/Shadowrun.js"></script>
+		<script type="text/javascript" src="script/main.js"></script>
+		
 	</head>
 	<body>
+		
+		<!-- Modal Pannel -->
+		
+		<div id="modalPanel">
+			<input type="button" id="closePanel" onclick="document.getElementById('modalPanel').style.display = 'none'" value="X">
+			<h2></h2>
+			<p></p>
+			<pre><code></code></pre>
+		</div>
 
 		<!-- Header -->
 		
@@ -36,10 +52,10 @@
 		<aside id="top">
 			<div>
 				<label for="charSheet">Select Char File:</label>
-				<input type="text" id="fileOver" disabled="true">
-				<input type="file" id="charSheet" onchange="setInputValue('fileOver')">
-				<input type="button" value="Load" onclick="loadChar()">
-				<input type="button" value="Save" onclick="saveChar()">
+				<input type="text" class="backFace" disabled="true">
+				<input type="file" id="charSheet" onchange="HTMLGen.selectChange(event)">
+				<input type="button" value="Load" onclick="">
+				<input type="button" value="Save" onclick="">
 			</div>
 			<nav id="pages">
 				<ul>
@@ -50,8 +66,8 @@
 				</ul>
 			</nav>
 			<nav id="config">
-				<a href="#"><img src="" alt="Configurations"></a>
-				<ul>
+				<a href="#"><img src="images/cog.svg" alt="Configurations" onclick="Main.configToogle()"></a>
+				<ul id="configOptions">
 					<li><a href="#">App Config</a></li>
 					<li><a href="#">Data Manager</a></li>
 				</ul>
@@ -297,8 +313,8 @@
 						<!-- generated content -->
 					</div>
 					<div class="centerContent">
-						<input type="button" value="Add Skill" onclick="addSkill()">
-						<input type="button" value="Remove Skill" onclick="removeElements('activeSkillsContainer')">
+						<input type="button" value="Add Skill" onclick="Shadowrun.addSkill('activeSkillsContainer', 'active')">
+						<input type="button" value="Remove Skill" onclick="HTMLGen.removeElement('activeSkillsContainer')">
 					</div>
 				</div>
 					

@@ -18,12 +18,20 @@ span label{
 
 .backFace{
 	position:absolute;
-	z-index:-1;
 	vertical-align:middle;
+	border:none;
+	background-color:transparent;
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-position:top center;
 }
-.backFace ~ input{
+.backFace + input, .backFace + select{
 	vertical-align:middle;
 	opacity:0;
+}
+
+.backFace + input[type=file]{
+	width:12em;
 }
 .spinners{
 	display:inline-block;
@@ -50,10 +58,36 @@ span label{
 .upSpinner:active{background-image:url('images/forms/input/spin-down-active.svg');}
 
 .numberFace{
-	background-size:contain;
-	background-repeat:no-repeat;
-	background-position:center right;
 	background-image:url('images/forms/input/spin.svg');
+	width:4em;
+}
+
+.numberFace:focus{
+	
+}
+
+.selectFace{
+	
+}
+
+.selectFace:focus{
+	
+}
+
+.textFace{
+	
+}
+
+.textFace:focus{
+	
+}
+
+.genericFace{
+	
+}
+
+.genericFace:focus{
+	
 }
 
 .noInputTypeNumber, .noInputTypeDate{background-image:none;}

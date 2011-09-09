@@ -19,3 +19,8 @@
 body, input, select, textarea{font-family:Comfortaa, Trebuchet, serif;}
 h2,h3{margin: 10px 0;}
 label{font-size:0.7em}
+a img{
+	border:none;
+	outline:none;
+	text-decoration:none;
+}
