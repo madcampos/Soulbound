@@ -35,16 +35,16 @@ var Shadowrun = {
 			HTMLGen.styleClasses.SELECT_FOCUS));
 	},
 	/**
-	 * Add a new quality to the qualities container
+	 * Add a new vehicle to the vehicles container
 	 * @param {String} vehiclesContainer The vehicles container node ID
 	 * @param {String} name The vehicle name
-	 * @param {String} handling The vahicle handling
-	 * @param {String} accel The Vehicle acceleration
-	 * @param {String} speed The vehicle speed
-	 * @param {String} pilot The vehicle pilot
-	 * @param {String} body The vehicle body
-	 * @param {String} armor The vehicle armor
-	 * @param {String} sensor The vehicle sensor
+	 * @param {Number} handling The vahicle handling
+	 * @param {Number} accel The Vehicle acceleration
+	 * @param {Number} speed The vehicle speed
+	 * @param {Number} pilot The vehicle pilot
+	 * @param {Number} body The vehicle body
+	 * @param {Number} armor The vehicle armor
+	 * @param {Number} sensor The vehicle sensor
 	 */
 	addVehicle : function(vehiclesContainer, name, handling, accel, speed, pilot, body, armor, sensor){
 		var container = document.getElementById(vehiclesContainer);
@@ -62,9 +62,12 @@ var Shadowrun = {
 		container.appendChild(wrapper);
 	},
 	/**
-	 * Add a new quality to the qualities container
-	 * @param {String} qualitiesContainer The qualities container node ID
+	 * Add a new implant to the implants container
+	 * @param {String} implantsContainer The implants container node ID
 	 * @param {String} selected The selected quality from the list
+	 * @param {Number} rating The rating value
+	 * @param {Number} essence The essence rating
+	 * @param {String} notes Notes about the implant
 	 */
 	addImplant : function(implantsContainer, selected, rating, essence, notes){
 		var container = document.getElementById(implantsContainer);
@@ -78,9 +81,13 @@ var Shadowrun = {
 		container.appendChild(implant);
 	},
 	/**
-	 * Add a new quality to the qualities container
-	 * @param {String} qualitiesContainer The qualities container node ID
-	 * @param {String} selected The selected quality from the list
+	 * Add a new weapon to the weapons container
+	 * @param {String} weaponsContainer The weapons container node ID
+	 * @param {String} selected The selected weapon from the list
+	 * @param {Number} reach The weapon range
+	 * @param {Number} damage The weapon damage number
+	 * @param {String} damageType The damage type of the weapon
+	 * @param {Number} ap The armor panatration rating
 	 */
 	addWeapon : function(weaponsContainer, selected, reach, damage, damageType, ap){
 		var container = document.getElementById(weaponsContainer);
@@ -95,12 +102,17 @@ var Shadowrun = {
 		container.appendChild(weapon);
 	},
 	/**
-	 * Add a new quality to the qualities container
-	 * @param {String} qualitiesContainer The qualities container node ID
+	 * Add a new gun to the guns container
+	 * @param {String} gunsContainer The guns container node ID
 	 * @param {String} selected The selected quality from the list
+	 * @param {Number} damage The gun damage value
+	 * @param {Number} ap The armor penetrarion rating
+	 * @param {String} mode The gun mode
+	 * @param {Number} rc The gun recoil compensation
+	 * @param {Number} ammo The weapon ammo quantity
 	 */
-	addGun : function(selected, damage, ap, mode, rc, ammo, ammoType){
-		var gunsContainer = document.getElementById('gunsContainer');
+	addGun : function(gunsContainer, selected, damage, ap, mode, rc, ammo){
+		var container = document.getElementById(gunsContainer);
 		var gun = document.createElement('div');
 		
 		gun.appendChild(HTMLGen.createSelect(ShadowrunData.gunsList, ShadowrunData.gunsGroups, selected,
@@ -110,10 +122,10 @@ var Shadowrun = {
 		gun.appendChild(HTMLGen.createSelect(['SS','SA','BF','FA'], null, mode, HTMLGen.styleClasses.SELECT_FOCUS));
 		gun.appendChild(HTMLGen.createInput('number', rc, HTMLGen.styleClasses.NUMBER_FOCUS));
 		gun.appendChild(HTMLGen.createInput('number', ammo, HTMLGen.styleClasses.NUMBER_FOCUS));
-		gunsContainer.appendChild(gun);
+		container.appendChild(gun);
 	},
 	/**
-	 * Add a new quality to the qualities container
+	 * Add a new spell to the spells container
 	 * @param {String} spellsContainer The spells container node ID
 	 * @param {String} selected The selected spell from the list
 	 */
@@ -124,131 +136,117 @@ var Shadowrun = {
 			HTMLGen.styleClasses.SELECT_FOCUS));
 	},
 	/**
-	 * Add a new quality to the qualities container
-	 * @param {String} qualitiesContainer The qualities container node ID
-	 * @param {String} selected The selected quality from the list
+	 * Add a new adept power/complex form to the powers container
+	 * @param {String} powersContainer The powers container node ID
+	 * @param {String} selected The selected power from the list
+	 * @param {Number} rating The power rating
 	 */
-	addPower : function(selected, rating){
-		var powersContainer = document.getElementById('powersContainer');
-		var newPower = document.createElement('div');
+	addPower : function(powersContainer, selected, rating){
+		var container = document.getElementById(powersContainer);
+		var power = document.createElement('div');
 	
-		newPower.appendChild(createSelect(powerList, null, selected));
-		newPower.appendChild(createInput('number', rating));
-		powersContainer.appendChild(newPower);
+		power.appendChild(HTMLGen.createSelect(ShadowrunData.powerList, null, selected, HTMLGen.styleClasses.SELECT_FOCUS));
+		power.appendChild(HTMLGen.createInput('number', rating, HTMLGen.styleClasses.NUMBER_FOCUS));
+		powersContainer.appendChild(power);
 	},
 	/**
-	 * Add a new quality to the qualities container
-	 * @param {String} qualitiesContainer The qualities container node ID
-	 * @param {String} selected The selected quality from the list
+	 * Add a new program to the programs container
+	 * @param {String} programsContainer The programs container node ID
+	 * @param {String} selected The selected programs from the list
+	 * @param {Number} rating The program rating
 	 */
-	addProgram : function(selected, rating){
-		var programsContainer = document.getElementById('programsContainer');
-		var newProgram = document.createElement('div');
+	addProgram : function(programsContainer, selected, rating){
+		var container = document.getElementById(programsContainer);
+		var program = document.createElement('div');
 	
-		newProgram.appendChild(createSelect(programList, programGroups, selected));
-		newProgram.appendChild(createInput('number'), rating);
-		programsContainer.appendChild(newProgram);
+		program.appendChild(HTMLGen.createSelect(ShadowrunData.programList, ShadowrunData.programGroups, selected,
+			HTMLGen.styleClasses.SELECT_FOCUS));
+		program.appendChild(HTMLGen.createInput('number'), rating, HTMLGen.styleClasses.NUMBER_FOCUS);
+		programsContainer.appendChild(program);
 	},
 	/**
-	 * Add a new quality to the qualities container
-	 * @param {String} qualitiesContainer The qualities container node ID
-	 * @param {String} selected The selected quality from the list
+	 * Add a new spirit to the spirits container
+	 * @param {String} spiritssContainer The spirts container node ID
+	 * @param {String} spirit The spirit kind
+	 * @param {Number} force The force of the spirit
+	 * @param {Number} services The number of services
+	 * @param {String} bound If the spirit is bounbd/unbound
 	 */
-	addSpirit : function(spirit, force, services, bound){
-		var spiritsContainer = document.getElementById('spiritsContainer');
+	addSpirit : function(spiritsContainer, spirit, force, services, bound){
+		var container = document.getElementById(spiritsContainer);
 		var newSpirit = document.createElement('div');
 		
-		newSpirit.appendChild(createInput('text', spirit));
-		newSpirit.appendChild(createInput('number', force));
-		newSpirit.appendChild(createInput('number', services));
-		newSpirit.appendChild(createSelect(['B','U'], null, bound));
-		spiritsContainer.appendChild(newSpirit);
+		newSpirit.appendChild(HTMLGen.createInput('text', spirit, HTMLGen.styleClasses.TEXT_FOCUS));
+		newSpirit.appendChild(HTMLGen.createInput('number', force, HTMLGen.styleClasses.NUMBER_FOCUS));
+		newSpirit.appendChild(HTMLGen.createInput('number', services, HTMLGen.styleClasses.NUMBER_FOCUS));
+		newSpirit.appendChild(HTMLGen.createSelect(['B','U'], null, bound, HTMLGen.styleClasses.SELECT_FOCUS));
+		container.appendChild(newSpirit);
 	},
 	/**
-	 * Add a new quality to the qualities container
-	 * @param {String} qualitiesContainer The qualities container node ID
-	 * @param {String} selected The selected quality from the list
+	 * Add a new contact to the contacts container
+	 * @param {String} contactsContainer The contacts container node ID
+	 * @param {String} name The contact name
+	 * @param {String} selected The contact type
+	 * @param {Number} loyalty The loyalty of the contact
+	 * @param {Number} conn The connection rating of the contact
 	 */
-	addContact : function(name, loyalty, conn) {
-	  var contactsContainer = document.getElementById('contactsContainer');
+	addContact : function(contactsContainer, name, selected, loyalty, conn) {
+	  var container = document.getElementById(contactsContainer);
 	  var contact = document.createElement('div');
 	  
-	  contact.appendChild(createInput('text', name));
-	  contact.appendChild(createInput('number', loyalty));
-	  contact.appendChild(createInput('number', conn));
+	  contact.appendChild(HTMLGen.createInput('text', name, HTMLGen.styleClasses.TEXT_FOCUS));
+	  contact.appendChild(HTMLGen.createSelect(ShadowrunData.contacts, null, selected, HTMLGen.styleClasses.SELECT_FOCUS));
+	  contact.appendChild(HTMLGen.createInput('number', loyalty, HTMLGen.styleClasses.NUMBER_FOCUS));
+	  contact.appendChild(HTMLGen.createInput('number', conn, HTMLGen.styleClasses.NUMBER_FOCUS));
 	  
-	  contactsContainer.appendChild(contact);
+	  container.appendChild(contact);
 	},
 	/**
-	 * Add a new quality to the qualities container
-	 * @param {String} qualitiesContainer The qualities container node ID
-	 * @param {String} selected The selected quality from the list
+	 * Add a new armor to the armor container
+	 * @param {String} armorContainer The armor container node ID
+	 * @param {String} selected The selected armor from the list
 	 */
-	addArmor : function(selected){
-		var armorContainer = document.getElementById('armorContainer');
+	addArmor : function(armorContainer, selected){
+		var container = document.getElementById(armorContainer);
 		
-		armorContainer.appendChild(createSelect(armorList, armorGroups, selected));
+		armorContainer.appendChild(HTMLGen.createSelect(ShadowrunData.armorList, ShadowrunData.armorGroups, selected,
+			HTMLGen.styleClasses.SELECT_FOCUS));
 	},
 	/**
-	 * Add a new quality to the qualities container
-	 * @param {String} qualitiesContainer The qualities container node ID
+	 * Add a new misc equipament to the misc container
+	 * @param {String} miscContainer The qualities container node ID
 	 * @param {String} selected The selected quality from the list
+	 * @param {String} note Some note about the equippament
 	 */
-	addMisc : function(selected, note){
-		var miscContainer = document.getElementById('miscContainer');
+	addMisc : function(miscContainer, selected, note){
+		var container = document.getElementById(miscContainer);
 		var misc = document.createElement('div');
 		
-		misc.appendChild(createSelect(miscList,miscGroups,selected));
-		misc.appendChild(createInput('text', note));
+		misc.appendChild(HTMLGen.createSelect(ShadowrunData.miscList,ShadowrunData.miscGroups,selected,
+			HTMLGen.styleClasses.SELECT_FOCUS));
+		misc.appendChild(HTMLGen.createInput('text', note, HTMLGen.styleClasses.TEXT_FOCUS));
 		miscContainer.appendChild(misc);
+	},
+	/**
+	 * Adds dscriptin to a item
+	 * @param {String} node The node ID
+	 * @param {String} description The description itself
+	 */
+	addDescription : function(node, description){
+		var desc = document.getElementById(node);
+		desc.title = description;
+	},
+	damageBoxes : function(boxesId, attId){
+		var att = document.getElementById(attId).value;
+		var value = 8 + Math.ceil(att/2);
+		var boxes = document.getElementsByClassName(boxesId);
+		var i;
+		
+		for (i=0; i < boxes.length; i++) {
+		  boxes[i].disabled = false;
+		}
+		for (i=value; i < boxes.length; i++) {
+			boxes[i].disabled = true;
+		}
 	}
 };
-
-
-
-
-
-function spellsDescription() {
-	var description = document.getElementById('spellsDescription');
-	description.title='Type:\n\tP = Physical\n\tM = Mental\n' +
-	'Range:\n\t' +
-		'LOS = Line of sight\n\t' +
-		'T = Touch\n\t' +
-		'V = Voluntary targets only\n\t' +
-		'A = Area spell\n' +
-	'Damage:\n\t' +
-		'P = Physical\n\t' +
-		'S = Stun\n' +
-	'Duration:\n\t' +
-		'I = Instant\n\t' +
-		'S = Sustained\n\t' +
-		'P = Permanent\n' +
-	'Drain Value:\n\t' +
-		'F = Force';
-}
-
-function phisicalBoxes(){
-	var body = document.getElementById('body').value;
-	var phisical = 8 + Math.ceil(body/2);
-	var boxes = document.getElementsByClassName('phisicalBoxes');
-	
-	for (var i=0; i < boxes.length; i++) {
-	  boxes[i].disabled = false;
-	};
-	for (var i=phisical; i < boxes.length; i++) {
-		boxes[i].disabled = true;
-	}
-}
-
-function stunBoxes(){
-	var will = document.getElementById('willpower').value;
-	var stun = 8 + Math.ceil(will/2);
-	var boxes = document.getElementsByClassName('stunBoxes');
-	
-	for (var i=0; i < boxes.length; i++) {
-	  boxes[i].disabled = false;
-	};
-	for (var i=stun; i < boxes.length; i++) {
-		boxes[i].disabled = true;
-	}
-}
