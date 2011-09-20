@@ -1,6 +1,6 @@
-# A HTML5 Shadowrun Character Sheet
+# A HTML5 RPG Platform
 
-The intents of this project are to create a shadowrun Chacacter Sheet unsing new web technologies (and for me to learn more).
+The intents of this project are to create a rpg management unsing new web technologies (and for me to learn more).
 Actualy it's able to load data from a file (JSON formated) and display it, it also creates a string from the fields and display it.
 
 ## Browser (lack of) Suport
@@ -36,3 +36,6 @@ Actualy it's able to load data from a file (JSON formated) and display it, it al
 + GM control page
 + internationalization
 + admin page with control of data (ability to add/remove data)
+
+##Issues
+Please report issues to the [Issue Tracker](https://github.com/madcampos/Soulbound/issues)
