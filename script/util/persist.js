@@ -1,4 +1,4 @@
-/*global alert, FileReader*/
+/*global alert, FileReader, window*/
 var Persist = {
 	/**
 	 * Show modal panel with JSON string
@@ -25,7 +25,8 @@ var Persist = {
 		}
 		
 		var reader = new FileReader();
-		reader.onloadend = function(e){
+		reader.onloadend = function(evt){
+			var e = evt || window.event;
 			return JSON.parse(e.target.result);
 		};
 		reader.readAsBinaryString(file[0]);

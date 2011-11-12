@@ -1,0 +1,604 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Shadowrun</title>
+		
+		<!-- Metadata -->
+		
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="description" content="Shadowrun Character Sheet" />
+		<meta name="author" content="madcampos" />
+	
+		<!-- Favicon -->
+		
+		<link rel="shortcut icon" href="favicon.ico" />
+
+		<!-- CSS loadings -->
+		
+		<link rel="stylesheet" href="style/fonts.css">
+		<link rel="stylesheet" href="style/default.css">
+		<link rel="stylesheet" href="style/forms.css">
+	
+		<!-- Javascript loadings -->
+		
+		<!--[if IE]><script type="text/javascript" src="script/util/classList.js"></script><![endif]-->
+		<script type="text/javascript" src="script/util/htmlgen.js"></script>
+		<script type="text/javascript" src="script/util/persist.js"></script>
+		<script type="text/javascript" src="script/controller/Shadowrun.js"></script>
+		<script type="text/javascript" src="Data/Shadowrun.js"></script>
+		<script type="text/javascript" src="script/main.js"></script>
+		
+	</head>
+	<body>
+		
+		<!-- Modal Pannel -->
+		
+		<div id="modalPanel">
+			<input type="button" id="closePanel" onclick="document.getElementById('modalPanel').style.display = 'none'" value="X">
+			<h2></h2>
+			<p></p>
+			<pre><code></code></pre>
+		</div>
+
+		<!-- Header -->
+		
+		<header>
+			<h1><img src="" alt="Shadowrun"></h1>
+		</header>
+
+		<!-- Top navbar div -->
+		
+		<aside id="top">
+			<div>
+				<label for="charSheet">Select Char File:</label>
+				<input type="text" class="backFace" disabled="true">
+				<input type="file" id="charSheet" onchange="HTMLGen.selectChange(event)">
+				<input type="button" value="Load" onclick="">
+				<input type="button" value="Save" onclick="">
+			</div>
+			<nav id="pages">
+				<ul>
+					<li><a href="#">Characters</a></li>
+					<li><a href="#">Maps</a></li>
+					<li><a href="#">NPCs</a></li>
+					<li><a href="#">History</a></li>
+				</ul>
+			</nav>
+			<nav id="config">
+				<a href="#"><img src="images/cog.svg" alt="Configurations" onclick="Main.configToogle()"></a>
+				<ul id="configOptions">
+					<li><a href="#">App Config</a></li>
+					<li><a href="#">Data Manager</a></li>
+				</ul>
+			</nav>
+		</aside>
+		
+		<!-- Sheet itself -->
+		
+		<div id="sheet">
+			
+			<!-- Personal Data -->
+			
+			<div id="personalData">
+				<article>
+					<h2>Personal Data</h2>
+					<div>
+						<span id="nameSpan">
+							<label for="name">Name:</label>
+							<input type="text" id="name">
+						</span>
+					</div>	
+					<div>
+						<span>
+							<label for="metatype">Metatype:</label>
+							<select id="metatype">
+								<option>Dwarf</option>
+								<option>Elf</option>
+								<option selected="selected">Human</option>
+								<option>Ork</option>
+								<option>Troll</option>
+							</select>
+						</span>
+						<span>
+							<label for="ethnicity">Ethnicity:</label>
+							<input type="text" id="ethnicity">
+						</span>
+						<span>
+							<label for="age">Age:</label>
+							<input type="date" id="age">
+						</span>
+						<span>
+							<label for="sex">Sex:</label>
+							<input type="text" id="sex">
+						</span>
+					</div>
+					<div>
+						<span>
+							<label for="totalKarma">Karma (Total/Curr.):</label>
+							<input type="number" min="0" id="totalKarma">
+							<input type="number" min="0" id="currentKarma">
+						</span>
+						<span>
+							<label for="streetCredit">Street Credit:</label>
+							<input type="number" min="0" id="streetCredit">
+						</span>
+						<span>
+							<label for="notoriety">Notoriety:</label>
+							<input type="number" min="0" id="notoriety">
+						</span>
+						<span>
+							<label for="publicAwarness">Public Aware.:</label>
+							<input type="number" min="0" id="publicAwarness">
+						</span>
+					</div>
+				</article>
+				
+				<!-- Attributes -->
+				
+				<article id="attributes">
+					<h2>Attributes</h2>
+					<div>
+						<span>
+							<label for="body">Body:</label>
+							<input type="number" min="1" max="9" value="1" id="body" onmouseup="phisicalBoxes()">
+						</span>
+						<span>
+							<label for="agility">Agility:</label>
+							<input type="number" min="1" max="9" value="1" id="agility">
+						</span>
+						<span>
+							<label for="reaction">Reaction:</label>
+							<input type="number" min="1" max="9" value="1" id="reaction">
+						</span>
+						<span>
+							<label for="strength">Strength:</label>
+							<input type="number" min="1" max="9" value="1" id="strength">
+						</span>
+					</div>
+					<div>
+						<span>
+							<label for="charisma">Charisma:</label>
+							<input type="number" min="1" max="9" value="1" id="charisma">
+						</span>
+						<span>
+							<label for="intuition">Intuition:</label>
+							<input type="number" min="1" max="9" value="1" id="intuition">
+						</span>
+						<span>
+							<label for="logic">Logic:</label>
+							<input type="number" min="1" max="9" value="1" id="logic">
+						</span>
+						<span>
+							<label for="willpower">Willpower:</label>
+							<input type="number" min="1" max="9" value="1" id="willpower" onmouseup="stunBoxes()">
+						</span>
+					</div>
+					<div>
+						<span>
+							<label for="edge">Edge:</label>
+							<input type="number" min="1" max="9" value="1" id="edge">
+							<input type="number" min="1" max="9" value="1" id="currentEdge">
+						</span>
+						<span>
+							<label for="essence">Essence:</label>
+							<input type="number" min="1" max="6" value="6" step="0.1" id="essence">
+						</span>
+						<span>
+							<label for="magic" title="Magic/Ressonance">Mag./Ress.:</label>
+							<input type="number" min="1" max="9" value="1" id="magic">
+						</span>
+					</div>
+					<div>
+						<span>
+							<label for="initiative">Initiative (Base/Astral/Matrix/Passes):</label>
+							<input type="number" min="1" max="9" value="1" id="initiative">
+							<input type="number" min="1" max="18" value="1" id="matrixInit">
+							<input type="number" min="1" max="18" value="1" id="astralInit">
+							<input type="number" min="1" max="4" value="1" id="initPasses">
+						</span>
+					</div>
+				</article>
+				
+				<!-- Lifestyles -->
+				
+				<article id="lifestyles">
+					<h2>Lifestyles</h2>
+					<div>
+						<label>Lifestyle:</label>
+						<label>Money:</label>
+						<label>Licensses:</label>
+					</div>
+					<div id="lifestylesContainer">
+						
+					</div>
+					<div class="centerContent">
+						<input type="button" value="Add Skill" onclick="addLifestyle()">
+						<input type="button" value="Remove Skill" onclick="removeElements('lifestylesContainer')">
+					</div>
+				</article>
+			</div>
+			
+			<!-- Status Monitor -->
+			
+			<article id="monitor">
+				<h2>Condition Monitor</h2>
+				<div id="phisicalDamage">
+					<h3>Phisical</h3>
+					<table cellspacing="0" cellpadding="0">
+						<tr>
+							<td><input type="checkbox" class="phisicalBoxes"></td>
+							<td><input type="checkbox" class="phisicalBoxes"></td>
+							<td><input type="checkbox" class="phisicalBoxes"></td>
+							<td>-1</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" class="phisicalBoxes"></td>
+							<td><input type="checkbox" class="phisicalBoxes"></td>
+							<td><input type="checkbox" class="phisicalBoxes"></td>
+							<td>-2</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" class="phisicalBoxes"></td>
+							<td><input type="checkbox" class="phisicalBoxes"></td>
+							<td><input type="checkbox" class="phisicalBoxes"></td>
+							<td>-3</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" class="phisicalBoxes"></td>
+							<td><input type="checkbox" class="phisicalBoxes"></td>
+							<td><input type="checkbox" class="phisicalBoxes"></td>
+							<td>-4</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" class="phisicalBoxes"></td>
+							<td><input type="checkbox" class="phisicalBoxes"></td>
+							<td><input type="checkbox" class="phisicalBoxes"></td>
+							<td>-5</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" class="phisicalBoxes"></td>
+							<td><input type="checkbox" class="phisicalBoxes"></td>
+							<td><input type="checkbox" class="phisicalBoxes"></td>
+							<td>-6</td>
+						</tr>
+					</table>
+				</div>
+				<div id="stunDamage">
+					<h3>Stun</h3>
+					<table cellspacing="0" cellpadding="0">
+						<tr>
+							<td><input type="checkbox" class="stunBoxes"></td>
+							<td><input type="checkbox" class="stunBoxes"></td>
+							<td><input type="checkbox" class="stunBoxes"></td>
+							<td>-1</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" class="stunBoxes"></td>
+							<td><input type="checkbox" class="stunBoxes"></td>
+							<td><input type="checkbox" class="stunBoxes"></td>
+							<td>-2</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" class="stunBoxes"></td>
+							<td><input type="checkbox" class="stunBoxes"></td>
+							<td><input type="checkbox" class="stunBoxes"></td>
+							<td>-3</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" class="stunBoxes"></td>
+							<td><input type="checkbox" class="stunBoxes"></td>
+							<td><input type="checkbox" class="stunBoxes"></td>
+							<td>-4</td>
+						</tr>
+					</table>
+				</div>
+				<p>For every 3 boxes of damage on any damage track the character takes a -1 Dice Pool modifier on tests,
+					 these modifiers are cumulative within and across damage tracks.</p>
+			</article>
+			
+			<!-- Skills -->
+			
+			<article id="skills">
+				<h2>Skills</h2>
+				
+				<!-- Active Skills Container -->
+				
+				<div id="activeSkills">
+					<div>
+						<label>Name:</label>
+						<label>Rtg:</label>
+					</div>
+					<div id="activeSkillsContainer" class="containers">
+						<!-- generated content -->
+					</div>
+					<div class="centerContent">
+						<input type="button" value="Add Skill" onclick="Shadowrun.addSkill('activeSkillsContainer', 'active')">
+						<input type="button" value="Remove Skill" onclick="HTMLGen.removeElement('activeSkillsContainer')">
+					</div>
+				</div>
+					
+				<!-- Other Skills Container -->
+				
+				<div id="otherSkills">
+					<div>
+						<label>Name:</label>
+						<label>Rtg:</label>
+					</div>
+					<div id="otherSkillsContainer" class="containers">
+						<!-- generated content -->
+					</div>
+					<div class="centerContent">
+						<input type="button" value="Add Skill" onclick="addOther()">
+						<input type="button" value="Remove Skill" onclick="removeElements('otherSkillsContainer')">
+					</div>
+				</div>
+			</article>
+			
+			<!-- Qualities -->
+			
+			<article id="qualities">
+				<h2>Qualities</h2>
+				<div>
+					<label>Name:</label>
+				</div>
+				<div id="qualitiesContainer" class="containers">
+					<!-- generated content -->
+				</div>
+				<div class="centerContent">
+					<input type="button" value="Add Quality" onclick="addQuality()">
+					<input type="button" value="Remove Quality" onclick="removeElements('qualitiesContainer')">
+				</div>
+			</article>
+			
+			<!-- Melee Weapons -->
+			
+			<article id="weapons">
+				<h2>Melee Weapons</h2>
+				<div>
+					<label>Weapon</label>
+					<label>Reach</label>
+					<label>Damage</label>
+					<label>AP</label>
+				</div>
+				<div id="weaponsContainer" class="containers">
+					<!-- generated content -->
+				</div>
+				<div class="centerContent">
+					<input type="button" onclick="addWeapon()" value="Add Weapon">
+					<input type="button" onclick="removeElements('weaponsContainer')" value="Remove Weapon">
+				</div>
+			</article>
+			
+			<!-- Ranged Weapons -->
+			
+			<article id="guns">
+				<h2>Ranged Weapons</h2>
+				<div>
+					<label>Gun</label>
+					<label>Damage</label>
+					<label title="Armor Penetration">AP</label>
+					<label title="SS = Single Shot&#10;SA = Semi-Automatic&#10;BF = Burst Fire&#10;FA = Full-Automatic">Mode</label>
+					<label title="Recoil Compensation">RC</label>
+					<label>Ammo</label>
+				</div>
+				<div id="gunsContainer" class="containers">
+					<!-- generated content -->
+				</div>
+				<div class="centerContent">
+					<input type="button" onclick="addGun()" value="Add Gun">
+					<input type="button" onclick="removeElements('gunsContainer')" value="Remove Gun">
+				</div>
+			</article>
+			
+			<!-- Armor -->
+			
+			<article id="armor">
+				<h2>Armor</h2>
+				<div>
+					<label>Armor (Balistic/Impact)</label>
+				</div>
+				<div id="armorContainer" class="containers">
+					<!-- generated content -->
+				</div>
+				<div class="centerContent">
+					<input type="button" onclick="addArmor()" value="Add Armor">
+					<input type="button" onclick="removeElements('armorContainer')" value="Remove Armor">
+				</div>
+			</article>
+			
+			<!-- Cyberware -->
+			
+			<article id="implants">
+				<h2>Implants</h2>
+				<div>
+					<label>Implant</label>
+					<label>Rating</label>
+					<label>Essence</label>
+					<label>Notes</label>
+				</div>
+				<div id="implantsContainer" class="containers">
+					<!-- generated content -->
+				</div>
+				<div class="centerContent">
+					<input type="button" onclick="addImplant()" value="Add Inplant">
+					<input type="button" onclick="removeElements('implantsContainer')" value="Remove Inplant">
+				</div>
+			</article>
+			
+			<!-- Misc Equipament -->
+			
+			<article id="misc">
+				<h2>Misc. Equipament</h2>
+				<div>
+					<label>Name</label>
+					<label>Note</label>
+				</div>
+				<div id="miscContainer" class="containers">
+					<!-- generated content -->
+				</div>
+				<div class="centerContent">
+					<input type="button" onclick="addMisc()" value="Add Equipament">
+					<input type="button" onclick="removeElements('miscContainer')" value="Remove Equipament">
+				</div>
+			</article>
+			
+			<!-- Contacts -->
+			
+			<article id="contacts">
+				<h2>Contacts</h2>
+				<div>
+					<label>Contact</label>
+					<label>Loyalty</label>
+					<label>Conn.</label>
+				</div>
+				<div id="contactsContainer">
+					<!-- Generated content -->
+				</div>
+				<div class="centerContent">
+					<input type="button" onclick="addContact()" value="Add Contact">
+					<input type="button" onclick="removeElements('contactsContainer')" value="Remove Contact">
+				</div>
+			</article>
+			
+			<!-- Veicles -->
+			
+			<article id="vehicles">
+				<h2>Vehicles</h2>
+				<div>
+					<label>Vehicle:</label>
+					<label>Hand.:</label>
+					<label>Accel.:</label>
+					<label>Speed.:</label>
+					<label>Pilot:</label>
+					<label>Body:</label>
+					<label>Armor:</label>
+					<label>Sensor:</label>
+				</div>
+				<div id="vehiclesContainer" class="containers">
+					<!-- generated content -->
+				</div>
+				<div class="centerContent">
+					<input type="button" onclick="addVehicle()" value="Add Vehicle">
+					<input type="button" onclick="removeElements('vehiclesContainer')" value="Remove Vehicle">
+				</div>
+			</article>
+			
+			<!-- Comlink -->
+			
+			<article id="comlink">
+				<h2>Comlink</h2>
+				<div>
+					<label>Model/SO:</label>
+					<select id="model">
+						
+					</select>
+					<select id="so">
+						
+					</select>
+				</div>
+				<div>
+					<span>
+						<label>Response:</label>
+						<input type="number" id="response">
+					</span>
+					<span>
+						<label>System:</label>
+						<input type="number" id="system">
+					</span>
+					<span>
+						<label>Firewall:</label>
+						<input type="number" id="firewall">
+					</span>
+					<span>
+						<label>Signal:</label>
+						<input type="number" id="signal">
+					</span>
+				</div>
+				<h3>Programs</h3>
+				<div>
+					<label>Program</label>
+					<label>Rtg.</label>
+				</div>
+				<div id="programsContainer">
+					<!-- Generated content -->
+				</div>
+				<div class="centerContent">
+					<input type="button" onclick="addProgram()" value="Add Program">
+					<input type="button" onclick="removeElements('programsContainer')" value="Rem.Program">
+				</div>
+			</article>
+			
+			<!-- Adept Powers/Complex Forms -->
+			
+			<article id="powers">
+				<h2>Adept Powers/Complex Forms</h2>
+				<div>
+					<label>Name</label>
+					<label>Rating</label>
+				</div>
+				<div id="powersContainer" class="containers">
+					<!-- generated content -->
+				</div>
+				<div class="centerContent">
+					<input type="button" onclick="addPower()" value="Add Powers">
+					<input type="button" onclick="removeElements('powersContainer')" value="Remove Powers">
+				</div>
+			</article>
+			
+			<!-- Spells -->
+			
+			<article id="spells">
+				<h2>Spells</h2>
+				<div>
+					<label>Spell (Type/Range/Damage/Duration/DV)</label>
+				</div>
+				<div id="spellsContainer" class="containers">
+					<!-- Generated content -->
+				</div>
+				<div class="centerContent">
+					<input type="button" onclick="addSpell()" value="Add Spell">
+					<input type="button" onclick="removeElements('spellsContainer')" value="Remove Spell">
+				</div>
+			</article>
+			
+			<!-- Spirits -->
+			
+			<article id="spirits">
+				<h2>Spirits/Sprites</h2>
+				<div>
+					<label>Spirit/Sprite</label>
+					<label>Force</label>
+					<label>Services</label>
+					<label>Bound</label>
+				</div>
+				<div id="spiritsContainer" class="containers">
+					<!-- generated content -->
+				</div>
+				<div class="centerContent">
+					<input type="button" onclick="addSpirit()" value="Add Spirit">
+					<input type="button" onclick="removeElements('spiritsContainer')" value="Remove Spirit">
+				</div>
+			</article>
+			
+			<!-- Picture -->
+			
+			<article id="picture">
+				<h2>Picture</h2>
+				<div id="pictureContainer">
+					<span>Drop Picture here or...</span>
+					<input type="file">
+					<span>Open the file.</span>
+				</div>
+			</article>
+			
+			<!-- Notes -->
+			
+			<article id="notes">
+				<h2>Notes</h2>
+				<textarea id="notesContainer"></textarea>
+			</article>
+			
+		</div>
+	</body>
+</html>
