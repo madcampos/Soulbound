@@ -30,9 +30,11 @@ Actualy it's able to load data from a file (JSON formated) and display it, it al
 + Refactor CSS
 + Make responsive data based on form rules and states changes
 + Better forms and form customization
++ Make a "group valt", for shared itens between players
 
 ##Ahead Work
 
 + GM control page
 + internationalization
 + admin page with control of data (ability to add/remove data)
++ study character builder sheets and plan parsing/conversion
