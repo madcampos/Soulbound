@@ -1,0 +1,70 @@
+<!-- content -->
+<h2><%=__('Dashboard')%></h2>
+<div id="dashboard">
+	<article>
+		<fieldset>
+			<legend><%=__('Characters')%></legend>
+			<!-- dinamicaly load -->
+			<% if (chars.length > 0){ %>
+				<ul>
+				<% for (var char in chars){ %>
+					<li><%- '<a href="/character/view/'+ chars[char]._id + '" target="new">' + chars[char].name + '</a>' %></li>
+				<% } %>
+				</ul>
+			<% } else { %>
+				<p><%=__('You have no characters, click on the button below to create one.')%></p>
+			<% } %>
+		</fieldset>
+		<%-'<input type="button" value="' + __('New Character') + '" onclick="">'%>
+	</article>
+	<article>
+		<fieldset>
+			<legend><%=__('Maps')%></legend>
+			<!-- dinamicaly load -->
+			<% if (maps.length > 0){ %>
+				<ul>
+				<% for (var map in maps){ %>
+					<li><%- '<a href="/map/view/'+ maps[map]._id + '" target="new">' + maps[map].name + '</a>' %></li>
+				<% } %>
+				</ul>
+			<% } else { %>
+				<p><%=__('You have no maps, click on the button below to create one.')%></p>
+			<% } %>
+		</fieldset>
+		<%-'<input type="button" value="' + __('New Map') + '" onclick="">'%>
+	</article>
+	<article>
+		<fieldset>
+			<legend><%=__('Histories')%></legend>
+			<!-- dinamicaly load -->
+			<% if (hists.length > 0){ %>
+				<ul>
+				<% for (var hist in hists){ %>
+					<li><%- '<a href="/history/view/'+ hists[hist]._id + '" target="new">' + hists[hist].name + '</a>' %></li>
+				<% } %>
+				</ul>
+			<% } else { %>
+				<p><%=__('You have no histories, click on the button below to create one.')%></p>
+			<% } %>
+			
+		</fieldset>
+		<%-'<input type="button" value="' + __('New History') + '" onclick="">'%>
+	</article>
+	<article>
+		<fieldset>
+			<legend><%=__('NPCs')%></legend>
+			<!-- dinamicaly load -->
+			<% if (npcs.length > 0){ %>
+				<ul>
+				<% for (var npc in npcs){ %>
+					<li><%- '<a href="/npc/view/'+ npcs[npc]._id + '" target="new">' + npcs[npc].name + '</a>' %></li>
+				<% } %>
+				</ul>
+			<% } else { %>
+				<p><%=__('You have no npcs, click on the button below to create one.')%></p>
+			<% } %>
+			
+		</fieldset>
+		<%-'<input type="button" value="' + __('New NPC') + '" onclick="">'%>
+	</article>
+</div>

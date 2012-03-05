@@ -1,0 +1,93 @@
+input[type=number]{
+	width:4em;
+}
+
+input[type=date]{
+	width:6em;
+}
+
+span{
+	display:inline-block;
+	text-align:left;
+}
+
+span label{
+	display:block;
+	font-size:0.7em;
+}
+
+.backFace{
+	position:absolute;
+	vertical-align:middle;
+	border:none;
+	background-color:transparent;
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-position:top center;
+}
+.backFace + input, .backFace + select{
+	vertical-align:middle;
+	opacity:0;
+}
+
+.backFace + input[type=file]{
+	width:12em;
+}
+.spinners{
+	display:inline-block;
+	vertical-align:middle;
+}
+
+.spinners input{
+	display:block;
+	height:10px;
+	width:18px;
+	margin-left:-6px;
+	border:none;
+	background-color:transparent;
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-position:top center;
+}
+.upSpinner{background-image: url('images/forms/input/spin-up.svg');}
+
+.downSpinner{background-image:url('images/forms/input/spin-down.svg');}
+
+.upSpinner:active{background-image:url('images/forms/input/spin-up-active.svg');}
+
+.upSpinner:active{background-image:url('images/forms/input/spin-down-active.svg');}
+
+.numberFace{
+	background-image:url('images/forms/input/spin.svg');
+	width:4em;
+}
+
+.numberFace:focus{
+	
+}
+
+.selectFace{
+	
+}
+
+.selectFace:focus{
+	
+}
+
+.textFace{
+	
+}
+
+.textFace:focus{
+	
+}
+
+.genericFace{
+	
+}
+
+.genericFace:focus{
+	
+}
+
+.noInputTypeNumber, .noInputTypeDate{background-image:none;}

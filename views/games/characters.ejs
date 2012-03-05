@@ -1,0 +1,29 @@
+<h2><%=__('Characters')%></h2>
+<% if (chars && chars.length !== 0) { %>
+	<div id="characterList">
+		<% for (var char in chars){ %>
+			<article>
+				<div class="actions">
+					<%- '<a href="/character/edit/'+ chars[char]._id + '" target="new"><img src="/images/edit.png"/>' + __('Edit') + '</a>' %>
+					<%- '<a href="/character/remove/'+ chars[char]._id + '" target="new"><img src="/images/remove.png"/>' + __('Remove') + '</a>' %>
+				</div>
+				<% if(hasAvatar(chars[char]._id)){ %>
+					<%- '<a href="/character/view/'+ chars[char]._id + '" target="new"><img src="/images/public/characters/' + chars[char]._id + '.png" alt="' + __('Avatar of: ') + chars[char].name + '" id="avatar"></a>' %>
+				<% } else { %>
+					<%-'<a href="/character/view/'+ chars[char]._id + '" target="new"><img src="/images/public/characters/defaultAvatar.png" alt="' + __('Avatar of: ') + chars[char].name + '" id="avatar"></a>' %>
+				<% } %>
+				
+				<div>
+					<h3><%- '<a href="/character/view/'+ chars[char]._id + '" target="new">' + chars[char].name + '</a>' %></h3>
+					<span><%-'<img src="/images/games/' + chars[char].game + '/icon.png" alt="' + __('Game :') + chars[char].game + '" id="game">' + chars[char].game%></span>
+				</div>
+			</article>
+		<% } %>
+	</div>
+	<div id="pagination">
+		<!-- TODO: pagination system -->
+	</div>
+<% } else { %>
+	<p><%=__('You have no characters, click on the button below to create one.')%></p>
+<% } %>
+<%-'<input type="button" value="' + __('New Character') + '" onclick="">'%>

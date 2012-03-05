@@ -1,0 +1,59 @@
+/**
+ * 	Styling for error pages
+ */
+
+// Import section
+@import 'text.less';
+@import 'nav.less';
+
+@grayishBlue: #def2ff;
+@darkGray: #979797;
+@darkBlue: #0E0A32;
+@lightGray: #7d7e7d;
+@almostBlack: #0e0e0e;
+@windowsBlue: #0000A0;
+
+.box-sizing (@sizing: border-box){
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	box-sizing:border-box;
+}
+
+*{
+	.box-sizing;
+}
+
+
+#error{
+	background-color:@windowsBlue;
+	color:white;
+	font-family:monospace;
+	font-weight:bold;
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:100%;
+	width:100%;
+	z-index:-1;
+	padding-top:10%;
+	padding-left:20%;
+	padding-right:20%;
+	
+	a{
+		color:white;
+	}
+	
+	header{
+		margin-left:auto;
+		margin-right:auto;
+		text-align:center;
+		color:@windowsBlue;
+		background-color:gray;
+	}
+	
+	p, ul{
+		font-size:2em;
+	}
+}

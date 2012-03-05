@@ -1,0 +1,23 @@
+<h2><%=__('Histories')%></h2>
+<% if (hists && hists.length !== 0) { %>
+	<div id="historiesList">
+		<% for (var hist in hists){ %>
+			<article>
+				<div class="actions">
+					<%- '<a href="/history/edit/'+ hists[hist]._id + '" target="new"><img src="/images/edit.png"/>' + __('Edit') + '</a>' %>
+					<%- '<a href="/history/remove/'+ hists[hist]._id + '" target="new"><img src="/images/remove.png"/>' + __('Remove') + '</a>' %>
+				</div>
+				<div>
+					<h3><%- '<a href="/history/view/'+ hists[hist]._id + '" target="new">' + hists[hist].name + '</a>' %></h3>
+					<p><%=hists[hist].summary%></p>
+				</div>
+			</article>
+		<% } %>
+	</div>
+	<div id="pagination">
+		<!-- TODO: pagination system -->
+	</div>
+<% } else { %>
+	<p><%=__('You have no histories, click on the button below to create one.')%></p>
+<% } %>
+<%-'<input type="button" value="' + __('New History') + '" onclick="">'%>

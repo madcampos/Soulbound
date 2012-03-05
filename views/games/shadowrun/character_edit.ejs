@@ -1,0 +1,930 @@
+﻿<!-- sheet -->
+<script type="text/javascript">
+	var msg = [<%-'\'' + __('Please, drop an image.') + '\''%>,<%-'\'' + __('Image size must be less than 45kb.') + '\''%>];
+	var game =  <%-JSON.stringify(game)%>;
+</script>
+<div id="xhrMsg" style="display:none;"></div>
+<div id="sheet">
+	<article id="personalData">
+		<h2><%=__('Personal Data')%></h2>
+		<table>
+			<tr>
+				<td>
+					<label for="name"><%=__('Name:')%></label>
+				</td>
+				<td colspan="8">
+					<%-'<input type="text" id="name" value="' + char.name + '">'%>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="metatype"><%=__('Metatype:')%></label>
+				</td>
+				<td>
+					<select id="metatype">
+						<% for (var i in game.metatypes) {
+							if (game.metatypes[i][0] == char.metatype) { %>
+								<%-'<option selected="selected" title="' + __(game.metatypes[i][2]) + '">' + __(game.metatypes[i][0]) + '</option>'%>
+							<% } else { %>
+								<%-'<option title="' + __(game.metatypes[i][2]) + '">' + __(game.metatypes[i][0]) + '</option>'%>
+							<% }
+						} %>
+					</select>
+				</td>
+				<td>
+					<label for="ethnicity"><%=__('Ethnicity:')%></label>
+				</td>
+				<td colspan="2">
+					<%-'<input type="text" id="ethnicity" value="' + char.ethinicity + '">'%>
+				</td>
+				<td>
+					<label for="age"><%=__('Age:')%></label>
+				</td>
+				<td>
+					<%-'<input type="date" id="age" value="' + char.age + '">'%>
+				</td>
+				<td>
+					<label for="sex"><%=__('Sex:')%></label>
+				</td>
+				<td>
+					<%-'<input type="text" id="sex" value="' + char.sex + '">'%>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="totalKarma"><%=__('Karma (Total/Curr.):')%></label>
+				</td>
+				<td>
+					<%-'<input type="number" min="0" id="totalKarma" value="' + char.karma + '">'%>
+				</td>
+				<td>
+					<%-'<input type="number" min="0" id="currentKarma" value="' + char.currentKarma + '">'%>
+				</td>
+				<td>
+					<label for="streetCredit"><%=__('Street Credit:')%></label>
+				</td>
+				<td>
+					<input type="number" min="0" id="streetCredit">
+				</td>
+				<td>
+					<label for="notoriety"><%=__('Notoriety:')%></label>
+				</td>
+				<td>
+					<input type="number" min="0" id="notoriety">
+				</td>
+				<td>
+					<label for="publicAwarness"><%=__('Public Aware.:')%></label>
+				</td>
+				<td>
+					<input type="number" min="0" id="publicAwarness">
+				</td>
+			</tr>
+		</table>
+	</article>
+	
+	<!-- Attributes -->
+	<article id="attributes">
+		<h2><%=__('Attributes')%></h2>
+		<table>
+			<tr>
+				<th colspan="2"><%=__('Phisical')%></th>
+				<th colspan="2"><%=__('Mental')%></th>
+				<th colspan="5"><%=__('Special')%></th>
+			</tr>
+			<tr>
+				<td>
+					<label for="body"><%=__('Body:')%></label>
+				</td>
+				<td>
+					<%-'<input type="number" min="1" max="9" value="' + char.body + '" id="body" onmouseup="phisicalBoxes()">'%>
+				</td>
+				<td>
+					<label for="charisma"><%=__('Charisma:')%></label>
+				</td>
+				<td>
+					<%-'<input type="number" min="1" max="9" value="' + char.charisma + '" id="charisma">'%>
+				</td>
+				<td>
+					<label for="edge"><%=__('Edge:')%></label>
+				</td>
+				<td colspan="2">
+					<%-'<input type="number" min="1" max="9" value="' + char.edge + '" id="edge">'%>
+				</td>
+				<td colspan="2">
+					<%-'<input type="number" min="1" max="9" value="' + char.currentEdge + '" id="currentEdge">'%>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="agility"><%=__('Agility:')%></label>
+				</td>
+				<td>
+					<%-'<input type="number" min="1" max="9" value="' + char.agility + '" id="agility">'%>
+				</td>
+				<td>
+					<label for="intuition"><%=__('Intuition:')%></label>
+				</td>
+				<td>
+					<%-'<input type="number" min="1" max="9" value="' + char.intuition + '" id="intuition">'%>
+				</td>
+				<td>
+					<label for="essence"><%=__('Essence:')%></label>
+				</td>
+				<td colspan="4">
+					<%-'<input type="number" min="1" max="6" value="' + char.essence + '" step="0.1" id="essence">'%>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="reaction"><%=__('Reaction:')%></label>
+				</td>
+				<td>
+					<%-'<input type="number" min="1" max="9" value="' + char.reaction + '" id="reaction">'%>
+				</td>
+				<td>
+					<label for="logic"><%=__('Logic:')%></label>
+				</td>
+				<td>
+					<%-'<input type="number" min="1" max="9" value="' + char.logic + '" id="logic">'%>
+				</td>
+				<td>
+					<label for="magic" title="Magic/Ressonance"><%=__('Mag./Ress.:')%></label>
+				</td>
+				<td colspan="4">
+					<%-'<input type="number" min="1" max="9" value="' + char.magic + '" id="magic">'%>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="strength"><%=__('Strength:')%></label>
+				</td>
+				<td>
+					<%-'<input type="number" min="1" max="9" value="' + char.strength + '" id="strength">'%>
+				</td>
+				<td>
+					<label for="willpower"><%=__('Willpower:')%></label>
+				</td>
+				<td>
+					<%-'<input type="number" min="1" max="9" value="' + char.willpower + '" id="willpower" onmouseup="stunBoxes()">'%>
+				</td>
+				<td>
+					<label for="initiative"><%=__('Initiative (Base/Astral/Matrix/Passes):')%></label>
+				</td>
+				<td>
+					<%-'<input type="number" min="1" max="9" value="' + char.initiative + '" id="initiative">'%>
+				</td>
+				<td>
+					<%-'<input type="number" min="1" max="18" value="' + char.matrixInit + '" id="matrixInit">'%>
+				</td>
+				<td>
+					<%-'<input type="number" min="1" max="18" value="' + char.astralInit + '" id="astralInit">'%>
+				</td>
+				<td>
+					<%-'<input type="number" min="1" max="4" value="' + char.initPasses + '" id="initPasses">'%>
+				</td>
+			</tr>
+		</table>
+	</article>
+	
+
+	<!-- Skills -->
+
+	<article id="skills">
+		<h2><%=__('Skills')%></h2>
+		
+		<!-- Active Skills Container -->
+		
+		<div>
+			<div class="containers">
+				<table id="activeSkills">
+					<tr>
+						<th><%=__('Name:')%></th> 
+						<th><%=__('Rtg:')%></th>
+					</tr>
+					<% for (var activeSkill in char.activeSkills) { %>
+						<tr>
+							<td>
+								<select>
+									<% for (var i in game.attList) { %>
+										<%-'<optgroup label="' + __(game.attList[i][0]) + '" title="' + __(game.attList[i][1]) + '">'%>
+											<% for (var j in game.skillList[i]){
+												if (game.skillList[i][j].length == 3) {
+													if (char.activeSkills[activeSkill][0] == game.skillList[i][j][0]) { %>
+														<%-'<option selected="selected" class="' + game.skillList[i][j][2] + '" title="' + __(game.skillList[i][j][1]) + '">' + __(game.skillList[i][j][0]) + '</option>'%>
+													<% } else { %>
+														<%-'<option class="' + game.skillList[i][j][2] + '" title="' + __(game.skillList[i][j][1]) + '">' + __(game.skillList[i][j][0]) + '</option>'%>
+													<% }
+												} else {
+													if (char.activeSkills[activeSkill][0] == game.skillList[i][j]) { %>
+														<%-'<option selected="selected" title="' + __(game.skillList[i][j][1]) + '">' + __(game.skillList[i][j][0]) + '</option>'%>
+													<% } else { %>
+														<%-'<option title="' + __(game.skillList[i][j][1]) + '">' + __(game.skillList[i][j][0]) + '</option>'%>
+													<% }
+												}
+											} %>
+										</optgroup>
+									<% } %>
+								</select>
+							</td>
+							<td><%-'<input type="number" value="' + char.activeSkills[activeSkill][1] + '">'%></td>
+						</tr>
+					<% } %>
+				</table>
+			</div>
+			<div class="actionButtons">
+				<%-'<input type="button" value="' + __('Add Skill') + '">'%>
+				<%-'<input type="button" value="' + __('Remove Skill') + '">'%>
+			</div>
+		</div>
+			
+		<!-- Other Skills Container -->
+		
+		<div>
+			<div class="containers">
+				<table id="otherSkills">
+					<tr>
+						<th><%=__('Name:')%></th> 
+						<th><%=__('Rtg:')%></th>
+					</tr>
+					<% for (var otherSkill in char.otherSkills) { %>
+						<tr>
+							<td><%-'<input type="text" value="' + char.otherSkills[otherSkill][0] + '">'%></td>
+							<td><%-'<input type="number" value="' + char.otherSkills[otherSkill][1] + '">'%></td>
+						</tr>
+					<% } %>
+				</table>
+			</div>
+			
+			<div class="actionButtons">
+				<%-'<input type="button" value="' + __('Add Skill') + '">'%>
+				<%-'<input type="button" value="' + __('Remove Skill') + '">'%>
+			</div>
+		</div>
+	</article>
+	
+	<!-- monitor -->
+	
+	<article id="monitor">
+		<h2><%=__('Condition Monitor')%></h2>
+		<div id="phisicalDamage">
+			<h3><%=__('Phisical')%></h3>
+			<table cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="phisicalBoxes"><input type="checkbox" /></td>
+					<td class="phisicalBoxes"><input type="checkbox" /></td>
+					<td class="phisicalBoxes"><input type="checkbox" /></td>
+					<td>-1</td>
+				</tr>
+				<tr>
+					<td class="phisicalBoxes"><input type="checkbox" /></td>
+					<td class="phisicalBoxes"><input type="checkbox" /></td>
+					<td class="phisicalBoxes"><input type="checkbox" /></td>
+					<td>-2</td>
+				</tr>
+				<tr>
+					<td class="phisicalBoxes"><input type="checkbox" /></td>
+					<td class="phisicalBoxes"><input type="checkbox" /></td>
+					<td class="phisicalBoxes"><input type="checkbox" /></td>
+					<td>-3</td>
+				</tr>
+				<tr>
+					<td class="phisicalBoxes"><input type="checkbox" /></td>
+					<td class="phisicalBoxes"><input type="checkbox" /></td>
+					<td class="phisicalBoxes"><input type="checkbox" /></td>
+					<td>-4</td>
+				</tr>
+				<tr>
+					<td class="phisicalBoxes"><input type="checkbox" /></td>
+					<td class="phisicalBoxes"><input type="checkbox" /></td>
+					<td class="phisicalBoxes"><input type="checkbox" /></td>
+					<td>-5</td>
+				</tr>
+				<tr>
+					<td class="phisicalBoxes"><input type="checkbox" /></td>
+					<td class="phisicalBoxes"><input type="checkbox" /></td>
+					<td class="phisicalBoxes"><input type="checkbox" /></td>
+					<td>-6</td>
+				</tr>
+			</table>
+		</div>
+		<div id="stunDamage">
+			<h3><%=__('Stun')%></h3>
+			<table cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="stunBoxes"><input type="checkbox" /></td>
+					<td class="stunBoxes"><input type="checkbox" /></td>
+					<td class="stunBoxes"><input type="checkbox" /></td>
+					<td>-1</td>
+				</tr>
+				<tr>
+					<td class="stunBoxes"><input type="checkbox" /></td>
+					<td class="stunBoxes"><input type="checkbox" /></td>
+					<td class="stunBoxes"><input type="checkbox" /></td>
+					<td>-2</td>
+				</tr>
+				<tr>
+					<td class="stunBoxes"><input type="checkbox" /></td>
+					<td class="stunBoxes"><input type="checkbox" /></td>
+					<td class="stunBoxes"><input type="checkbox" /></td>
+					<td>-3</td>
+				</tr>
+				<tr>
+					<td class="stunBoxes"><input type="checkbox" /></td>
+					<td class="stunBoxes"><input type="checkbox" /></td>
+					<td class="stunBoxes"><input type="checkbox" /></td>
+					<td>-4</td>
+				</tr>
+			</table>
+		</div>
+		<p><%=__('For every 3 boxes of damage on any damage track the character takes a -1 Dice Pool modifier on tests, these modifiers are cumulative within and across damage tracks.')%></p>
+	</article>
+	
+	<!-- Picture -->
+
+	<article id="picture">
+		<h2><%=__('Picture')%></h2>
+		<% if(hasAvatar(char._id)){ %>
+			<div id="pictureContainer">
+				<div id="pictureWrapper">
+					<%-'<img src="/images/public/characters/' + char._id + '.png" alt="' + __('Avatar of: ') + char.name + '">'%>
+				</div>
+			</div>
+		<% } else { %>
+			<div id="emptyPictureContainer">
+				<span><%=__('Drop Picture here or...')%></span>
+				<input type="file">
+				<span><%=__('Open the file.')%></span>
+			</div>
+		<% } %>
+	</article>
+	
+	<!-- Qualities -->
+
+	<article id="qualities">
+		<h2><%=__('Qualities')%></h2>
+		<div class="containers">
+			<table>
+				<tr>
+					<th><%=__('Name:')%></th>
+				</tr>
+				<% for (var quality in char.qualities) { %>
+					<tr>
+						<td>
+							<select>
+								<% for (var i in game.qualityTypes) { %>
+									<%-'<optgroup label="' + __(game.qualityTypes[i][0]) + '" title="' + __(game.qualityTypes[i][1]) + '">'%>
+										<% for (var j in game.qualityList[i]){
+											if (game.qualityList[i][j].length == 3) {
+												if (char.qualities[quality] == game.qualityList[i][j][0]) { %>
+													<%-'<option selected="selected" class="' + game.qualityList[i][j][2] + '" title="' + __(game.qualityList[i][j][1]) + '">' + __(game.qualityList[i][j][0]) + '</option>'%>
+												<% } else { %>
+													<%-'<option class="' + game.qualityList[i][j][2] + '" title="' + __(game.qualityList[i][j][1]) + '">' + __(game.qualityList[i][j][0]) + '</option>'%>
+												<% }
+											} else {
+												if (char.qualities[quality] == game.qualityList[i][j][0]) { %>
+													<%-'<option selected="selected" title="' + __(game.qualityList[i][j][1]) + '">' + __(game.qualityList[i][j][0]) + '</option>'%>
+												<% } else { %>
+													<%-'<option title="' + __(game.qualityList[i][j][1]) + '">' + __(game.qualityList[i][j][0]) + '</option>'%>
+												<% }
+											}
+										} %>
+									</optgroup>
+								<% } %>
+							</select>
+						</td>
+					</tr>
+				<% } %>
+			</table>
+		</div>
+		<div class="actionButtons">
+			<%-'<input type="button" value="' + __('Add Quality') + '">'%>
+			<%-'<input type="button" value="' + __('Remove Quality') + '">'%>
+		</div>
+	</article>
+	
+	<!-- Melee Weapons -->
+	
+	<article id="weapons">
+		<h2><%=__('Melee Weapons')%></h2>
+		<div class="containers">
+			<table>
+				<tr>
+					<th><%=__('Weapon:')%></th>
+					<th><%=__('Reach:')%></th>
+					<th><%=__('Damage:')%></th>
+					<%-'<th title="' + __('Armor Penetration') + '">' + __('AP:') + '</th>'%>
+				</tr>
+				<% for (var weapon in char.weapons) { %>
+					<tr>
+						<td>
+							<select>
+								<% for (var i in game.weaponTypes) { %>
+									<%-'<optgroup label="' + __(game.weaponTypes[i][0]) + '" title="' + __(game.weaponTypes[i][1]) + '">'%>
+										<% for (var j in game.weaponList[i]){
+											if (game.weaponList[i][j].length == 3) {
+												if (char.weapons[weapon] == game.weaponList[i][j][0]) { %>
+													<%-'<option selected="selected" class="' + game.weaponList[i][j][2] + '" title="' + __(game.weaponList[i][j][1]) + '">' + __(game.weaponList[i][j][0]) + '</option>'%>
+												<% } else { %>
+													<%-'<option class="' + game.weaponList[i][j][2] + '" title="' + __(game.weaponList[i][j][1]) + '">' + __(game.weaponList[i][j][0]) + '</option>'%>
+												<% }
+											} else {
+												if (char.weapons[weapon] == game.weaponList[i][j][0]) { %>
+													<%-'<option selected="selected" title="' + __(game.weaponList[i][j][1]) + '">' + __(game.weaponList[i][j][0]) + '</option>'%>
+												<% } else { %>
+													<%-'<option title="' + __(game.weaponList[i][j][1]) + '">' + __(game.weaponList[i][j][0]) + '</option>'%>
+												<% }
+											}
+										} %>
+									</optgroup>
+								<% } %>
+							</select>
+						</td>
+						<td><%-'<input type="number" value="' + char.weapons[weapon][1] + '">'%></td>
+						<td><%-'<input type="number" value="' + char.weapons[weapon][2] + '">'%></td>
+						<td><%-'<input type="number" value="' + char.weapons[weapon][3] + '">'%></td>
+					</tr>
+				<% } %>
+			</table>
+		</div>
+		<div class="actionButtons">
+			<%-'<input type="button" value="' + __('Add Weapon') + '">'%>
+			<%-'<input type="button" value="' + __('Remove Weapon') + '">'%>
+		</div>
+	</article>
+	
+	<!-- Ranged Weapons -->
+
+	<article id="guns">
+		<h2><%=__('Ranged Weapons')%></h2>
+		<div class="containers">
+			<table>
+				<tr>
+					<th><%=__('Gun:')%></th>
+					<th><%=__('Damage:')%></th>
+					<%-'<th title="' + __('Armor Penetration') + '">' + __('AP:') + '</th>'%>
+					<%-'<th title="' + __('SS = Single Shot&#10;SA = Semi-Automatic&#10;BF = Burst Fire&#10;FA = Full-Automatic') + '">' + __('Mode:') + '</th>'%>
+					<%-'<th title="' + __('Recoil Compensation') + '">' + __('RC:') + '</th>'%>
+					<th><%=__('Ammo:')%></th>
+				</tr>
+				<% for (var gun in char.guns) { %>
+					<tr>
+						<td>
+							<select>
+								<% for (var i in game.gunsGroups) { %>
+									<%-'<optgroup label="' + __(game.gunsGroups[i][0]) + '" title="' + __(game.gunsGroups[i][1]) + '">'%>
+										<% for (var j in game.gunsList[i]){
+											if (game.gunsList[i][j].length == 3) {
+												if (char.guns[gun][0] == game.gunsList[i][j][0]) { %>
+													<%-'<option selected="selected" class="' + game.gunsList[i][j][2] + '" title="' + __(game.gunsList[i][j][1]) + '">' + __(game.gunsList[i][j][0]) + '</option>'%>
+												<% } else { %>
+													<%-'<option class="' + game.gunsList[i][j][2] + '" title="' + __(game.gunsList[i][j][1]) + '">' + __(game.gunsList[i][j][0]) + '</option>'%>
+												<% }
+											} else {
+												if (char.guns[gun][0] == game.gunsList[i][j][0]) { %>
+													<%-'<option selected="selected" title="' + __(game.gunsList[i][j][1]) + '">' + __(game.gunsList[i][j][0]) + '</option>'%>
+												<% } else { %>
+													<%-'<option title="' + __(game.gunsList[i][j][1]) + '">' + __(game.gunsList[i][j][0]) + '</option>'%>
+												<% }
+											}
+										} %>
+									</optgroup>
+								<% } %>
+							</select>
+						</td>
+						<td><%-'<input type="number" value="' + char.guns[gun][1] + '">'%></td>
+						<td><%-'<input type="number" value="' + char.guns[gun][2] + '">'%></td>
+						<td>
+							<select>
+								<% var mode = ['SS','SA','BF','FA'];
+								for (var i in mode) {
+									if (char.guns[gun][3] == mode[i]){ %>
+										<option selected="selected"><%=mode[i]%></option>
+									<% } else { %>
+										<option><%=mode[i]%></option>
+									<% }
+								} %>
+							</select>
+						</td>
+						<td><%-'<input type="number" value="' + char.guns[gun][4] + '">'%></td>
+						<td><%-'<input type="number" value="' + char.guns[gun][5] + '">'%></td>
+					</tr>
+				<% } %>
+			</table>
+		</div>
+		<div class="actionButtons">
+			<%-'<input type="button" value="' + __('Add Gun') + '">'%>
+			<%-'<input type="button" value="' + __('Remove Gun') + '">'%>
+		</div>
+	</article>
+	
+	<!-- Armor -->
+
+	<article id="armor">
+		<h2><%=__('Armor')%></h2>
+		<div class="containers">
+			<table>
+				<tr>
+					<th><%=__('Armor (Balistic/Impact):')%></th>
+				</tr>
+				<% for (var armor in char.armors) {%>
+					<tr>
+						<td>
+							<select>
+								<% for (var i in game.armorGroups) { %>
+									<%-'<optgroup label="' + __(game.armorGroups[i][0]) + '" title="' + __(game.armorGroups[i][1]) + '">'%>
+										<% for (var j in game.armorList[i]){
+											if (game.armorList[i][j].length == 3) {
+												if (char.armors[armor] == game.armorList[i][j][0]) { %>
+													<%-'<option selected="selected" class="' + game.armorList[i][j][2] + '" title="' + __(game.armorList[i][j][1]) + '">' + __(game.armorList[i][j][0]) + '</option>'%>
+												<% } else { %>
+													<%-'<option class="' + game.armorList[i][j][2] + '" title="' + __(game.armorList[i][j][1]) + '">' + __(game.armorList[i][j][0]) + '</option>'%>
+												<% }
+											} else {
+												if (char.armors[armor] == game.armorList[i][j][0]) { %>
+													<%-'<option selected="selected" title="' + __(game.armorList[i][j][1]) + '">' + __(game.armorList[i][j][0]) + '</option>'%>
+												<% } else { %>
+													<%-'<option title="' + __(game.armorList[i][j][1]) + '">' + __(game.armorList[i][j][0]) + '</option>'%>
+												<% }
+											}
+										} %>
+									</optgroup>
+								<% } %>
+							</select>
+						</td>
+					</tr>
+				<% } %>
+			</table>
+		</div>
+		<div class="actionButtons">
+			<%-'<input type="button" value="' + __('Add Armor') + '">'%>
+			<%-'<input type="button" value="' + __('Remove Armor') + '">'%>
+		</div>
+	</article>
+	
+	<!-- Cyberware -->
+
+	<article id="implants">
+		<h2><%=__('Implants')%></h2>
+		<div class="containers">
+			<table>
+				<tr>
+					<th><%=__('Implant:')%></th>
+					<th><%=__('Rating:')%></th>
+					<th><%=__('Essence:')%></th>
+					<th><%=__('Notes:')%></th>
+				</tr>
+				<% for (var implant in char.implants) { %>
+					<tr>
+						<td>
+							<select>
+								<% for (var i in game.implantGroups) { %>
+									<%-'<optgroup label="' + __(game.implantsGroups[i][0]) + '" title="' + __(game.implantsGroups[i][1]) + '">'%>
+										<% for (var j in game.implantList[i]){
+											if (game.implantList[i][j].length == 3) {
+												if (char.implants[implant][0] == game.implantList[i][j][0]) { %>
+													<%-'<option selected="selected" class="' + game.implantList[i][j][2] + '" title="' + __(game.implantList[i][j][1]) + '">' + __(game.implantList[i][j][0]) + '</option>'%>
+												<% } else { %>
+													<%-'<option class="' + game.implantList[i][j][2] + '" title="' + __(game.implantList[i][j][1]) + '">' + __(game.implantList[i][j][0]) + '</option>'%>
+												<% }
+											} else {
+												if (char.implants[implant][0] == game.implantList[i][j][0]) { %>
+													<%-'<option selected="selected" title="' + __(game.implantList[i][j][1]) + '">' + __(game.implantList[i][j][0]) + '</option>'%>
+												<% } else { %>
+													<%-'<option title="' + __(game.implantList[i][j][1]) + '">' + __(game.implantList[i][j][0]) + '</option>'%>
+												<% }
+											}
+										} %>
+									</optgroup>
+								<% } %>
+							</select>
+						</td>
+						<td><%-'<input type="number" value="' + char.implants[implant][1] + '">'%></td>
+						<td><%-'<input type="number" value="' + char.implants[implant][2] + '">'%></td>
+						<td><%-'<input type="number" value="' + char.implants[implant][3] + '">'%></td>
+					</tr>
+				<% } %>
+			</table>
+		</div>
+		<div class="actionButtons">
+			<%-'<input type="button" value="' + __('Add Implant') + '">'%>
+			<%-'<input type="button" value="' + __('Remove Implant') + '">'%>
+		</div>
+	</article>
+	
+	<!-- Lifestyles -->
+	
+	<article id="lifestyles">
+		<h2><%=__('Lifestyles')%></h2>
+		<div class="containers">
+			<table>
+				<tr>
+					<th><%=__('Lifestyle:')%></th>
+					<th><%=__('Money:')%></th>
+					<th><%=__('Licensses:')%></th>
+				</tr>
+				<% for (var lifestyle in char.lifestyles) { %>
+					<tr>
+						<td><%-'<input type="text" value="' + char.lifestyles[lifestyle][0] + '">'%></td>
+						<td><%-'<input type="number" value="' + char.lifestyles[lifestyle][1] + '">'%></td>
+						<td><%-'<input type="number" value="' + char.lifestyles[lifestyle][2] + '">'%></td>
+					</tr>
+				<% } %>
+			</table>
+		</div>
+		<div class="actionButtons">
+			<%-'<input type="button" value="' + __('Add Lifestyle') + '">'%>
+			<%-'<input type="button" value="' + __('Remove Lifestyle') + '">'%>
+		</div>
+	</article>
+	
+	<!-- Misc Equipament -->
+
+	<article id="misc">
+		<h2><%=__('Misc. Equipament')%></h2>
+		<div class="containers">
+			<table>
+				<tr>
+					<th><%=__('Name:')%></th>
+					<th><%=__('Notes:')%></th>
+				</tr>
+				<% for (var equip in char.misc) { %>
+					<tr>
+						<td>
+							<select>
+								<% for (var i in game.miscGroups) { %>
+									<%-'<optgroup label="' + __(game.miscGroups[i][0]) + '" title="' + __(game.miscGroups[i][1]) + '">'%>
+										<% for (var j in game.miscList[i]){
+											if (game.miscList[i][j].length == 3) {
+												if (char.misc[equip][0] == game.miscList[i][j][0]) { %>
+													<%-'<option selected="selected" class="' + game.miscList[i][j][2] + '" title="' + __(game.miscList[i][j][1]) + '">' + __(game.miscList[i][j][0]) + '</option>'%>
+												<% } else { %>
+													<%-'<option class="' + game.miscList[i][j][2] + '" title="' + __(game.miscList[i][j][1]) + '">' + __(game.miscList[i][j][0]) + '</option>'%>
+												<% }
+											} else {
+												if (char.misc[equip][0] == game.miscList[i][j][0]) { %>
+													<%-'<option selected="selected" title="' + __(game.miscList[i][j][1]) + '">' + __(game.miscList[i][j][0]) + '</option>'%>
+												<% } else { %>
+													<%-'<option title="' + __(game.miscList[i][j][1]) + '">' + __(game.miscList[i][j][0]) + '</option>'%>
+												<% }
+											}
+										} %>
+									</optgroup>
+								<% } %>
+							</select>
+						</td>
+						<td><%-'<input type="text" value="' + char.misc[equip][1] + '">'%></td>
+					</tr>
+				<% } %>
+			</table>
+		</div>
+		<div class="actionButtons">
+			<%-'<input type="button" value="' + __('Add Misc.') + '">'%>
+			<%-'<input type="button" value="' + __('Remove Misc.') + '">'%>
+		</div>
+	</article>
+	
+	<!-- Contacts -->
+
+	<article id="contacts">
+		<h2><%=__('Contacts')%></h2>
+		<div class="containers">
+			<table>
+				<tr>
+					<th><%=__('Contact:')%></th>
+					<th><%=__('Loyalty:')%></th>
+					<th><%=__('Conn.:')%></th>
+				</tr>
+				<% for (var contact in char.contacts) { %>
+					<tr>
+						<td><%-'<input type="text" value="' + char.contacts[contact][0]+ '">'%></td>
+						<td><%-'<input type="number" value="' + char.contacts[contact][1] + '">'%></td>
+						<td><%-'<input type="number" value="' + char.contacts[contact][2] + '">'%></td>
+					</tr>
+				<% } %>
+			</table>
+		</div>
+		<div class="actionButtons">
+			<%-'<input type="button" value="' + __('Add Contact') + '">'%>
+			<%-'<input type="button" value="' + __('Remove Contact') + '">'%>
+		</div>
+	</article>
+	
+	<!-- Adept Powers/Complex Forms -->
+
+	<article id="powers">
+		<h2><%=__('Adept Powers/Complex Forms')%></h2>
+		<div class="containers">
+			<table>
+				<tr>
+					<th><%=__('Name:')%></th>
+					<th><%=__('Rtg.:')%></th>
+				</tr>
+				<% for (var power in char.powers) { %>
+					<tr>
+						<td>
+							<select>
+								<% for (var i in game.powerGroups) { %>
+									<%-'<optgroup label="' + __(game.powerGroups[i][0]) + '" title="' + __(game.powerGroups[i][1]) + '">'%>
+										<% for (var j in game.powerList[i]){
+											if (game.powerList[i][j].length == 3) {
+												if (char.powers[power][0] == game.powerList[i][j][0]) { %>
+													<%-'<option selected="selected" class="' + game.powerList[i][j][2] + '" title="' + __(game.powerList[i][j][1]) + '">' + __(game.powerList[i][j][0]) + '</option>'%>
+												<% } else { %>
+													<%-'<option class="' + game.powerList[i][j][2] + '" title="' + __(game.powerList[i][j][1]) + '">' + __(game.powerList[i][j][0]) + '</option>'%>
+												<% }
+											} else {
+												if (char.powers[power][0] == game.powerList[i][j][0]) { %>
+													<%-'<option selected="selected" title="' + __(game.powerList[i][j][1]) + '">' + __(game.powerList[i][j][0]) + '</option>'%>
+												<% } else { %>
+													<%-'<option title="' + __(game.powerList[i][j][1]) + '">' + __(game.powerList[i][j][0]) + '</option>'%>
+												<% }
+											}
+										} %>
+									</optgroup>
+								<% } %>
+							</select>
+						</td>
+						<td><%-'<input type="number" value="' + char.powers[power][1] + '">'%></td>
+					</tr>
+				<% } %>
+			</table>
+		</div>
+		<div class="actionButtons">
+			<%-'<input type="button" value="' + __('Add Power') + '">'%>
+			<%-'<input type="button" value="' + __('Remove Power') + '">'%>
+		</div>
+	</article>
+	
+	<!-- Veicles -->
+
+	<article id="vehicles">
+		<h2><%=__('Vehicles')%></h2>
+		<div class="containers">
+			<table>
+				<tr>
+					<th><%=__('Vehicle:')%></th>
+					<th><%=__('Hand.:')%></th>
+					<th><%=__('Accel.:')%></th>
+					<th><%=__('Speed:')%></th>
+					<th><%=__('Pilot:')%></th>
+					<th><%=__('Body:')%></th>
+					<th><%=__('Armor:')%></th>
+					<th><%=__('Sensor:')%></th>
+				</tr>
+				<% for (var vehicle in char.vehicles) { %>
+					<tr>
+						<td><%-'<input type="text" value="' + char.vehicles[vehicle][0] + '">'%></td>
+						<td><%-'<input type="number" value="' + char.vehicles[vehicle][1] + '">'%></td>
+						<td><%-'<input type="number" value="' + char.vehicles[vehicle][2] + '">'%></td>
+						<td><%-'<input type="number" value="' + char.vehicles[vehicle][3] + '">'%></td>
+						<td><%-'<input type="number" value="' + char.vehicles[vehicle][4] + '">'%></td>
+						<td><%-'<input type="number" value="' + char.vehicles[vehicle][5] + '">'%></td>
+						<td><%-'<input type="number" value="' + char.vehicles[vehicle][6] + '">'%></td>
+						<td><%-'<input type="number" value="' + char.vehicles[vehicle][7] + '">'%></td>
+					</tr>
+				<% } %>
+			</table>
+		</div>
+		<div class="actionButtons">
+			<%-'<input type="button" value="' + __('Add Vheicle') + '">'%>
+			<%-'<input type="button" value="' + __('Remove Vheicle') + '">'%>
+		</div>
+	</article>
+	
+	<!-- Comlink -->
+	
+	<article id="commlink">
+		<h2><%=__('Commlink')%></h2>
+		<table>
+			<tr>
+				<td colspan="4"><%=__('Model/SO: ') + char.commlink.model + ' / ' + char.commlink.so%></td>
+			</tr>
+			<tr>
+				<td><label for="response"><%=__('Response: ')%></label><%=char.commlink.response%></td>
+				<td><%=__('System: ') + char.commlink.system%></td>
+				<td><%=__('Firewall: ') + char.commlink.firewall%></td>
+				<td><%=__('Signal: ') + char.commlink.signal%></td>
+			</tr>
+		</table>
+		<h3><%=__('Programs')%></h3>
+		<div id="programsContainer">
+			<table>
+				<tr>
+					<th><%=__('Program:')%></th>
+					<th><%=__('Rtg.:')%></th>
+				</tr>
+				<% for (var program in char.programs) { %>
+					<tr>
+						<td>
+							<select>
+								<% for (var i in game.programGroups) { %>
+									<%-'<optgroup label="' + __(game.programGroups[i][0]) + '" title="' + __(game.programGroups[i][1]) + '">'%>
+										<% for (var j in game.programList[i]){
+											if (game.programList[i][j].length == 3) {
+												if (char.programs[program][0] == game.programList[i][j][0]) { %>
+													<%-'<option selected="selected" class="' + game.programList[i][j][2] + '" title="' + __(game.programList[i][j][1]) + '">' + __(game.programList[i][j][0]) + '</option>'%>
+												<% } else { %>
+													<%-'<option class="' + game.programList[i][j][2] + '" title="' + __(game.programList[i][j][1]) + '">' + __(game.programList[i][j][0]) + '</option>'%>
+												<% }
+											} else {
+												if (char.programs[program][0] == game.programList[i][j][0]) { %>
+													<%-'<option selected="selected" title="' + __(game.programList[i][j][1]) + '">' + __(game.programList[i][j][0]) + '</option>'%>
+												<% } else { %>
+													<%-'<option title="' + __(game.programList[i][j][1]) + '">' + __(game.programList[i][j][0]) + '</option>'%>
+												<% }
+											}
+										} %>
+									</optgroup>
+								<% } %>
+							</select>
+						</td>
+						<td><%-'<input type="number" value="' + char.programs[program][1] + '">'%></td>
+					</tr>
+				<% } %>
+			</table>
+		</div>
+		<div class="actionButtons">
+			<%-'<input type="button" value="' + __('Add Program') + '">'%>
+			<%-'<input type="button" value="' + __('Remove Program') + '">'%>
+		</div>
+	</article>
+	
+	<!-- Spells -->
+	
+	<article id="spells">
+		<h2><%=__('Spells')%></h2>
+		<div class="containers">
+			<table>
+				<tr>
+					<%-'<th title="' + game.spellsDescription + '">' + __('Spell (Type/Range/Damage/Duration/DV):') + '</th>'%>
+				</tr>
+				<% for (var spell in char.spells) { %>
+					<tr>
+						<td>
+							<select>
+								<% for (var i in game.spellGroups) { %>
+									<%-'<optgroup label="' + __(game.spellGroups[i][0]) + '" title="' + __(game.spellGroups[i][1]) + '">'%>
+										<% for (var j in game.spellList[i]){
+											if (game.spellList[i][j].length == 3) {
+												if (char.spells[spell][0] == game.spellList[i][j][0]) { %>
+													<%-'<option selected="selected" class="' + game.spellList[i][j][2] + '" title="' + __(game.spellList[i][j][1]) + '">' + __(game.spellList[i][j][0]) + '</option>'%>
+												<% } else { %>
+													<%-'<option class="' + game.spellList[i][j][2] + '" title="' + __(game.spellList[i][j][1]) + '">' + __(game.spellList[i][j][0]) + '</option>'%>
+												<% }
+											} else {
+												if (char.spells[spell][0] == game.spellList[i][j][0]) { %>
+													<%-'<option selected="selected" title="' + __(game.spellList[i][j][1]) + '">' + __(game.spellList[i][j][0]) + '</option>'%>
+												<% } else { %>
+													<%-'<option title="' + __(game.spellList[i][j][1]) + '">' + __(game.spellList[i][j][0]) + '</option>'%>
+												<% }
+											}
+										} %>
+									</optgroup>
+								<% } %>
+							</select>
+						</td>
+					</tr>
+				<% } %>
+			</table>
+		</div>
+		<div class="actionButtons">
+			<%-'<input type="button" value="' + __('Add Spell') + '">'%>
+			<%-'<input type="button" value="' + __('Remove Spell') + '">'%>
+		</div>
+	</article>
+	
+	<!-- Spirits -->
+
+	<article id="spirits">
+		<h2><%=__('Spirits/Sprites')%></h2>
+		<div class="containers">
+			<table>
+				<tr>
+					<th><%=__('Spirit/Sprite:')%></th>
+					<th><%=__('Force:')%></th>
+					<th><%=__('Services:')%></th>
+					<th><%=__('Bound:')%></th>
+				</tr>
+				<% for (var spirit in char.spirits) { %>
+					<tr>
+						<td><%-'<input type="text" value="' + char.spirits[spirit][0] + '">'%></td>
+						<td><%-'<input type="number" value="' + char.spirits[spirit][1] + '">'%></td>
+						<td><%-'<input type="number" value="' + char.spirits[spirit][2] + '">'%></td>
+						<td><%-'<input type="number" value="' + char.spirits[spirit][3] + '">'%></td>
+					</tr>
+				<% } %>
+			</table>
+		</div>
+		<div class="actionButtons">
+			<%-'<input type="button" value="' + __('Add Spirit') + '">'%>
+			<%-'<input type="button" value="' + __('Remove Spirit') + '">'%>
+		</div>
+	</article>
+	
+	<!-- Notes -->
+
+	<article id="notes">
+		<h2><%=__('Notes')%></h2>
+		<textarea><%=char.notes%></textarea>
+	</article>
+</div>

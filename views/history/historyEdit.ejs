@@ -1,0 +1,24 @@
+<div id="history">
+	<%-'<input type="text" value="' + hist.name + '">'%>
+	<fieldset>
+		<legend><%=__('Summary')%></legend>
+		<textarea><%=hist.summary%></textarea>
+	</fieldset>
+	<script type="text/javascript">
+		function formatDoc(cmd, value) {
+		  document.execCommand(cmd, false, value);
+		  document.getElementById('editor').focus();
+		}
+	</script>
+	<table id="editorControls">
+		<tr>
+			<td><button onclick="formatDoc('bold')">Bold</button></td>
+		</tr>
+		<tr>
+			<td><button onclick="formatDoc('italic')">Italic</button></td>
+		</tr>
+	</table>
+	<article id="editor" name="test" contenteditable="true">
+		<%-hist.history%>
+	</article>
+</div>

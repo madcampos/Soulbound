@@ -1,0 +1,472 @@
+<!-- sheet -->
+
+<div id="sheet">
+	<article id="personalData">
+		<h2><%=__('Personal Data')%></h2>
+		<table>
+			<tr>
+				<td colspan="4"><%=__('Name: ') + char.name%></td>
+			</tr>
+			<tr>
+				<td><%=__('Metatype: ') + char.metatype%></td>
+				<td><%=__('Ethnicity: ') + char.etinicity%></td>
+				<td><%=__('Age: ') + char.age%></td>
+				<td><%=__('Sex: ') + char.sex%></td>
+			</tr>
+			<tr>
+				<td><%=__('Karma (Total/Curr.): ') + char.totalKarma + ' / ' + char.currentKarma%></td>
+				<td><%=__('Street Credit: ') + char.streetCredit%></td>
+				<td><%=__('Notoriety: ') + char.notoriety%></td>
+				<td><%=__('Public Aware.: ') + char.publicAwarness%></td>
+			</tr>
+		</table>
+	</article>
+	
+	<!-- Attributes -->
+	<article id="attributes">
+		<h2><%=__('Attributes')%></h2>
+		<table>
+			<tr>
+				<th><%=__('Phisical')%></th>
+				<th><%=__('Mental')%></th>
+				<th><%=__('Special')%></th>
+			</tr>
+			<tr>
+				<td><%=__('Body: ') + char.body%></td>
+				<td><%=__('Charisma: ') + char.charisma%></td>
+				<td><%=__('Edge: ') + char.edge + ' / ' + char.currentEdge%></td>
+			</tr>
+			<tr>
+				<td><%=__('Agility: ') + char.agility%></td>
+				<td><%=__('Intuition: ') + char.intuition%></td>
+				<td><%=__('Essence: ') + char.essence%></td>
+			</tr>
+			<tr>
+				<td><%=__('Reaction: ') + char.reaction%></td>
+				<td><%=__('Logic: ') + char.logic%></td>
+				<td><%=__('Mag./Ress.: ') + char.magic%></td>
+			</tr>
+			<tr>
+				<td><%=__('Strength: ') + char.strength%></td>
+				<td><%=__('Willpower: ') + char.willpower%></td>
+				<td><%=__('Initiative (Base/Astral/Matrix/Passes): ') + char.initiative + ' / ' + char.matrixInit + ' / ' + char.astralInit + ' / ' + char.initPasses%></td>
+			</tr>
+		</table>
+	</article>
+	
+	<div>
+		<!-- Skills -->
+
+		<article id="skills">
+			<h2><%=__('Skills')%></h2>
+			
+			<!-- Active Skills Container -->
+			
+			<table id="activeSkills">
+				<tr>
+					<th><%=__('Name:')%></th> 
+					<th><%=__('Rtg:')%></th>
+				</tr>
+				<% for (var activeSkill in char.activeSkills) { %>
+					<tr>
+						<td><%=char.activeSkills[activeSkill][0]%></td>
+						<td><%=char.activeSkills[activeSkill][1]%></td>
+					</tr>
+				<% } %>
+			</table>
+				
+			<!-- Other Skills Container -->
+			
+			<table id="otherSkills">
+				<tr>
+					<th><%=__('Name:')%></th> 
+					<th><%=__('Rtg:')%></th>
+				</tr>
+				<% for (var otherSkill in char.otherSkills) { %>
+					<tr>
+						<td><%=char.otherSkills[otherSkill][0]%></td>
+						<td><%=char.otherSkills[otherSkill][1]%></td>
+					</tr>
+				<% } %>
+			</table>
+		</article>
+		
+		<!-- monitor -->
+		
+		<article id="monitor">
+			<h2><%=__('Condition Monitor')%></h2>
+			<div id="phisicalDamage">
+				<h3><%=__('Phisical')%></h3>
+				<table cellspacing="0" cellpadding="0">
+					<tr>
+						<td class="phisicalBoxes"></td>
+						<td class="phisicalBoxes"></td>
+						<td class="phisicalBoxes"></td>
+						<td>-1</td>
+					</tr>
+					<tr>
+						<td class="phisicalBoxes"></td>
+						<td class="phisicalBoxes"></td>
+						<td class="phisicalBoxes"></td>
+						<td>-2</td>
+					</tr>
+					<tr>
+						<td class="phisicalBoxes"></td>
+						<td class="phisicalBoxes"></td>
+						<td class="phisicalBoxes"></td>
+						<td>-3</td>
+					</tr>
+					<tr>
+						<td class="phisicalBoxes"></td>
+						<td class="phisicalBoxes"></td>
+						<td class="phisicalBoxes"></td>
+						<td>-4</td>
+					</tr>
+					<tr>
+						<td class="phisicalBoxes"></td>
+						<td class="phisicalBoxes"></td>
+						<td class="phisicalBoxes"></td>
+						<td>-5</td>
+					</tr>
+					<tr>
+						<td class="phisicalBoxes"></td>
+						<td class="phisicalBoxes"></td>
+						<td class="phisicalBoxes"></td>
+						<td>-6</td>
+					</tr>
+				</table>
+			</div>
+			<div id="stunDamage">
+				<h3><%=__('Stun')%></h3>
+				<table cellspacing="0" cellpadding="0">
+					<tr>
+						<td class="stunBoxes"></td>
+						<td class="stunBoxes"></td>
+						<td class="stunBoxes"></td>
+						<td>-1</td>
+					</tr>
+					<tr>
+						<td class="stunBoxes"></td>
+						<td class="stunBoxes"></td>
+						<td class="stunBoxes"></td>
+						<td>-2</td>
+					</tr>
+					<tr>
+						<td class="stunBoxes"></td>
+						<td class="stunBoxes"></td>
+						<td class="stunBoxes"></td>
+						<td>-3</td>
+					</tr>
+					<tr>
+						<td class="stunBoxes"></td>
+						<td class="stunBoxes"></td>
+						<td class="stunBoxes"></td>
+						<td>-4</td>
+					</tr>
+				</table>
+			</div>
+			<p><%=__('For every 3 boxes of damage on any damage track the character takes a -1 Dice Pool modifier on tests, these modifiers are cumulative within and across damage tracks.')%></p>
+		</article>
+		
+		<!-- Picture -->
+
+		<article id="picture">
+			<h2><%=__('Picture')%></h2>
+			<div id="pictureContainer">
+				<div id="pictureWrapper">
+					<% if(hasAvatar(char._id)){ %>
+						<%-'<img src="/images/public/characters/' + char._id + '.png" alt="' + __('Avatar of: ') + char.name + '">'%>
+					<% } else { %>
+						<%-'<img src="/images/public/characters/defaultAvatar.png" alt="' + __('Avatar of: ') + char.name + '">'%>
+					<% } %>
+				</div>
+			</div>
+		</article>
+	</div>
+	
+	<!-- Qualities -->
+
+	<article id="qualities">
+		<h2><%=__('Qualities')%></h2>
+		<table>
+			<tr>
+				<th><%=__('Name:')%></th>
+			</tr>
+			<% for (var quality in char.qualities) { %>
+				<tr>
+					<td><%=char.qualities[quality]%></td>
+				</tr>
+			<% } %>
+		</table>
+	</article>
+	
+	<!-- Melee Weapons -->
+	
+	<article id="weapons">
+		<h2><%=__('Melee Weapons')%></h2>
+		<table>
+			<tr>
+				<th><%=__('Weapon:')%></th>
+				<th><%=__('Reach:')%></th>
+				<th><%=__('Damage:')%></th>
+				<%-'<th title="' + __('Armor Penetration') + '">' + __('AP:') + '</th>'%>
+			</tr>
+			<% for (var weapon in char.weapons) { %>
+				<tr>
+					<td><%=char.weapons[weapon][0]%></td>
+					<td><%=char.weapons[weapon][1]%></td>
+					<td><%=char.weapons[weapon][2]%></td>
+					<td><%=char.weapons[weapon][3]%></td>
+				</tr>
+			<% } %>
+		</table>
+	</article>
+	
+	<!-- Ranged Weapons -->
+
+	<article id="guns">
+		<h2><%=__('Ranged Weapons')%></h2>
+		<table>
+			<tr>
+				<th><%=__('Gun:')%></th>
+				<th><%=__('Damage:')%></th>
+				<%-'<th title="' + __('Armor Penetration') + '">' + __('AP:') + '</th>'%>
+				<%-'<th title="' + __('SS = Single Shot&#10;SA = Semi-Automatic&#10;BF = Burst Fire&#10;FA = Full-Automatic') + '">' + __('Mode:') + '</th>'%>
+				<%-'<th title="' + __('Recoil Compensation') + '">' + __('RC:') + '</th>'%>
+				<th><%=__('Ammo:')%></th>
+			</tr>
+			<% for (var gun in char.guns) { %>
+				<tr>
+					<td><%=char.guns[gun][0]%></td>
+					<td><%=char.guns[gun][1]%></td>
+					<td><%=char.guns[gun][2]%></td>
+					<td><%=char.guns[gun][3]%></td>
+					<td><%=char.guns[gun][4]%></td>
+					<td><%=char.guns[gun][5]%></td>
+				</tr>
+			<% } %>
+		</table>
+	</article>
+	
+	<!-- Armor -->
+
+	<article id="armor">
+		<h2><%=__('Armor')%></h2>
+		<table>
+			<tr>
+				<th><%=__('Armor (Balistic/Impact):')%></th>
+			</tr>
+			<% for (var armor in char.armors) {%>
+				<tr>
+					<td><%=char.armors[armor]%></td>
+				</tr>
+			<% } %>
+		</table>
+	</article>
+	
+	<!-- Cyberware -->
+
+	<article id="implants">
+		<h2><%=__('Implants')%></h2>
+		<table>
+			<tr>
+				<th><%=__('Implant:')%></th>
+				<th><%=__('Rating:')%></th>
+				<th><%=__('Essence:')%></th>
+				<th><%=__('Notes:')%></th>
+			</tr>
+			<% for (var implant in char.implants) { %>
+				<tr>
+					<td><%=char.implants[implant][0]%></td>
+					<td><%=char.implants[implant][1]%></td>
+					<td><%=char.implants[implant][2]%></td>
+					<td><%=char.implants[implant][3]%></td>
+				</tr>
+			<% } %>
+		</table>
+	</article>
+	
+	
+	<!-- Lifestyles -->
+	
+	<article id="lifestyles">
+		<h2><%=__('Lifestyles')%></h2>
+		<table>
+			<tr>
+				<th><%=__('Lifestyle:')%></th>
+				<th><%=__('Money:')%></th>
+				<th><%=__('Licensses:')%></th>
+			</tr>
+			<% for (var lifestyle in char.lifestyles) { %>
+				<tr>
+					<td><%=char.lifestyles[lifestyle][0]%></td>
+					<td><%=char.lifestyles[lifestyle][1]%></td>
+					<td><%=char.lifestyles[lifestyle][2]%></td>
+				</tr>
+			<% } %>
+		</table>
+	</article>
+	
+	<!-- Misc Equipament -->
+
+	<article id="misc">
+		<h2><%=__('Misc. Equipament')%></h2>
+		<table>
+			<tr>
+				<th><%=__('Name:')%></th>
+				<th><%=__('Notes:')%></th>
+			</tr>
+			<% for (var equip in char.misc) { %>
+				<tr>
+					<td><%=char.misc[equip][0]%></td>
+					<td><%=char.misc[equip][1]%></td>
+				</tr>
+			<% } %>
+		</table>
+	</article>
+	
+	<!-- Contacts -->
+
+	<article id="contacts">
+		<h2><%=__('Contacts')%></h2>
+		<table>
+			<tr>
+				<th><%=__('Contact:')%></th>
+				<th><%=__('Loyalty:')%></th>
+				<th><%=__('Conn.:')%></th>
+			</tr>
+			<% for (var contact in char.contacts) { %>
+				<tr>
+					<td><%=char.contacts[contact][0]%></td>
+					<td><%=char.contacts[contact][1]%></td>
+					<td><%=char.contacts[contact][2]%></td>
+				</tr>
+			<% } %>
+		</table>
+	</article>
+	
+	<!-- Adept Powers/Complex Forms -->
+
+	<article id="powers">
+		<h2><%=__('Adept Powers/Complex Forms')%></h2>
+		<table>
+			<tr>
+				<th><%=__('Name:')%></th>
+				<th><%=__('Rtg.:')%></th>
+			</tr>
+			<% for (var power in char.powers) { %>
+				<tr>
+					<td><%=char.powers[power][0]%></td>
+					<td><%=char.powers[power][1]%></td>
+				</tr>
+			<% } %>
+		</table>
+	</article>
+	
+	<div>
+		<!-- Veicles -->
+	
+		<article id="vehicles">
+			<h2><%=__('Vehicles')%></h2>
+			<table>
+				<tr>
+					<th><%=__('Vehicle:')%></th>
+					<th><%=__('Hand.:')%></th>
+					<th><%=__('Accel.:')%></th>
+					<th><%=__('Speed:')%></th>
+					<th><%=__('Pilot:')%></th>
+					<th><%=__('Body:')%></th>
+					<th><%=__('Armor:')%></th>
+					<th><%=__('Sensor:')%></th>
+				</tr>
+				<% for (var vehicle in char.vehicles) { %>
+					<tr>
+						<td><%=char.vehicles[vehicle][0]%></td>
+						<td><%=char.vehicles[vehicle][1]%></td>
+						<td><%=char.vehicles[vehicle][2]%></td>
+						<td><%=char.vehicles[vehicle][3]%></td>
+						<td><%=char.vehicles[vehicle][4]%></td>
+						<td><%=char.vehicles[vehicle][5]%></td>
+						<td><%=char.vehicles[vehicle][6]%></td>
+						<td><%=char.vehicles[vehicle][7]%></td>
+					</tr>
+				<% } %>
+			</table>
+		</article>
+		
+		<!-- Comlink -->
+		
+		<article id="commlink">
+			<h2><%=__('Commlink')%></h2>
+			<table>
+				<tr>
+					<td colspan="2"><%=__('Model/SO: ') + char.commlink.model + ' / ' + char.commlink.so%></td>
+				</tr>
+				<tr>
+					<td><%=__('Response: ') + char.commlink.response%></td>
+					<td><%=__('System: ') + char.commlink.system%></td>
+					<td><%=__('Firewall: ') + char.commlink.firewall%></td>
+					<td><%=__('Signal: ') + char.commlink.signal%></td>
+				</tr>
+			</table>
+			<h3><%=__('Programs')%></h3>
+			<table>
+				<tr>
+					<th><%=__('Program:')%></th>
+					<th><%=__('Rtg.:')%></th>
+				</tr>
+				<% for (var program in char.programs) { %>
+					<tr>
+						<td><%=char.programs[program][0]%></td>
+						<td><%=char.programs[program][1]%></td>
+					</tr>
+				<% } %>
+			</table>
+		</article>
+	</div>
+	
+	<!-- Spells -->
+	
+	<article id="spells">
+		<h2><%=__('Spells')%></h2>
+		<table>
+			<tr>
+				<th><%=__('Spell (Type/Range/Damage/Duration/DV):')%></th>
+			</tr>
+			<% for (var spell in char.spells) { %>
+				<tr>
+					<td><%=char.spells[spell]%></td>
+				</tr>
+			<% } %>
+		</table>
+	</article>
+	
+	<!-- Spirits -->
+
+	<article id="spirits">
+		<h2><%=__('Spirits/Sprites')%></h2>
+		<table>
+			<tr>
+				<th><%=__('Spirit/Sprite:')%></th>
+				<th><%=__('Force:')%></th>
+				<th><%=__('Services:')%></th>
+				<th><%=__('Bound:')%></th>
+			</tr>
+			<% for (var spirit in char.spirits) { %>
+				<tr>
+					<td><%=char.spirits[spirit][0]%></td>
+					<td><%=char.spirits[spirit][1]%></td>
+					<td><%=char.spirits[spirit][2]%></td>
+					<td><%=char.spirits[spirit][3]%></td>
+				</tr>
+			<% } %>
+		</table>
+	</article>
+	
+	<!-- Notes -->
+
+	<article id="notes">
+		<h2><%=__('Notes')%></h2>
+		<p><%=char.notes%></p>
+	</article>
+</div>

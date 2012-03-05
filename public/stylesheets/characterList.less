@@ -1,0 +1,62 @@
+@grayishBlue: #def2ff;
+@darkGray: #979797;
+@darkBlue: #0E0A32;
+@lightGray: #7d7e7d;
+@almostBlack: #0e0e0e;
+
+#characterList{
+	article{
+		display:inline-block;
+		width:30%;
+		margin:0.3em;
+		border:@grayishBlue thin solid;
+		border-radius:1em;
+		
+		&:hover .actions{
+			visibility:visible;
+		}
+		
+		h3{
+			margin-top:0px;
+		}
+	}
+	
+	#avatar{
+		height:5em;
+		width:5em;
+		float:left;
+		margin-right:0.3em;
+		border-radius:1em;
+	}
+	
+	#game{
+		height:1.7em;
+		width:1.7em;
+		vertical-align:middle;
+		margin-right:0.3em;
+	}
+	span{
+		font-size:0.8em;
+		font-style:italic;
+	}
+	
+	.actions{
+		float:right;
+		visibility:hidden;
+		
+		a{
+			border:none;
+			margin-right:0.3em;
+			
+			&:hover{
+				border:none;
+			}
+		}
+		
+		img{
+			height:1em;
+			width:1em;
+			vertical-align:middle;
+		}
+	}
+}
