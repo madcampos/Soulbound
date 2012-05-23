@@ -1,36 +1,16 @@
-# A HTML5 Shadowrun Character Sheet
+# A HTML5 RPG manager for players and gamemasters
 
-The intents of this project are to create a shadowrun Chacacter Sheet unsing new web technologies (and for me to learn more).
-Actualy it's able to load data from a file (JSON formated) and display it, it also creates a string from the fields and display it.
-
-## Browser (lack of) Suport
-
-+ Chrome
-	+ nope, the main browser focus IS Chrome
-+ Firefox
-	+ Custom CSS is not working, the -moz-apearence propriety is not applying
-+ Opera
-	+ Drag n Drop
-	+ File loading not fully working
-	+ Custom CSS not working
-+ IE 9
-	+ Loading/parsing file
-	+ Custom CSS, apearence propriety not applying
-+ IE 10
-	+ Parsing file
-	+ Custom CSS
-+ Safari
-	+ Loading/parsing file
+The intents of this project are to create a RPG game manager unsing new web technologies (and for me to learn more),
+also the plans are to be an extensible api that cen be filled with user data and custom game systems.
 
 ## Todo
 
 + Make functions clear and more reusable (documentation using JSDoc)
 + Work on cross-browser compatibility
-+ Write .json file with character (posibly flash)
 + Refactor CSS
 + Make responsive data based on form rules and states changes
 + Better forms and form customization
-+ Make a "group valt", for shared itens between players
++ Make a "group vault", for shared itens between players
 
 ##Ahead Work
 
@@ -38,3 +18,4 @@ Actualy it's able to load data from a file (JSON formated) and display it, it al
 + internationalization
 + admin page with control of data (ability to add/remove data)
 + study character builder sheets and plan parsing/conversion
++ add support to turn tracking methods
