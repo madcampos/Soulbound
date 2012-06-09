@@ -1,9 +1,12 @@
 {
-    "name": "soulbound"
-  , "version": "0.0.1"
-  , "private": true
-  , "dependencies": {
-      "express": "2.5.5"
-    , "ejs": ">= 0.0.1"
-  }
+	"name": "soulbound",
+	"version": "0.0.1",
+	"private": true,
+	"dependencies": {
+		"express": "2.5.5",
+		"ejs": ">= 0.0.1",
+		"mongoose" : "2.6.5",
+		"everyauth" : "0.2.32",
+		"dialect": "1.0.4"
+	}
 }

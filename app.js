@@ -26,14 +26,14 @@ var gameDataFilter = function(docs, gameName){
 			var mapper = function(el){
 				return el.className ? [el.name, el.desc, el.className] : [el.name, el.desc];
 			};
-			
+
 			for (var i in group) {
 				_el = group[i][0];
 				mapped[i] = docs.filter(filter).map(mapper).sort();
 			}
-			
+
 			return mapped;
-		};			
+		};
 		var listGroupHeaders = function(group){
 			var mapped = docs.filter(function(el){
 				return el.type == group ? true : false;
@@ -42,7 +42,7 @@ var gameDataFilter = function(docs, gameName){
 			}).sort();
 			return mapped;
 		};
-		
+
 		switch (gameName) {
 			case 'shadowrun':
 				game.metatypes = listGroupHeaders('metatype');
@@ -104,7 +104,7 @@ app.configure(function(){
 		locales : ['en', 'pt-br'],
 		register: global
 	});
-	
+
 	app.use(i18n.init);
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
@@ -119,11 +119,11 @@ app.configure(function(){
 
 
 app.configure('development', function(){
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
 app.configure('production', function(){
-  app.use(express.errorHandler()); 
+  app.use(express.errorHandler());
 });
 
 // Routes
@@ -134,7 +134,7 @@ app.configure('production', function(){
 app.get('/', function(req, res) {
 	var db = require('mongojs').connect(dbURL, ['users','characters','maps','npcs','histories', 'games']);
 	i18n.setLocale(req.header('accept-language').match(/(^\w\w-\w\w)|(^\w\w)/)[0].toLowerCase());
-	
+
 	//TODO: create dashboard redirection && create login system
 	db.users.findOne({'name' : 'test'}, function(err, doc) {
 		if (err || !doc){
