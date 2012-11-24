@@ -1,5 +1,3 @@
-/*global __dirname, module, console, global, __, __n*/
-
 var dbURL = 'soulbound';
 
 var express = require('express'),
@@ -27,6 +25,7 @@ var gameDataFilter = function(docs, gameName){
 				return el.className ? [el.name, el.desc, el.className] : [el.name, el.desc];
 			};
 
+			
 			for (var i in group) {
 				_el = group[i][0];
 				mapped[i] = docs.filter(filter).map(mapper).sort();
@@ -87,7 +86,7 @@ var gameDataFilter = function(docs, gameName){
 			case 'fallout':
 			break;
 		}
-		
+
 		return game;
 	} else {
 		return null;
