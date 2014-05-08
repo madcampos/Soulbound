@@ -1,0 +1,76 @@
+<!doctype>
+<html>
+	<head>
+		<title>Test mapper</title>
+	</head>
+	<body>
+		<svg width="100%" height="100%" viewBox="0 0 500 500" id="map">
+			<defs>
+				<pattern id="Square" width="50" height="50" patternUnits="userSpaceOnUse">
+					<path d="m 0 0 l 0 50" stroke="black" stroke-width="3"/>
+					<path d="m 0 0 l 50 0" stroke="black" stroke-width="3"/>
+				</pattern>
+				<pattern id="SpacedSquare" width="50"height="50" patternUnits="userSpaceOnUse">
+					<path d="m 0 0 l 0 6" stroke="black" stroke-width="3"/>
+					<path d="m 0 0 l 6 0" stroke="black" stroke-width="3"/>
+					<path d="m 0 45 l 0 5" stroke="black" stroke-width="3"/>
+					<path d="m 45 0 l 5 0" stroke="black" stroke-width="3"/>
+				</pattern>
+				<pattern id="Hexagonal" width="40"height="60" patternUnits="userSpaceOnUse">
+					<path d="m 0 0 l 20 10" stroke="black" stroke-width="2"/>
+					<path d="m 20 10 l 20 -10" stroke="black" stroke-width="2"/>
+					<path d="m 20 10 l 0 20" stroke="black" stroke-width="2"/>
+					<path d="m 0 40 l 20 -10" stroke="black" stroke-width="2"/>
+					<path d="m 20 30 l 20 10" stroke="black" stroke-width="2"/>
+					<path d="m 0 40 l 0 20" stroke="black" stroke-width="3"/>
+				</pattern>
+				<pattern id="SpacedHexagonal" width="40"height="60" patternUnits="userSpaceOnUse">
+					<path d="m 10 5 l 10 5" stroke="black" stroke-width="2"/>
+					<path d="m 20 10 l 10 -5" stroke="black" stroke-width="2"/>
+					<path d="m 20 10 l 0 10" stroke="black" stroke-width="2"/>
+					<path d="m 0 40 l 10 -5" stroke="black" stroke-width="2"/>
+					<path d="m 30 35 l 10 5" stroke="black" stroke-width="2"/>
+					<path d="m 0 40 l 0 10" stroke="black" stroke-width="3"/>
+				</pattern>
+			</defs>
+			<path d="M 10 10 L 490 10 L 490 490 L 10 490 z" fill="url(#SpacedSquare)" stroke="slateblue" stroke-width="2" />
+			<g id="drawing">
+			</g>
+		</svg>
+		<script>
+			var map = document.querySelector('#map');
+			function MapClick(evt){
+				var isfirstClick = true,
+					firstClickPosition = [0,0],
+					drawing = document.querySelector('#drawing'),
+					svgns = "http://www.w3.org/2000/svg",
+					curentPath = null,
+					pathCoords = '';
+
+				return function(evt){
+					var xPos = evt.clientX,
+						yPos = evt.clientY;
+
+					if (isfirstClick) {
+						curentPath = evt.target.ownerDocument.createElementNS(svgns, 'path');
+						curentPath.setAttributeNS(svgns, 'stroke', 'red');
+						curentPath.setAttributeNS(svgns, 'stroke-width', '3');
+						curentPath.setAttributeNS(svgns, 'd', 'm ' + xPos + ' ' + yPos);
+						firstClickPosition = [xPos, yPos];
+						drawing.appendChild(curentPath);
+						isfirstClick = false;
+					} else {
+						if ((firstClickPosition[0] - 2 <= xPos || xPos <= firstClickPosition[0] + 2) && (firstClickPosition[1] - 2 <= yPos || yPos <= firstClickPosition[1] + 2)) {
+							pathCoords = ' z';
+							isfirstClick = true;
+						} else {
+							pathCoords = 'L ' + xPos + ' ' + yPos;
+						}
+						curentPath.setAttributeNS(svgns, 'd', curentPath.getAttributeNS(svgns, 'd') + pathCoords);
+					}
+				};
+			}
+			map.addEventListener('click', new MapClick(), false);
+		</script>
+	</body>
+</html>

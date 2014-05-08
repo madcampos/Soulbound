@@ -1,0 +1,353 @@
+<!doctype>
+<html>
+    <head>
+        <title>Test map 3</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/print.css" media="print">
+    </head>
+    <body>
+        <!-- TODO: join/merge the two bars into one editing sidebar/topbar (depending on width x height relation) hint: media query orientation -->
+        <aside id="editBar">
+            <span>
+                <input type="radio" class="mode" name="mode" id="edit"><span>Edit</span>
+                <div class="options" id="editOptions">
+                    <span>
+                        <span>Fill style:</span>
+                        <input type="color" data-attribute="fill" data-type="color">
+                        <span>or</span>
+                        <input type="file" data-attribute="fill" data-type="file">
+                        <span>or</span>
+                        <select data-attribute="fill" data-type="pattern">
+                            <!-- TODO: get pattern options, if available -->
+                        </select>
+                    </span>
+                    <span>
+                        <span>Fill Opacity:</span>
+                        <input type="range" min="0" max="100" step="10" data-attribute="fillOpacity">
+                    </span>
+                    <span>
+                        <span>Stroke style:</span>
+                        <input type="color" data-attribute="stroke" data-type="color">
+                        <span>or</span>
+                        <input type="file" data-attribute="stroke" data-type="file">
+                        <span>or</span>
+                        <select data-attribute="stroke" data-type="pattern">
+                            <optgroup label="Line styles">
+                                
+                            </optgroup>
+                            <optgroup label="Patterns">
+                                
+                            </optgroup>
+                        </select>
+                    </span>
+                    <span>
+                        <span>Stroke opacity:</span>
+                        <input type="range" min="0" max="100" step="10" data-attribute="strokeOpacity">
+                    </span>
+                    <span>
+                        <span>Transformations:</span>
+                        <span><span>X:</span><input type="number" data-attribute="transform" data-type="translateX"></span>
+                        <span><span>Y:</span><input type="number" data-attribute="transform" data-type="translateY"></span>
+                        <span><span>Width:</span><input type="number" data-attribute="transform" data-type="scaleX"></span>
+                        <span><span>Height:</span><input type="number" data-attribute="transform" data-type="scaleY"></span>
+                        <span><span>Rotation:</span><input type="number" data-attribute="transform" data-type="rotate"></span>
+                    </span>
+                </div>
+            </span>
+            <span>
+                <input type="radio" class="mode" name="mode" id="draw" checked><span>Draw</span>
+                <div class="options" id="drawOptions">
+                    <span>
+                        <input type="radio" data-attribute="drawingMode" data-type="polygon" name="drawingMode" checked>
+                        <span>Polygon</span>
+                    </span>
+                    <span>
+                        <input type="radio" data-attribute="drawingMode" data-type="freehand" name="drawingMode">
+                        <span>Freehand</span>
+                    </span>
+                    <span>
+                        <input type="radio" data-attribute="drawingMode" data-type="text" name="drawingMode">
+                        <span>Text</span>
+                    </span>
+                </div>
+            </span>
+            <span>
+                <input type="radio" class="mode" name="mode" id="notes"><span>Notes</span>
+                <div class="options" id="notesOptions">
+                </div>
+            </span>
+            <span>
+                <input type="radio" class="mode" name="mode" id="gmNotes"><span>GM Notes</span>
+            </span>
+            <span>
+                <input type="radio" class="mode" name="mode" id="fogOfWar"><span>Fog of War</span>
+                <div class="options" id="fogOfWarOptions">
+                    <span>
+                        <input type="radio" data-attribute="fogMode" data-type="add" name="fogOfWar" checked>
+                        <span>Add</span>
+                    </span> 
+                    <span>
+                        <input type="radio" data-attribute="fogMode" data-type="remove" name="fogOfWar">
+                        <span>Remove</span>
+                    </span>
+                    <span>Brush size:</span>
+                    <input type="range" min="0" max="100" step="1" data-attribute="brushSize">
+                </div>
+            </span>
+            <span>
+                <span>
+                    <input type="radio" class="mode" name="mode" id="general">
+                    <span>Map Options</span>
+                    <div class="options" id="mapOptions">
+                        <span>Grid style:</span>
+                        <select data-attribute="gridFill">
+                            <option value="square" selected>Square</option>
+                            <option value="spacedSquare">Spaced Square</option>
+                            <option value="hexagonal">Hexagonal</option>
+                            <option value="spacedHexagonal">Spaced Hexagonal</option>
+                            <option value="triangular">Triangular</option>
+                            <option value="spacedTriangular">Spaced Triangular</option>
+                        </select>
+                        <span>Grid color:</span>
+                        <input type="color" data-attribute="gridColor">
+                        <span>Grid opacity:</span>
+                        <input type="range" min="0" max="100" step="10" data-attribute="gridOpacity">
+                        <span>
+                        <span>Map background:</span>
+                            <input type="color" data-attribute="background" data-type="color">
+                            <span>or</span>
+                            <input type="file" data-attribute="background" data-type="file">
+                            <span>or</span>
+                            <select data-attribute="background" data-type="pattern">
+                                <!-- TODO: get pattern options, if available -->
+                            </select>
+                        </span>
+                        <span>Blur Background?</span>
+                        <input type="checkbox" data-attribute="backgroundBlur">
+                        <span>Effect:</span>
+                        <select data-attribute="effect">
+                            <option value="none" selected>None</option>
+                            <option value="dimLight">Dim light</option>
+                            <option value="fog">Fog</option>
+                            <option value="rain">Rain</option>
+                            <option value="snow">Snow</option>
+                            <option value="poisonCloud">Poison Cloud</option>
+                            <option value="dust">Dust</option>
+                            <option value="sandstorm">Sandstorm</option>
+                            <option value="underwater">Underwater</option>
+                            <option value="lava">Lava</option>
+                            <option value="nebula">Nebulae</option>
+                            <option value="stars">Stars</option>
+                        </select>
+                    </div>
+                </span>
+            </span>
+        </aside>
+        <aside id="elementsBox">
+            <dl>
+                <dt>Fantasy Elements</dt>
+                <dd>
+                    <span class="clutter-name">Test01</span>
+                    <div class="clutter">
+                        <svg></svg>
+                    </div>
+                </dd>
+                <dd>
+                    <span class="clutter-name">Test02</span>
+                    <div class="clutter">
+                        <svg></svg>
+                    </div>
+                </dd>
+                <dd>
+                    <span class="clutter-name">Test03</span>
+                    <div class="clutter">
+                        <svg></svg>
+                    </div>
+                </dd>
+                <dd>
+                    <span class="clutter-name">Test04</span>
+                    <div class="clutter">
+                        <svg></svg>
+                    </div>
+                </dd>
+                <dd>
+                    <span class="clutter-name">Test05</span>
+                    <div class="clutter">
+                        <svg></svg>
+                    </div>
+                </dd>
+                <dd>
+                    <span class="clutter-name">Test06</span>
+                    <div class="clutter">
+                        <svg></svg>
+                    </div>
+                </dd>
+                <dd>
+                    <span class="clutter-name">Test07</span>
+                    <div class="clutter">
+                        <svg></svg>
+                    </div>
+                </dd>
+                <dd>
+                    <span class="clutter-name">Test08</span>
+                    <div class="clutter">
+                        <svg></svg>
+                    </div>
+                </dd>
+                <dd>
+                   <span class="clutter-name">Test09</span>
+                    <div class="clutter">
+                        <svg></svg>
+                    </div>
+                </dd>
+                <dd>
+                    <span class="clutter-name">Test10</span>
+                    <div class="clutter">
+                        <svg></svg>
+                    </div>
+                </dd>
+                <dt>Sci-Fi Elements</dt>
+                <dd>
+                    <span class="clutter-name">Test01</span>
+                    <div class="clutter">
+                        <svg></svg>
+                    </div>
+                </dd>
+                <dd>
+                    <span class="clutter-name">Test02</span>
+                    <div class="clutter">
+                        <svg></svg>
+                    </div>
+                </dd>
+                <dd>
+                    <span class="clutter-name">Test03</span>
+                    <div class="clutter">
+                        <svg></svg>
+                    </div>
+                </dd>
+                <dd>
+                    <span class="clutter-name">Test04</span>
+                    <div class="clutter">
+                        <svg></svg>
+                    </div>
+                </dd>
+                <dd>
+                    <span class="clutter-name">Test05</span>
+                    <div class="clutter">
+                        <svg></svg>
+                    </div>
+                <dd>
+                    <span class="clutter-name">Test06</span>
+                    <div class="clutter">
+                        <svg></svg>
+                    </div>
+                </dd>
+                <dd>
+                    <span class="clutter-name">Test07</span>
+                    <div class="clutter">
+                        <svg></svg>
+                    </div>
+                </dd>
+                <dd>
+                    <span class="clutter-name">Test08</span>
+                    <div class="clutter">
+                        <svg></svg>
+                    </div>
+                </dd>
+                <dd>
+                    <span class="clutter-name">Test09</span>
+                    <div class="clutter">
+                        <svg></svg>
+                    </div>
+                </dd>
+                <dd>
+                    <span class="clutter-name">Test10</span>
+                    <div class="clutter">
+                        <svg></svg>
+                    </div>
+                </dd>
+            </dl>
+        </aside>
+        <div id="mapWrapper">
+            <svg width="100%" height="100%" id="map" fill="transparent">
+                <defs id="grids">
+                    <pattern id="square" width="50" height="50" patternUnits="userSpaceOnUse">
+                        <path d="m0,0l0,50"/>
+                        <path d="m0,0l50,0"/>
+                    </pattern>
+                    <pattern id="spacedSquare" width="50" height="50" patternUnits="userSpaceOnUse">
+                        <path d="m0,0l0,6"/>
+                        <path d="m0,0l6,0"/>
+                        <path d="m0,45l0,5"/>
+                        <path d="m45,0l5,0"/>
+                    </pattern>
+                    <pattern id="hexagonal" width="40" height="60" patternUnits="userSpaceOnUse">
+                        <path d="m0,0l20,10"/>
+                        <path d="m20,10l20,-10"/>
+                        <path d="m20,10l0,20"/>
+                        <path d="m0,40l20,-10"/>
+                        <path d="m20,30l20,10"/>
+                        <path d="m0,40l0,20" stroke-width="3"/>
+                    </pattern>
+                    <pattern id="spacedHexagonal" width="40" height="60" patternUnits="userSpaceOnUse">
+                        <path d="m10,5l10,5"/>
+                        <path d="m20,10l10,-5"/>
+                        <path d="m20,10l0,10"/>
+                        <path d="m0,40l10,-5"/>
+                        <path d="m30,35l10,5"/>
+                        <path d="m0,40l0,10" stroke-width="3"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" id="background"/>
+                <g id="walls">
+                    <path d="M 121 106 L 439 337 L 436 142 C 436 142 266 131 267 131 C 268 131 403 58 403 58 C 403 58 492 137 492 137 C 492 137 526 245 526 245 C 526 245 336 200 336 200 C 336 200 168 66 168 66 C 168 66 206 237 206 237 C 206 237 121 106 121 106 Z"/>
+                </g>
+                <g id="clutter">
+                    
+                </g>
+                <rect width="100%" height="100%" id="grid" fill="url(#hexagonal)"/>
+                <g id="chars">
+                   <g id="pc">
+                       
+                   </g>
+                   <g id="npc">
+                       
+                   </g> 
+                </g>
+                <g id="effects">
+                    <g id="generalEffects">
+                        
+                    </g>
+                    <g id="fogOfWar">
+                        
+                    </g>
+                </g>
+                <g id="notes">
+                    <g id="generalNotes">
+                        
+                    </g>
+                    <g id="gmNotes">
+                        
+                    </g>
+                </g>
+                <g id="resizer" class="hidden">
+                    <rect height="10" width="10" id="boundRect"/>
+                    <rect height="10" width="10" rx="5" id="topLeft"/>
+                    <rect height="10" width="10" rx="5" id="left"/>
+                    <rect height="10" width="10" rx="5" id="bottomLeft"/>
+                    <rect height="10" width="10" rx="5" id="bottom"/>
+                    <rect height="10" width="10" rx="5" id="bottomRight"/>
+                    <rect height="10" width="10" rx="5" id="right"/>
+                    <rect height="10" width="10" rx="5" id="topRight"/>
+                    <rect height="10" width="10" rx="5" id="top"/>
+                    <path d="M0,0L0,20" id="rotatorLine"/>
+                    <rect height="10" width="10" rx="5" fill="limegreen" id="rotator"/>
+                </g>
+            </svg>
+        </div>
+        <script src="js/teste3/require.js"></script>
+        <script src="js/lib/snap.svg.js"></script>
+        <script src="js/lib/svg/svg.js"></script>
+        <script src="js/teste3/main.js"></script>
+    </body>
+</html>

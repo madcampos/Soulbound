@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0,0,1250,750" width="1250px" heigth="750px">
+    <defs id="textures">
+        <pattern id="bgTile" height="100" width="100" patternUnits="userSpaceOnUse">
+            <image xlink:href="./floor-tile.jpg" x="0" y="0" height="100" width="100"/>
+        </pattern>
+        <filter id="sand">
+            <!-- Sand -->
+            <feTurbulence baseFrequency="0.999 0.989" numOctaves="10" seed="10" type="fractalNoise"/>
+            <feColorMatrix type="saturate" values="0"/>
+            <feSpecularLighting surfaceScale="2" specularConstant="1" result="terrain">
+                <feDistantLight azimuth="0" elevation="10" />
+            </feSpecularLighting>
+            <feComposite operator="in" in="SourceAlpha" in2="terrain" result="terrain"/>
+            <feFlood flood-color="navajowhite"/>
+            <feComposite operator="in" in2="terrain" result="terrain"/>
+            
+            <!-- Depth -->
+            <feTurbulence type="fractalNoise" baseFrequency="0.01 0.012" numOctaves="5" result="depth"/>
+            <feComposite in2="depth" operator="in" result="depth"/>
+            <feComposite in="SourceAlpha" in2="depth" operator="in" result="depth"/>
+            <feFlood flood-color="saddlebrown" flood-opacity="0.5"/>
+            <feComposite in2="depth" operator="in" result="depth"/>
+            
+            <!-- Depth 2 -->
+            <feTurbulence type="fractalNoise" baseFrequency="0.013 0.09" numOctaves="5" result="depth2"/>
+            <feFlood flood-color="tan" flood-opacity="0.5"/>
+            <feComposite in2="depth" operator="in" result="depth2"/>
+            <feComposite in="SourceAlpha" in2="depth2" operator="in" result="depth2"/>
+            
+            <feMerge>
+                <feMergeNode in="SourceGraphic"/>
+                <feMergeNode in="terrain"/>
+                <feMergeNode in="depth"/>
+                <feMergeNode in="depth2"/>
+            </feMerge>
+        </filter>
+        <filter id="metal">
+            <!-- Brushed Metal -->
+            <feTurbulence type="fractalNoise" numOctaves="10" baseFrequency="0.9 0.5" result="metal"/>
+            <feColorMatrix type="luminanceToAlpha"/>
+            <feGaussianBlur stdDeviation="20 0" result="metal"/>
+            <feConvolveMatrix order="3" kernelMatrix="1 -1 1 -1 -0.1 -1 1 -1 1"/>
+            <feGaussianBlur stdDeviation="2 0" result="metal"/>
+            <feComposite operator="in" in="SourceAlpha" in2="metal" result="metal"/>
+            <feFlood flood-color="black" flood-opacity="0.3"/>
+            <feComposite operator="in" in2="metal" result="metal"/>
+            
+            <!-- Depth -->
+            <feTurbulence type="fractalNoise" baseFrequency="0.1 0.023" numOctaves="5" result="depth"/>
+            <feFlood flood-opacity="0.4"/>
+            <feComposite in2="depth" operator="in" result="depth"/>
+            <feComposite in="SourceAlpha" in2="depth" operator="in" result="depth"/>
+            
+            <feMerge>
+                <feMergeNode in="SourceGraphic"/>
+                <feMergeNode in="metal"/>
+            </feMerge>
+        </filter>
+        <filter id="wood">
+            <!-- Wood Carvings -->
+            <feTurbulence type="fractalNoise" baseFrequency="0.5 0.3" result="carvings"/>
+            <feFlood flood-opacity="0.3"/>
+            <feComposite operator="in" in2="carvings"/>
+            <feGaussianBlur stdDeviation="0.3 9"/>
+            <feConvolveMatrix order="5" kernelMatrix="2 1 -1 1 2 1 -2 -2 -2 1 -1 -2 1 -2 -1 1 -2 -2 -2 1 2 1 -1 1 2"/>
+            <feConvolveMatrix order="3" kernelMatrix="1 -1 1 -1 -0.1 -1 1 -1 1"/>
+            <feGaussianBlur stdDeviation="1 12" result="carvings"/>
+            <feComposite operator="in" in="SourceAlpha" in2="carvings" result="carvings"/>
+            
+            <!-- Depth -->
+            <feTurbulence type="fractalNoise" baseFrequency="0.1 0.023" numOctaves="5" result="depth"/>
+            <feFlood flood-opacity="0.4"/>
+            <feComposite in2="depth" operator="in" result="depth"/>
+            <feComposite in="SourceAlpha" in2="depth" operator="in" result="depth"/>
+            
+            <feMerge>
+                <feMergeNode in="SourceGraphic"/>
+                <feMergeNode in="depth"/>
+                <feMergeNode in="carvings"/>
+            </feMerge>
+        </filter>
+        <filter id="fabric">
+            <!-- Folds -->
+            <feTurbulence type="fractalNoise" baseFrequency="0.19" numOctaves="8" result="folds"/>
+            <feFlood flood-opacity="0.4"/>
+            <feComposite operator="in" in2="folds"/>
+            <feGaussianBlur stdDeviation="0.3 9"/>
+            <feConvolveMatrix order="5" kernelMatrix="2 1 -1 1 2 1 -2 -2 -2 1 -1 -2 1 -2 -1 1 -2 -2 -2 1 2 1 -1 1 2"/>
+            <feGaussianBlur stdDeviation="0 2" result="folds"/>
+            <feGaussianBlur stdDeviation="0.8 1.2" result="folds"/>
+            <feComposite operator="in" in="SourceAlpha" in2="folds" result="folds"/>
+            
+            <!-- Depth -->
+            <feTurbulence type="fractalNoise" baseFrequency="0.015" result="depth"/>
+            <feFlood flood-opacity="0.4"/>
+            <feComposite in2="depth" operator="in" result="depth"/>
+            <feComposite in="SourceAlpha" in2="depth" operator="in" result="depth"/>
+            
+            <feMerge>
+                <feMergeNode in="SourceGraphic"/>
+                <feMergeNode in="folds"/>
+                <feMergeNode in="depth"/>
+            </feMerge>
+        </filter>
+        <filter id="waterTexture">
+            <!-- Deep Water -->
+            <feTurbulence type="fractalNoise" numOctaves="3" baseFrequency="0.03 0.12"/>
+            <feGaussianBlur stdDeviation="4 1" result="waterDeep"/>
+            <feComposite operator="in" in="SourceAlpha" in2="waterDeep" result="waterDeep"/>
+            <feFlood flood-color="midnightblue" flood-opacity="0.9"/>
+            <feComposite operator="in" in2="waterDeep" result="waterDeep"/>
+            
+            <!-- Medium Water -->
+            <feTurbulence type="fractalNoise" numOctaves="5" baseFrequency="0.6 0.07"/>
+            <feGaussianBlur stdDeviation="5 2" result="waterMedium"/>
+            <feComposite operator="in" in="SourceAlpha" in2="waterMedium" result="waterMedium"/>
+            <feFlood flood-color="lightblue" flood-opacity="0.3"/>
+            <feComposite operator="in" in2="waterMedium" result="waterMedium"/>
+            
+            <!-- Swallow Water -->
+            <feTurbulence type="fractalNoise" numOctaves="12" baseFrequency="0.04 0.2"/>
+            <feGaussianBlur stdDeviation="4.5 2.7" result="waterSwallow"/>
+            <feComposite operator="in" in="SourceAlpha" in2="waterSwallow" result="waterSwallow"/>
+            <feFlood flood-color="skyblue" flood-opacity="0.7"/>
+            <feComposite operator="in" in2="waterSwallow" result="waterSwallow"/>
+            <feMerge>
+                <feMergeNode in="waterDeep"/>
+                <feMergeNode in="waterSwallow"/>
+                <feMergeNode in="waterMedium"/>
+            </feMerge>
+        </filter>
+        <filter id="underwaterObject" width="100%" height="100%" x="0%" y="0%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.04"/>
+            <feColorMatrix type="luminanceToAlpha"/>
+            <feComposite operator="in" in2="SourceAlpha"/>
+            <feBlend operator="over" in2="SourceGraphic" result="object"/>
+            <feTurbulence type="fractalNoise" baseFrequency="0.017" result="poundRipple" />
+            <feDisplacementMap scale="35" in="object" in2="poundRipple"/>
+        </filter>
+        <filter id="cloudTexture" width="100%" height="100%" x="0%" y="0%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.015"/>
+            <feColorMatrix type="luminanceToAlpha"/>
+            <feGaussianBlur stdDeviation="5" result="marble1"/>
+            <feTurbulence type="fractalNoise" baseFrequency="0.04"/>
+            <feColorMatrix type="saturate" values="0.4"/>
+            <feBlend in2="marble1" mode="screen"/>
+            <feColorMatrix type="saturate" values="0.8"/>
+            <!-- k1: controls the overal "blending" of the pixels k2: controls the opacity of the pixel value from the first image (in), k3: controls the opacity of the pixel value from the second image (in2), k4: controls the overal luminosity of the image (negative darkens, positive lightens) -->
+            <feComposite operator="arithmetic" k4="-0.03" k2="0.3" k3="1" in2="SourceGraphic" result="marble4"/>
+        </filter>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#bgTile)"/>
+    <rect width="250" height="250" fill="aliceblue" filter="url(#cloudTexture)"/>
+    <rect width="250" height="250" y="250" fill="dodgerblue" filter="url(#cloudTexture)"/>
+    <rect width="250" height="250" x="250" fill="slateblue" filter="url(#cloudTexture)"/>
+    <image xlink:href="stone.png" x="325" y="325" height="100" width="100" filter="url(#underwaterObject)"/>
+    <rect width="250" height="250" y="250" x="250" fill="skyblue" filter="url(#waterTexture)"/>
+    <!-- TODO: magma, marble, wood, water, etc... -->
+    <rect width="250" height="250" x="500" fill="yellowgreen" filter="url(#fabric)"/>
+    <rect width="250" height="250" x="750" fill="sandybrown" filter="url(#wood)"/>
+    <rect width="250" height="250" x="500" y="250" fill="slategray" filter="url(#metal)"/>
+    <rect width="250" height="250" x="750" y="250" fill="sandybrown" filter="url(#sand)"/>
+</svg>

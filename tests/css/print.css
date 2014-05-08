@@ -1,0 +1,16 @@
+#editBar, #elementsBox {
+    display: none;
+}
+
+#mapWrapper{
+    top: 0;
+    right: 0;
+    overflow: visible;
+    page-break-inside: auto;
+    page-break-after: avoid;
+    page-break-before: avoid;
+}
+
+@page{
+    margin: 0.5cm;
+}

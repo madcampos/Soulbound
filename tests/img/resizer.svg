@@ -1,0 +1,14 @@
+<svg width="100" height="100" viewBox="0 0 100 120">
+	<rect x="6" y="26" height="89" width="89" fill="transparent" stroke="dodgerblue" stroke-width="2" stroke-dasharray="5" id="boundRect"/>
+	<rect x="1" y="21" height="10" width="10" fill="aliceblue" stroke="dodgerblue" stroke-width="1" rx="5" ry="5" id="topLeft"/>
+	<rect x="1" y="65" height="10" width="10" fill="aliceblue" stroke="dodgerblue" stroke-width="1" rx="5" ry="5" id="left"/>
+	<rect x="1" y="109" height="10" width="10" fill="aliceblue" stroke="dodgerblue" stroke-width="1" rx="5" ry="5" id="bottomLeft"/>
+	<rect x="45" y="109" height="10" width="10" fill="aliceblue" stroke="dodgerblue" stroke-width="1" rx="5" ry="5" id="bottom"/>
+	<rect x="89" y="109" height="10" width="10" fill="aliceblue" stroke="dodgerblue" stroke-width="1" rx="5" ry="5" id="bottomRight"/>
+	<rect x="89" y="65" height="10" width="10" fill="aliceblue" stroke="dodgerblue" stroke-width="1" rx="5" ry="5" id="right"/>
+	<rect x="89" y="21" height="10" width="10" fill="aliceblue" stroke="dodgerblue" stroke-width="1" rx="5" ry="5" id="topRight"/>
+	<line x1="50" y1="6" x2="50" y2="21" stroke="dodgerblue" stroke-width="1" id="rotateLine"/>
+	<rect x="45" y="21" height="10" width="10" fill="aliceblue" stroke="dodgerblue" stroke-width="1" rx="5" ry="5" id="top"/>
+	<rect x="45" y="1" height="10" width="10" fill="dodgerblue" stroke="slateblue" stroke-width="1" rx="5" ry="5" id="rotator"/>
+</svg>
+<!--<svg width="100" height="100" viewBox="0 0 100 120"><rect x="6" y="26" height="89" width="89" fill="transparent" stroke="dodgerblue" stroke-width="2" stroke-dasharray="5" id="boundRect"/><rect x="1" y="21" height="10" width="10" fill="aliceblue" stroke="dodgerblue" stroke-width="1" rx="5" ry="5" id="topLeft"/><rect x="1" y="65" height="10" width="10" fill="aliceblue" stroke="dodgerblue" stroke-width="1" rx="5" ry="5" id="left"/><rect x="1" y="109" height="10" width="10" fill="aliceblue" stroke="dodgerblue" stroke-width="1" rx="5" ry="5" id="bottomLeft"/><rect x="45" y="109" height="10" width="10" fill="aliceblue" stroke="dodgerblue" stroke-width="1" rx="5" ry="5" id="bottom"/><rect x="89" y="109" height="10" width="10" fill="aliceblue" stroke="dodgerblue" stroke-width="1" rx="5" ry="5" id="bottomRight"/><rect x="89" y="65" height="10" width="10" fill="aliceblue" stroke="dodgerblue" stroke-width="1" rx="5" ry="5" id="right"/><rect x="89" y="21" height="10" width="10" fill="aliceblue" stroke="dodgerblue" stroke-width="1" rx="5" ry="5" id="topRight"/><line x1="50" y1="6" x2="50" y2="21" stroke="dodgerblue" stroke-width="1" id="rotateLine"/><rect x="45" y="21" height="10" width="10" fill="aliceblue" stroke="dodgerblue" stroke-width="1" rx="5" ry="5" id="top"/><rect x="45" y="1" height="10" width="10" fill="dodgerblue" stroke="slateblue" stroke-width="1" rx="5" ry="5" id="rotator"/></svg>-->

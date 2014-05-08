@@ -1,0 +1,23 @@
+{
+	"undef":true,
+	"unused":"vars",
+	"curly":true,
+	"devel":true,
+	"laxcasebreak":true,
+	"quotmark":"single",
+	"unused":true,
+	"trailing":true,
+	"debug":true,
+	"laxcomma":true,
+	"proto":true,
+	"multistr":true,
+	"smarttabs":true,
+	"sub":true,
+	"nonstandard":true,
+    "laxcomma": true,
+    "node": true,
+	"globals": {
+		"exports": true,
+		"require": false
+	}
+}

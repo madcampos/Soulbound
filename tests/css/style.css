@@ -1,0 +1,124 @@
+@media (orientation: portrait){
+   /*TODO: style to top-bars not sidebars*/
+}
+body{   
+    font-family: 'Segoe UI', 'Helvetica', 'Open Sans', sans-serif;
+}
+#mapWrapper{
+	top: 5em;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	right: 10em;
+    overflow: auto;
+    box-sizing: border-box;
+}
+
+#map{
+    /* WARNING: IE Hack, for some god-forsaken reason IE adds a 4px bottom margin, so we remove it as it does not affect other browsers */
+    margin-bottom: -4px;
+}
+
+.options{
+	display: none;
+	position: absolute;
+    padding: 0.3em 0.8em;
+    z-index: 1;
+    height: 5em;
+    background: white;
+    left: 0;
+    right: 0;
+}
+
+#editBar{
+	position: absolute;
+	top: 0;
+	left: 0;
+    padding: 0.3em;
+    right:0;
+}
+
+#elementsBox{
+    position: absolute;
+    top: 5em;
+    right: 0;
+    bottom: 0;
+    width: 10em;
+    overflow-y:auto;
+    overflow-x: hidden;
+}
+
+.clutter{
+    width: 5em;
+    height: 5em;
+    display: block;
+}
+
+#elementsBox .clutter{
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAsMCwxMCwxMCI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTAsMGg1djEwaDV2LTVIMCIvPjxwYXRoIGQ9Ik01LDBoNXY1SDB2NWg1IiBmaWxsPSIjY2NjIi8+PC9zdmc+');
+    background-size: 10px;
+}
+
+.mode:checked ~ .options{
+	display: block;
+}
+
+#background, #grid, #effects{
+    pointer-events: none;
+}
+
+#grids{
+    stroke: black;
+    stroke-opacity: 0.4;
+    stroke-width: 2;
+}
+
+#square, #spacedSquare{
+    stroke-width: 3;
+}
+
+#resizer{
+    stroke: black;
+    stroke-width: 2;
+    stroke-opacity: 0.6;
+    fill: aliceblue;
+}
+
+#boundRect{
+    stroke-dasharray: 5;
+    fill: transparent;
+    cursor: move;
+}
+
+#rotator{
+    cursor: url('../img/rotate.png') 8 8, auto;
+}
+
+#left, #right{
+    cursor: ew-resize;
+}
+
+#top, #bottom{
+    cursor: ns-resize;
+}
+
+#topLeft, #bottomRight{
+    cursor: nwse-resize;
+}
+
+#topRight, #bottomLeft{
+    cursor: nesw-resize;
+}
+
+.hidden{
+    display: none;
+}
+
+#walls path{
+    stroke: red;
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+    fill: gold;
+}

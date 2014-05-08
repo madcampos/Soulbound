@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="0 0 500 500">
+	<defs id="grids">
+		<pattern id="Square" width="50" height="50" patternUnits="userSpaceOnUse" stroke-width="3" stroke="black" stroke="black" stroke-opacity="0.4">
+			<path d="m0,0l0,50"/>
+			<path d="m0,0l50,0"/>
+		</pattern>
+		<pattern id="SpacedSquare" width="50" height="50" patternUnits="userSpaceOnUse" stroke-width="3" stroke="black" stroke-opacity="0.4">
+			<path d="m0,0l0,6"/>
+			<path d="m0,0l6,0"/>
+			<path d="m0,45l0,5"/>
+			<path d="m45,0l5,0"/>
+		</pattern>
+		<pattern id="Hexagonal" width="40" height="60" patternUnits="userSpaceOnUse" stroke-width="2" stroke="black" stroke-opacity="0.4">
+			<path d="m0,0l20,10"/>
+			<path d="m20,10l20,-10"/>
+			<path d="m20,10l0,20"/>
+			<path d="m0,40l20,-10"/>
+			<path d="m20,30l20,10"/>
+			<path d="m0,40l0,20" stroke-width="3"/>
+		</pattern>
+		<pattern id="SpacedHexagonal" width="40" height="60" patternUnits="userSpaceOnUse" stroke-width="2" stroke="black" stroke-opacity="0.4">
+			<path d="m10,5l10,5"/>
+			<path d="m20,10l10,-5"/>
+			<path d="m20,10l0,10"/>
+			<path d="m0,40l10,-5"/>
+			<path d="m30,35l10,5"/>
+			<path d="m0,40l0,10" stroke-width="3"/>
+		</pattern>
+	</defs>
+	<rect width="100%" height="100%" fill="url(#SpacedHexagonal)"/>
+</svg>
