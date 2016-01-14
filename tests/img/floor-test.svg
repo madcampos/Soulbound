@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="500px" height="500px" viewBox="0,0,286,286">
 <defs>
-    <pattern id="bg" patternUnits="userSpaceOnUse" width="50" height="50">
-        <image xlink:href="stone-tile.png" x="0" y="0" height="50" width="50"/>
+    <pattern id="bg" patternUnits="userSpaceOnUse" width="70" height="70">
+        <image xlink:href="./stone-tile.png" x="0" y="0" height="70" width="70"/>
     </pattern>
     <pattern id="grass" patternUnits="userSpaceOnUse" width="50" height="50">
-        <image xlink:href="grass-tile.png" x="0" y="0" height="50" width="50"/>
+        <image xlink:href="./grass-tile.png" x="0" y="0" height="50" width="50"/>
     </pattern>
     <filter id='floorStoneSmooth'>
         <!-- OuterShadow -->

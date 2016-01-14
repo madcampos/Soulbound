@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="500px" height="500px">
+    <defs>
+        <filter filterUnits="objectBoundingBox" id="wallsBevel">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="0.5"/>
+            <feSpecularLighting surfaceScale="5" specularConstant="0.5" specularExponent="10" lighting-color="white" result="specOut">
+                <fePointLight x="-5000" y="-5000" z="8000"/>
+            </feSpecularLighting>
+            <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut2"/>
+            <feComposite in="SourceGraphic" in2="specOut2" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litPaint"/>
+        </filter>
+        <pattern id="walls" width="10" height="10" patternUnits="userSpaceOnUse">
+            <rect x="0" y="0" width="10" height="10"/>
+        </pattern>
+    </defs>
+    <path d="M20,20h50v50h-50z" fill="aliceblue"/>
+    <path d="M20,20h50v50h-50z" stroke="url(#walls)" stroke-width="20" fill="transparent" filter="url(#wallsBevel)"/>
+</svg>

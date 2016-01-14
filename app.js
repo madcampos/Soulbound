@@ -25,7 +25,7 @@ var gameDataFilter = function(docs, gameName){
 				return el.className ? [el.name, el.desc, el.className] : [el.name, el.desc];
 			};
 
-			
+
 			for (var i in group) {
 				_el = group[i][0];
 				mapped[i] = docs.filter(filter).map(mapper).sort();
@@ -115,7 +115,6 @@ app.configure(function(){
 		hasAvatar : function(id){return path.existsSync(__dirname + '/public/images/public/characters/' + id + '.png', function(exists) {return exists;});}
 	});
 });
-
 
 app.configure('development', function(){
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
