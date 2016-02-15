@@ -1,41 +1,18 @@
-# A HTML5 RPG Platform
+# A Web based RPG platform!
 
-The intents of this project are to create a rpg management unsing new web technologies (and for me to learn more).
-Actualy it's able to load data from a file (JSON formated) and display it, it also creates a string from the fields and display it.
+The project's goal is to build a platform that enables users to create, share and participate in RPG games using multiple rule systems.
 
-## Browser (lack of) Suport
+## API
 
-+ Chrome
-	+ nope, the main browser focus IS Chrome
-+ Firefox
-	+ Custom CSS is not working, the -moz-apearence propriety is not applying
-+ Opera
-	+ Drag n Drop
-	+ File loading not fully working
-	+ Custom CSS not working
-+ IE 9
-	+ Loading/parsing file
-	+ Custom CSS, apearence propriety not applying
-+ IE 10
-	+ Parsing file
-	+ Custom CSS
-+ Safari
-	+ Loading/parsing file
+You can find API documentation in the "docs" section.
 
-## Todo
+## Plans
+- [ ] Character generation
+- [ ] GM management
+- [ ] History writing/management
+- [ ] Virtual tabletop
+- [ ] Ambient music mixer
+- [ ] Internationalization
 
-+ Make functions clear and more reusable (documentation using JSDoc)
-+ Work on cross-browser compatibility
-+ Write .json file with character (posibly flash)
-+ Refactor CSS
-+ Make responsive data based on form rules and states changes
-+ Better forms and form customization
-
-##Ahead Work
-
-+ GM control page
-+ internationalization
-+ admin page with control of data (ability to add/remove data)
-
-##Issues
+## Issues
 Please report issues to the [Issue Tracker](https://github.com/madcampos/Soulbound/issues)

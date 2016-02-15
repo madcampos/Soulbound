@@ -1,0 +1,33 @@
+{
+  "name": "soulbound",
+  "version": "1.0.0",
+  "description": "RPG platform",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --fix *.js",
+    "docs": "documentation build -f md -o docs/api",
+    "build": "npm run lint && npm run docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madcampos/Soulbound.git"
+  },
+  "keywords": [
+    "rpg",
+    "management"
+  ],
+  "author": "madcampos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/madcampos/Soulbound/issues"
+  },
+  "homepage": "https://github.com/madcampos/Soulbound#readme",
+  "devDependencies": {
+    "documentation": "^4.0.0-beta",
+    "eslint": "^2.1.0"
+  }
+}
