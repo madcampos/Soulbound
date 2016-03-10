@@ -1,0 +1,10 @@
+systemLog:
+  traceAllExceptions: true
+  path: log/mongo/mongo.log
+  destination: file
+  timeStampFormat: ctime
+net:
+  bindIp: 127.0.0.1
+storage:
+  dbPath: db/mongo
+  directoryPerDB: true

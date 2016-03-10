@@ -7,10 +7,15 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node tests/api.v1.js",
+    "clean": "mongo --eval \"db.dropDatabase()\" soulbound",
     "lint": "eslint --fix *.js",
-    "docs": "documentation build -f md -o docs/api",
-    "build": "npm run lint && npm run docs"
+    "build": "npm run lint && npm run docs",
+    "prewatch": "npm run prestart",
+    "watch": "nodemon -I",
+    "prestart": "start /b mongod -f ./config/db.yaml && start /b redis-server ./config/redis.conf && echo DB servers started in background.",
+    "start": "node index.js",
+    "stop": "mongo --quiet --eval \"db.shutdownServer()\" admin && redis-cli shutdown && echo DB servers shutdown."
   },
   "repository": {
     "type": "git",
@@ -27,7 +32,21 @@
   },
   "homepage": "https://github.com/madcampos/Soulbound#readme",
   "devDependencies": {
-    "documentation": "^4.0.0-beta",
-    "eslint": "^2.1.0"
+    "cross-env": "^1.0.7",
+    "eslint": "^2.1.0",
+    "nodemon": "^1.9.1",
+    "supertest": "^1.2.0",
+    "tree-exec": "^1.0.0",
+    "tst": "^1.3.1"
+  },
+  "dependencies": {
+    "config": "^1.19.0",
+    "express": "^4.13.4",
+    "express-subdomain": "^1.0.5",
+    "helmet": "^1.3.0",
+    "ioredis": "^1.15.1",
+    "mongoose": "^4.4.3",
+    "morgan": "^1.7.0",
+    "passport": "^0.3.2"
   }
 }

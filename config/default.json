@@ -1,0 +1,20 @@
+{
+	"http": {
+		"port": 80
+	},
+	"https": {
+		"port": 443,
+		"key": "cert/key.pem",
+		"cert": "cert/cert.pem"
+	},
+	"jwt": {
+		"expiration": 60,
+		"secret": "placeholdersecret"
+	},
+	"db": {
+		"mongo": {
+			"url": "soulbound"
+		}
+	},
+	"logfile": "log/server.log"
+}
