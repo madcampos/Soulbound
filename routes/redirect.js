@@ -33,6 +33,18 @@ function redirectWWW(req, res, next){
 	}
 }
 
+/**
+ * Default 404 catcher.
+ * @param {Object} req The request object.
+ * @param {Object} res The response object.
+ */
+function notFound(req, res){
+	res.status(404);
+	res.set('Content-Type', 'text/html');
+	res.send('<h1>Four, oh, four!</h1>');
+}
+
 router.use(redirectHTTPS, redirectWWW);
 
 module.exports = router;
+module.exports.notFoundRoute = notFound;
