@@ -15,7 +15,7 @@
 		"digest": "sha512"
 	},
 	"jwt": {
-		"expiration": 60,
+		"expiration": "7d",
 		"secret": "placeholdersecret"
 	},
 	"db": {

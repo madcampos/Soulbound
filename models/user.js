@@ -3,7 +3,6 @@ let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 let crypto = require('crypto');
 let config = require('config');
-let moment = require('moment');
 
 /**
  * Hashes and salts a password.
@@ -23,10 +22,22 @@ function hashPassword(password){
  * @this User
  */
 function checkPassword(password){
-	let salt = this.password.slice(0, config.get('password.salt'));
-	let hash = this.password.slice(config.get('password.salt'));
+	//Have to double the salt's value because it's converting bases from 16 to 32.
+	let salt = this.password.slice(0, config.get('password.salt') * 2);
+	let hash = this.password.slice(config.get('password.salt') * 2);
 	let testHash = crypto.pbkdf2Sync(password, salt, config.get('password.iterations'), config.get('password.length') - config.get('password.salt'), config.get('password.digest')).toString('hex');
 	return hash === testHash;
+}
+
+/**
+ * Finds a user by name.
+ * @param {String} name The user's name to search.
+ * @param {Function} callback The callback to be passed to the function.
+ * @returns {Query} The query for the user.
+ * @this User
+ */
+function findByName(name, callback){
+	return this.findOne({name: name}, callback);
 }
 
 /**
@@ -38,8 +49,8 @@ function checkPassword(password){
  */
 let TokenSchema = new Schema({
 	value: String,
-	creation: {type: Date, 'default': Date.now, expires: '7d'},
-	expiration: {type: Date, set: (date) => moment(date).add(7, 'days').toDate(), 'default': Date.now}
+	creation: {type: Date, 'default': Date.now, expires: config.get('jwt.expiration')},
+	expiration: {type: Date, required: true}
 });
 
 //TODO: add token expiration method.
@@ -55,7 +66,7 @@ let TokenSchema = new Schema({
  * @property {Token} [token] The user's current token.
  */
 let UserSchema = new Schema({
-	name: {type: String, required: true, unique: true, trim: true, minLength: 5, maxLength: 30, match: /^[a-z0-9_-]$/i},
+	name: {type: String, required: true, unique: true, trim: true, minLength: 5, maxLength: 20},
 	role: {type: String, match: /user|admin|verified/, 'default': 'user'},
 	//Regexp from: http://stackoverflow.com/a/1373724/937851
 	email: {type: String, required: true, unique: true, trim: true, match: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/},
@@ -65,5 +76,7 @@ let UserSchema = new Schema({
 
 UserSchema.method('checkPassword', checkPassword);
 UserSchema.static('hashPassword', hashPassword);
+/** @this User */
+UserSchema.static('findByName', findByName);
 
 module.exports = mongoose.model('User', UserSchema);

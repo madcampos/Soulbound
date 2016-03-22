@@ -24,12 +24,15 @@ app.use(helmet.noSniff());
 
 //Middlewares
 app.use(body.json());
+app.use(body.text());
+app.use(body.urlencoded({extended: true}));
 
 //Logging
 app.use(morgan('common', {stream: createWriteStream(normalize(config.get('logfile')), {flags: 'a+'})}));
 
 //Routes
 app.use(require('../routes/redirect'));
+app.use(require('../routes/user'));
 
 //API v1
 app.use(subdomain('api.v1', require('./api/v1')));

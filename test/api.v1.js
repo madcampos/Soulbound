@@ -1,20 +1,33 @@
+/*eslint-disable require-jsdoc, no-process-env, no-invalid-this, func-style*/
+/*global suite, test*/
 'use strict';
-
 //see this: https://github.com/request/request/issues/2061#issuecomment-182573171
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-let assert = require('assert');
-let test = require('tst');
+let chai = require('chai');
+chai.config.includeStack = false;
+chai.config.showDiff = false;
+
+let assert = chai.assert;
 let config = require('config');
-
-let request = require('request').defaults({baseUrl: `https://${config.get('hostname')}/api/v1/`});
-
 let randomString = (len) => `${len ? Math.trunc(Math.random() * Math.pow(10, 16)).toString(36).substr(-10) : ''}${len > 10 ? randomString(len - 10) : ''}`.substr(0, len);
-let token = '';
-let headers = () => ({Authorization: `Bearer ${token}`});
+let baseUrl = `https://${config.get('hostname')}`;
+let baseApiUrl = `${baseUrl}/api/v1`;
 
+let token = {
+	value: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpIjoiNTZmMTQzZWU3NWMxMjExYzFmNjUyNTM4IiwibiI6InRlc3R1c2VyIiwiciI6InVzZXIiLCJpYXQiOjE0NTg2NTUzODUsImV4cCI6MTQ1OTI2MDE4NX0.8lrNW7-MbjzdbRrzhtSW1RgyRpJDlFU8d45b5249PL4',
+	expiration: '2016-03-29T14:03:05.945Z',
+	creation: '2016-03-22T14:03:05.945Z'
+};
+let user = {
+	id: '56f143ee75c1211c1f652538',
+	name: 'testuser',
+	password: '123456',
+	email: 'me@server.test'
+};
 let adventureId = '';
 let testAdventure = {
+	owner: '56f143ee75c1211c1f652538',
 	canonicalName: 'Test adventure',
 	canonicalLang: 'en-US',
 	translations: [{
@@ -27,84 +40,103 @@ let testAdventure = {
 	tags: ['test', 'such test', 'much unit', 'wow']
 };
 
-test('API v1 test', () => {
-	test('General testing', () => {
-		test('Language redirection', (done) => {
-			request.get('/en-us/adventures', (err, res, body) => {
+let request = require('request').defaults({json: true, headers: {Authorization: `Bearer ${token.value}`, 'Content-Type': 'application/json'}});
+
+function assertResponse(test, done){
+	if (done) {
+		return (err, res, body) => {
+			if (!err) {
+				test(body, res);
+				return done();
+			}
+
+			return done(err);
+		};
+	}
+
+	return (err, res, body) => {
+		if (!err) {
+			test(res, body);
+		}
+	};
+}
+
+suite('API v1 test', function(){
+	this.slow(7000);
+	this.timeout(60000);
+
+	suite('General testing', function(){
+		test('Language redirection', function(done){
+			request.get(`${baseApiUrl}/en-us/adventures`,(err, res, body) => {
 				if (!err) {
 					assert.equal(res.request.uri.path, '/api/v1/en-US/adventures');
-				} else {
-					assert.fail(null, null, err);
+					return done();
 				}
 
-				done();
+				return done(err);
 			});
 		});
 
-		test('Get JWT', (done) => {
-			request.put({url: '/user/token', body: {user: 'test', password: 'test123'}, json: true}, (err, res, body) => {
+		test('Get JWT', function(done){
+			request.post({url: `${baseUrl}/user/${user.id}/token`, body: {password: user.password}}, (err, res, body) => {
 				if (!err) {
-					assert.ok(JSON.parse(body).value);
-				} else {
-					assert.fail(null, null, err);
+					assert.deepEqual(body, token);
+					return done();
 				}
 
-				done();
+				return done(err);
 			});
 		});
 	});
-	test('Adventure test', () => {
-		test('New adventure.', (done) => {
-			request.put({url: '/en-US/adventure', json: true, body: testAdventure, headers: headers()}, (err, res, body) => {
+
+	suite('Adventure test', function(){
+		test('New adventure.', function(done){
+			request.put({url: `${baseApiUrl}/en-US/adventure`, body: testAdventure}, (err, res, body) => {
 				if (!err) {
-					let adventure = JSON.parse(body);
+					let adventure = body;
 					adventureId = testAdventure.id = adventure.id;
-					testAdventure.owner = adventure.owner;
 					assert.deepEqual(adventure, testAdventure);
-				} else {
-					assert.fail(null, null, err);
+
+					return done();
 				}
 
-				done();
+				return done(err);
 			});
 		});
 
-		test('Adventure searching.', (done) => {
-			request.get({url: `/en-US/adventure/${adventureId}`}, (err, res, body) => {
+		test('Adventure searching.', function(done){
+			request.get({url: `${baseApiUrl}/en-US/adventure/${adventureId}`}, (err, res, body) => {
 				if (!err) {
-					assert.deepEqual(JSON.parse(body), testAdventure);
-				} else {
-					assert.fail(null, null, err);
+					assert.deepEqual(body, testAdventure);
+					return done();
 				}
 
-				done();
+				return done(err);
 			});
 		});
 
-		test('Edit existing adventure.', (done) => {
+		test('Edit existing adventure.', function(done){
 			let editedAdventure = testAdventure;
 			editedAdventure.translations[0].content = randomString(200);
 
-			request.post({url: `/en-US/adventure/${adventureId}`, json: true, body: editedAdventure, headers: headers()}, (err, res, body) => {
+			request.post({url: `${baseApiUrl}/en-US/adventure/${adventureId}`, body: editedAdventure}, (err, res, body) => {
 				if (!err) {
-					assert.deepEqual(JSON.parse(body), editedAdventure);
-				} else {
-					assert.fail(null, null, err);
+					assert.deepEqual(body, editedAdventure);
+					return done();
 				}
 
-				done();
+				return done(err);
 			});
 		});
 
-		test('Deleting adventure.', (done) => {
-			request.delete({url: `/en-US/adventure/${adventureId}`, headers: headers()}, (err, res, body) => {
+		test('Deleting adventure.', function(done){
+			request.del({url: `${baseApiUrl}/en-US/adventure/${adventureId}`}, (err, res, body) => {
 				if (!err) {
-					assert.ok(JSON.parse(body));
-				} else {
-					assert.fail(null, null, err);
+					assert.ok(body);
+					return done();
 				}
 
-				done();
+				return done(err);
 			});
 		});
 	});
