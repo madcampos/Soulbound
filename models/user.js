@@ -66,10 +66,10 @@ let TokenSchema = new Schema({
  * @property {Token} [token] The user's current token.
  */
 let UserSchema = new Schema({
-	name: {type: String, required: true, unique: true, trim: true, minLength: 5, maxLength: 20},
+	name: {type: String, required: true, unique: true, trim: true, minLength: 5, maxLength: 20, match: /^[a-z0-9\_\-]+$/i},
 	role: {type: String, match: /user|admin|verified/, 'default': 'user'},
 	//Regexp from: http://stackoverflow.com/a/1373724/937851
-	email: {type: String, required: true, unique: true, trim: true, match: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/},
+	email: {type: String, required: true, unique: true, trim: true, match: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/i},
 	password: {type: String, required: true, select: false, match: /^[^\$\"\'\`\{\}]+$/, set: hashPassword},
 	token: TokenSchema
 });

@@ -11,11 +11,10 @@
     "clean": "mongo --eval \"db.dropDatabase()\" soulbound",
     "lint": "eslint --fix *.js",
     "build": "npm run lint && npm run docs",
-    "prewatch": "npm run prestart",
     "watch": "nodemon -I --ignore test/ --ignore db/ --ignore log/ --ignore node_modules/",
-    "prestart": "start /b mongod -f ./config/db.yaml && start /b redis-server ./config/redis.conf && echo DB servers started in background.",
     "start": "node index.js",
-    "stop": "mongo --quiet --eval \"db.shutdownServer()\" admin && redis-cli shutdown && echo DB servers shutdown."
+    "db:start": "start /b mongod -f ./config/db.yaml && start /b redis-server ./config/redis.conf",
+    "db:stop": "mongo --quiet --eval \"db.shutdownServer()\" admin && redis-cli shutdown"
   },
   "repository": {
     "type": "git",
