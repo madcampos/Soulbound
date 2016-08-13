@@ -130,7 +130,7 @@
 		"no-unneeded-ternary": 2,
 		"object-curly-spacing": [2, "never"],
 		"operator-linebreak": [2, "before", {"overrides": {"?": "after"}}],
-		"linebreak-style": [1, "unix"],
+		//"linebreak-style": [1, "unix"],
 		"quote-props": [1, "as-needed", {"keywords": true, "numbers": true}],
 		"quotes": [2, "single"],
 		"require-jsdoc": 2,
