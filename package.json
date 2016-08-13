@@ -32,7 +32,7 @@
   "homepage": "https://github.com/madcampos/Soulbound#readme",
   "devDependencies": {
     "chai": "^3.5.0",
-    "eslint": "^2.1.0",
+    "eslint": "^2.13.1",
     "mocha": "^2.4.5",
     "mocha-clean": "^1.0.0",
     "nodemon": "^1.9.1",
