@@ -1,0 +1,242 @@
+{
+	"rulesDirectory": ["node_modules/tslint-eslint-rules/dist/rules"],
+	"rules": {
+		//ESlint based
+
+		//Possible Errors
+		"trailing-comma": [true, {"multiline": "always", "singleline": "never"}],
+		"no-conditional-assignment": true,
+		//"no-console": [true, "log", "error"],
+		"no-constant-condition": true,
+		"no-control-regex": true,
+		//"no-debugger": true,
+		"no-duplicate-key": true,
+		"no-duplicate-case": true,
+		"no-empty": true,
+		"no-empty-character-class": true,
+		"no-ex-assign": true,
+		"no-extra-boolean-cast": true,
+		//no-extra-parens
+		"no-extra-semi": true,
+		"no-inner-declarations": [true, "both"],
+		"no-invalid-regexp": true,
+		"no-irregular-whitespace": true,
+		"no-regex-spaces": true,
+		"no-sparse-arrays": true,
+		"no-unexpected-multiline": true,
+		"no-unreachable": true,
+		"no-unsafe-finally": true,
+		"use-isnan": true,
+		"jsdoc-format": true,
+		"valid-jsdoc": [true, {"prefer": {"return": "return"}, "requireReturn": false, "requireReturnDescription": true, "requireParamDescription": true, "requireReturnType": true}],
+		"valid-typeof": true,
+
+		//Best practices
+		//accessor-pairs
+		//array-callback-return
+		//complexity
+		//consistent-return
+		"curly": true,
+		//"switch-default": true,
+		//dot-location
+		//dot-notation
+		"triple-equals": true,
+		"forin": true,
+		//no-alert
+		"no-arg": true,
+		//no-case-declarations
+		//no-div-regex
+		//no-else-return
+		"no-eval": true,
+		//no-extend-native
+		//no-extra-bind
+		"label-position": true,
+		"no-switch-case-fall-through": true,
+		//no-floating-decimal
+		//no-implicit-coersion
+		//no-implicit-globals
+		//no-implied-eval
+		"no-invalid-this": [true, "check-function-in-method"],
+		//no-iterator
+		//no-labels
+		//no-loop-func
+		//no-magic-numbers
+		"no-multi-spaces": [true, {"exceptions": { "PropertyAssignment": false, "OtherException": false }}],
+		//no-multi-str
+		//no-new
+		"class-name": true,
+		//no-new-wrappers
+		//no-octal-escape
+		//no-param-reassign,
+		//no-proto
+		"no-duplicate-variable": true,
+		//no-return-assign
+		//no-script-url
+		//no-self-assign
+		//no-self-compare
+		//no-sequences
+		//no-trheow-literal
+		//no-unmodified-loop-conditions
+		"no-unused-expression": true,
+		//no-usless-calls
+		//no-useless-escape
+		//no-void
+		//no-with
+		"radix": true,
+		//vars-on-top
+		//wrap-iife
+		//yoda
+
+		//Strict mode
+		//strict
+
+		//Variables
+		//init-declarations
+		//no-catch-shadow
+		//no-shadow-restricted-names
+		"no-shadowed-variable": true,
+		//no-undef-init
+		"no-null-keyword": true,
+		"no-unused-variable": [true, "react", "check-parameters"],
+		"no-use-before-declare": true,
+
+		//Node & CommonJS
+		//callback-return
+		//global-require
+		"handle-callback-err": [true, "^(err|error|anySpecificError)$"],
+		"no-require-imports": true,
+		//no-path-concat
+		//no-process-env
+		//no-process-exit
+		//no-restricted-modules
+		//no-sync
+
+		//Stylistic rules
+		"array-bracket-spacing": [true, "never", {"singleValue": false, "objectsInArrays": false, "arraysInArrays": false}],
+		"block-spacing": [true, "always"],
+		"brace-style": ["warn", "1tbs", {"allowSingleLine": true}],
+		"variable-name": [true, "allow-pascal-case", "ban-keywords", "check-format"],
+		//comma-spacing
+		//comma-dangle
+		//comma-style
+		//computed-property-spacing
+		//consistent-this
+		"eofline": false,
+		//func-names
+		//func-style
+		//id-blacklist
+		//id-length
+		//id-match
+		"indent": [true, "tabs"],
+		//jsx-quotes
+		//key-spacing
+		//keyword-spacing
+		//overrides
+		"linebreak-style": [true, "LF"],
+		//lines-arround-comment
+		//max-depth
+		//"max-line-length": [true, 120],
+		//"max-file-line-count": [true, 300],
+		//max-nested-callbacks
+		//max-params
+		//max-statements-per-line
+		//max-statements
+		"new-parens": true,
+		//newline-after-var
+		//newline-before-return
+		//newline-per-chained-call
+		"no-construct": true,
+		"no-bitwise": true,
+		//no-continue
+		//no-inline-comments
+		//no-lonely-if
+		"no-consecutive-blank-lines": true,
+		//no-negated-condition
+		//no-nested-ternary
+		"restrict-plus-operands": true,
+		//no-restricted-syntax
+		//no-tabs
+		//no-ternary
+		"no-trailing-whitespace": true,
+		//no-underscore-dangle
+		//no-unneded-ternary
+		//no-whitespace-before-property
+		"object-curly-spacing": [true, "never"],
+		//object-propert-newline
+		//"one-variable-per-declaration": [true, "ignore-for-loop"],
+		//one-var-declaration-per-line
+		//operator-assignment
+		"one-line": [true, "check-catch", "check-finally", "check-else", "check-open-brace"],
+		//padded-blocks
+		"object-literal-key-quotes": [true, "as-needed"],
+		"quotemark": [true, "single", "avoid-escape", "jsx-double"],
+		//require-jsdoc
+		//semi-spacing
+		"semicolon": [true, "always"],
+		"object-literal-sort-keys": true,
+		//sort-vars
+		//space-before-blocks
+		//space-before-function-parens
+		//space-in-parens
+		//space-infix-ops
+		//space-unary-ops
+		//"comment-format": [true, "check-space", "check-lowercase"],
+		//unicode-bom
+		//wrap-regex
+
+		//ES6
+		//arrow-body-style
+		"arrow-parens": true,
+		//arrow-spacing
+		//constructor-super
+		//generator-star-spacing
+		//no-class-assign
+		//no-confusing-arrow
+		//no-const-assign
+		//no-duplicate-imports
+		//no-new-symbol
+		//no-restricted-imports
+		//no-this-before-super
+		//no-useless-computed-key
+		"no-unused-new": true,
+		"no-var-keyword": true,
+		"object-literal-shorthand": true,
+		"only-arrow-functions": [true, "allow-declarations"],
+		//prefer-const
+		//prefer-reflect
+		//prefer-rest-params
+		//prefer-spread
+		//prefer-template
+		//require-yield
+		//rest-spread-spacing
+		//"ordered-imports": [true, {"import-sources-order": "lowercase-last", "named-imports-order": "lowercase-first"}],
+		//template-curly-spacing
+		//yield-star-spacing
+
+		//TSlint
+		//Typescript specifics
+		"adjacent-overload-signatures": true,
+		"member-access": [true, "check-accessor"],
+		//"member-ordering": [true, { "order": "fields-first" }],
+		//"no-any": true,
+		"no-inferrable-types": [true, "ignore-params"],
+		"no-internal-module": true,
+		//"no-namespace": [true, "allow-declarations"],
+		"no-reference": true,
+		"no-var-requires": true,
+		"typedef": [true, "call-signature", "parameter", "member-variable-declaration", "arrow-parameter", "property-declaration", "variable-declaration"],
+		"typedef-whitespace": [true, {"call-signature": "nospace", "index-signature": "nospace", "parameter": "nospace", "property-declaration": "nospace", "variable-declaration": "nospace"}, {"call-signature": "space", "index-signature": "space", "parameter": "space", "property-declaration": "space", "variable-declaration": "space"}],
+		"no-for-in-array": true,
+		"no-string-literal": true,
+
+		//Maintenability
+		"no-default-export": true,
+		"no-mergeable-namespace": true,
+
+		//Stylistic
+		//"align": [true, "parameters", "statements"],
+		//"file-header": [ture, "Copyright \d{4}"]
+		"interface-name": [true, "always-prefix"],
+		"no-angle-bracket-type-assertion": true
+	}
+}

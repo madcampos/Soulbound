@@ -1,0 +1,16 @@
+{
+	"compileOnSave": true,
+	"compilerOptions": {
+		"target": "es6",
+		"module": "commonjs",
+		"declaration": true,
+		"declarationDir": "./typings",
+		"mapRoot": "./maps",
+		"newLine": "LF",
+		"outDir": "./build",
+		"sourceMap": true
+	},
+	"files": [
+		"./src/**/*"
+	]
+}
